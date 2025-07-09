@@ -14,4 +14,9 @@ export const demoUsers = [
     email: "nagaraju1.glansa@gmail.com",
     role: "technician",
   },
+  {
+    name: "Sourav",
+    email: "sourav.glansa@gmail.com",
+    role: "customer",
+  },
 ];
