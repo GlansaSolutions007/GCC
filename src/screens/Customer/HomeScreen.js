@@ -18,14 +18,6 @@ export default function HomeScreen() {
       style={{ backgroundColor: "#fff" }}
       contentContainerStyle={{ paddingBottom: 30 }}
     >
-      <View style={globalStyles.header}>
-        <Text style={globalStyles.greeting}>Hello User</Text>
-        <View style={globalStyles.locationRow}>
-          <Text style={globalStyles.location}>Hyderabad, Telangana</Text>
-          <Ionicons name="chevron-down" size={16} color="#fff" />
-        </View>
-      </View>
-
       <View style={globalStyles.banner}>
         <View style={{ display: "flex" }}>
           <Text style={globalStyles.bannerTitle}>
