@@ -1,4 +1,4 @@
-export default {
+export const color = {
   // Brand Colors
   primary: '#0A74DA',
   secondary: '#FF8C00',

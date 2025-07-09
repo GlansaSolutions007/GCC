@@ -12,13 +12,13 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
-import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 import { Ionicons } from "@expo/vector-icons";
 import globalStyles from "../../styles/globalStyles";
 import CustomAlert from "../../components/CustomAlert";
 import { demoUsers } from "../../constants/demoUsers";
 import { useAuth } from "../../contexts/AuthContext";
+import { color } from "../../styles/theme";
 
 export default function LoginScreen() {
   const { login } = useAuth();
@@ -80,7 +80,7 @@ export default function LoginScreen() {
 
         <TextInput
           placeholder="Email -or- Phone Number"
-          placeholderTextColor={colors.textLight}
+          // placeholderTextColor={colors.textLight}
           value={inputValue}
           onChangeText={(text) => setInputValue(text)}
           style={globalStyles.textInput}
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   googleButton: {
     marginTop: 40,
     flexDirection: "row",
-    backgroundColor: colors.white,
+    backgroundColor: color.white,
     paddingVertical: 12,
     borderRadius: 24,
     alignItems: "center",
