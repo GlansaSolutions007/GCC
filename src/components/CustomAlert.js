@@ -1,9 +1,9 @@
 // src/components/CustomAlert.js
 import React, { useMemo } from "react";
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import colors from "../styles/colors";
-import fonts from "../styles/fonts";
+import { Modal, View, Text, TouchableOpacity } from "react-native";
+
 import globalStyles from "../styles/globalStyles";
+
 
 export default function CustomAlert({
   visible,
@@ -15,11 +15,11 @@ export default function CustomAlert({
   const alertColor = useMemo(() => {
     switch (status) {
       case "success":
-        return colors.alertSuccess;
+        return globalStyles.alertSuccess;
       case "error":
-        return colors.alertError;
+        return globalStyles.alertError;
       default:
-        return colors.alertInfo;
+        return globalStyles.alertInfo;
     }
   }, [status]);
 
@@ -30,59 +30,19 @@ export default function CustomAlert({
       visible={visible}
       onRequestClose={onClose}
     >
-      <View style={styles.backdrop}>
-        <View style={[styles.alertBox, { borderColor: alertColor }]}>
-          <Text style={[styles.title, { color: alertColor }]}>{title}</Text>
-          <Text style={styles.message}>{message}</Text>
+      <View style={globalStyles.backdrop}>
+        <View style={[globalStyles.alertBox, { borderColor: alertColor }]}>
+          <Text style={[globalStyles.alertTitle, { color: alertColor }]}>{title}</Text>
+          <Text style={globalStyles.alertMessage}>{message}</Text>
 
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: alertColor }]}
+            style={[globalStyles.alertButton, { backgroundColor: alertColor }]}
             onPress={onClose}
           >
-            <Text style={styles.buttonText}>OK</Text>
+            {/* <Text style={globalStyles.alertButtonText}>OK</Text> */}
           </TouchableOpacity>
         </View>
       </View>
     </Modal>
   );
 }
-
-const styles = StyleSheet.create({
-  backdrop: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.4)",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  alertBox: {
-    width: "80%",
-    backgroundColor: colors.white,
-    padding: 24,
-    borderRadius: 12,
-    alignItems: "center",
-  },
-  title: {
-    fontFamily: fonts.bold,
-    fontSize: 18,
-    color: colors.primary,
-    marginBottom: 10,
-  },
-  message: {
-    fontFamily: fonts.regular,
-    fontSize: 15,
-    color: colors.text_dark,
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: colors.primary,
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 6,
-  },
-  buttonText: {
-    color: colors.white,
-    fontFamily: fonts.medium,
-    fontSize: 14,
-  },
-});
