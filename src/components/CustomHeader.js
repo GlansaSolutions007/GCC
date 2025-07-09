@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingBottom: 0,
     backgroundColor: "#fff",
-    borderBottomColor: "#eee",
-    borderBottomWidth: 1,
+    // borderBottomColor: "#eee",
+    // borderBottomWidth: 1,
   },
   topRow: {
     flexDirection: "row",

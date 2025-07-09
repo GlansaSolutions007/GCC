@@ -103,7 +103,13 @@ export default function CustomerTabNavigator({ navigation }) {
         tabBarLabel: route.name === "My Car Buddy" ? () => null : undefined,
       })}
     >
-      <Tab.Screen name="My Car Buddy" component={HomeScreen} />
+      <Tab.Screen
+        name="My Car Buddy"
+        // options={{
+        //   header: () => <CustomHeader />,
+        // }}
+        component={HomeScreen}
+      />
       <Tab.Screen
         name="My Cars"
         component={MyCars}
