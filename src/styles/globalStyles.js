@@ -25,7 +25,7 @@ export default StyleSheet.create({
   titleBlack: {
     fontFamily: fonts.bold,
     fontSize: 22,
-    color: colors.black,
+    color: color.black,
   },
   textInput: {
     borderBottomWidth: 1,
@@ -150,10 +150,12 @@ export default StyleSheet.create({
     flex: 1,
   },
   ctaTitle: {
-    fontSize: 14,
+    fontSize: 24,
+    width: '60%',
     fontFamily: fonts.medium,
-    marginBottom: 4,
     color: color.textDark,
+    marginBottom: 5,
+    lineHeight: 25,
   },
   ctaSubTitle: {
     fontSize: 12,
@@ -179,4 +181,8 @@ export default StyleSheet.create({
     fontFamily: fonts.medium,
     fontSize: 14,
   },
+  homebg: {
+  width: '100%',
+  overflow: 'hidden',     
+  }
 });
