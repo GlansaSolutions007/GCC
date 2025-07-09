@@ -1,0 +1,68 @@
+import React from "react";
+import { View, Text, TextInput, StyleSheet, Pressable, Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
+export default function CustomHeader({ navigation }) {
+  return (
+    <View style={styles.headerContainer}>
+      <View style={styles.topRow}>
+        <View>
+          <Text style={styles.hello}>Hello User</Text>
+          <Pressable>
+            <Text style={styles.location}>
+              Hyderabad, Telangana <Ionicons name="chevron-down" size={14} />
+            </Text>
+          </Pressable>
+        </View>
+
+        <Pressable onPress={() => console.log("Notifications")}>
+          <Ionicons name="notifications-outline" size={24} color="#000" />
+        </Pressable>
+      </View>
+
+      <View style={styles.searchBox}>
+        <Ionicons name="search-outline" size={18} color="#777" style={{ marginRight: 8 }} />
+        <TextInput
+          placeholder="Search for car manufacturer"
+          style={{ flex: 1 }}
+          placeholderTextColor="#777"
+        />
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  headerContainer: {
+    fontFamily: "Manrope-Medium",
+    paddingTop: 60,
+    paddingHorizontal: 16,
+    paddingBottom: 0,
+    backgroundColor: "#fff",
+  },
+  topRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  hello: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#333",
+    marginBottom: 5,
+  },
+  location: {
+    fontSize: 14,
+    color: "#007AFF",
+    marginTop: 2,
+  },
+  searchBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#f1f1f1",
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    height: 50,
+  },
+});

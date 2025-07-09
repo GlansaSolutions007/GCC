@@ -11,17 +11,17 @@ import NotificationButton from "../components/NotificationButton";
 import MyCars from "../screens/Customer/MyCars";
 import ServiceList from "../screens/Customer/ServiceList";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import CustomHeader from "../components/CustomHeader";
 
 const Tab = createBottomTabNavigator();
 
 export default function CustomerTabNavigator({ navigation }) {
-
   const insets = useSafeAreaInsets();
 
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerShown: true,      
+        headerShown: true,
         headerRight: () => (
           <NotificationButton
             onPress={() => console.log("Go to Notifications")}
@@ -101,7 +101,13 @@ export default function CustomerTabNavigator({ navigation }) {
       })}
     >
       <Tab.Screen name="My Car Buddy" component={HomeScreen} />
-      <Tab.Screen name="My Cars" component={MyCars} />
+      <Tab.Screen
+        name="My Cars"
+        component={MyCars}
+        options={{
+          header: () => <CustomHeader />,
+        }}
+      />
       <Tab.Screen name="Book Service" component={BookServiceScreen} />
       <Tab.Screen name="My Services" component={ServiceList} />
       <Tab.Screen name="Profile" component={ProfileScreen} />

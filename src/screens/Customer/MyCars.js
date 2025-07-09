@@ -27,7 +27,7 @@ export default function MyCars() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Select Manufacturer</Text>
+            {/* <Text style={styles.heading}>Select Manufacturer</Text> */}
             <FlatList
                 data={brands}
                 renderItem={renderBrand}
