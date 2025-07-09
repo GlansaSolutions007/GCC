@@ -1,7 +1,7 @@
-// src/navigation/CustomerTabNavigator.js
 import React from "react";
+import { Image, Pressable } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import HomeScreen from "../screens/Customer/HomeScreen";
 import ProfileScreen from "../screens/Common/ProfileScreen";
@@ -10,10 +10,14 @@ import MenuButton from "../components/MenuButton";
 import NotificationButton from "../components/NotificationButton";
 import MyCars from "../screens/Customer/MyCars";
 import ServiceList from "../screens/Customer/ServiceList";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const Tab = createBottomTabNavigator();
 
 export default function CustomerTabNavigator({ navigation }) {
+
+  const insets = useSafeAreaInsets();
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -33,17 +37,52 @@ export default function CustomerTabNavigator({ navigation }) {
         tabBarStyle: {
           backgroundColor: "#fff",
           borderTopWidth: 0.5,
-          height: 60,
-          paddingBottom: 5,
+          height: 75 + insets.bottom,
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: 10,
+          paddingBottom: insets.bottom > 0 ? insets.bottom : 5,
         },
-        tabBarIcon: ({ color, size }) => {
-          let iconName;
-          let iconLib = Ionicons;
+        tabBarItemStyle: {
+          borderRadius: 20,
+        },
+        tabBarPressColor: "rgba(0, 0, 0, 0.01)",
+        tabBarPressOpacity: 0.8,
+        tabBarButton: (props) => (
+          <Pressable
+            android_ripple={{
+              color: "rgba(0, 0, 0, 0.01)", // subtle ripple
+              borderless: false,
+            }}
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.9 : 1,
+                borderRadius: 20,
+                justifyContent: "center",
+                alignItems: "center",
+              },
+            ]}
+            {...props}
+          />
+        ),
+        tabBarIcon: ({ color, focused }) => {
+          if (route.name === "My Car Buddy") {
+            return (
+              <Image
+                source={require("../../assets/images/Home.png")}
+                style={{
+                  width: 55,
+                  height: 26,
+                  tintColor: focused ? "#007AFF" : "#8e8e93",
+                  marginBottom: -15,
+                }}
+                resizeMode="contain"
+              />
+            );
+          }
 
+          let iconName;
           switch (route.name) {
-            case "My Car Buddy":
-              iconName = "home-outline";
-              break;
             case "My Cars":
               iconName = "car-sport-outline";
               break;
@@ -60,8 +99,9 @@ export default function CustomerTabNavigator({ navigation }) {
               iconName = "ellipse-outline";
           }
 
-          return <Ionicons name={iconName} size={24} color={color} />;
+          return <Ionicons name={iconName} size={26} color={color} />;
         },
+        tabBarLabel: route.name === "My Car Buddy" ? () => null : undefined,
       })}
     >
       <Tab.Screen name="My Car Buddy" component={HomeScreen} />

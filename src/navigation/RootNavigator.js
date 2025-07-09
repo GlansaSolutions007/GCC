@@ -8,6 +8,7 @@ import RegisterScreen from "../screens/Common/RegisterScreen";
 import CustomerTabNavigator from "./CustomerTabNavigator";
 import TechnicianTabNavigator from "./TechnicianTabNavigator";
 import { useAuth } from "../contexts/AuthContext";
+import CustomerStackNavigator from "./CustomerStackNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +32,7 @@ export default function RootNavigator() {
       return (
         <Stack.Screen
           name="CustomerTabs"
-          component={CustomerTabNavigator}
+          component={CustomerStackNavigator}
         />
       );
     }

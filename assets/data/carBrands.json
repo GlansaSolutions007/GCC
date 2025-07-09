@@ -1,0 +1,96 @@
+[
+  {
+    "brand": "Maruti Suzuki",
+    "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-9.jpeg",
+    "models": [
+      {
+        "name": "Alto K10",
+        "fuelTypes": ["Petrol"]
+      },
+      {
+        "name": "S-Presso",
+        "fuelTypes": ["Petrol"]
+      },
+      {
+        "name": "Swift",
+        "fuelTypes": ["Petrol"]
+      },
+      {
+        "name": "Baleno",
+        "fuelTypes": ["Petrol"]
+      },
+      {
+        "name": "Brezza",
+        "fuelTypes": ["Petrol", "CNG"]
+      },
+      {
+        "name": "Ertiga",
+        "fuelTypes": ["Petrol"]
+      },
+      {
+        "name": "Wagon R",
+        "fuelTypes": ["Petrol"]
+      },
+      {
+        "name": "Alto K10 CNG",
+        "fuelTypes": ["CNG"]
+      },
+      {
+        "name": "e Vitara",
+        "fuelTypes": ["Electric"]
+      }
+    ]
+  },
+  {
+    "brand": "Hyundai",
+    "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-7.jpeg",
+    "models": [
+      { "name": "i20", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Grand i10 Nios", "fuelTypes": ["Petrol", "CNG"] },
+      { "name": "Venue", "fuelTypes": ["Petrol", "Diesel", "CNG"] },
+      { "name": "Creta", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Alcazar", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Exter", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Creta Electric", "fuelTypes": ["Electric"] },
+      { "name": "Ioniq 5", "fuelTypes": ["Electric"] }
+    ]
+  },
+  {
+    "brand": "Tata Motors",
+    "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-14.jpeg",
+    "models": [
+      { "name": "Tiago", "fuelTypes": ["Petrol", "CNG"] },
+      { "name": "Tigor", "fuelTypes": ["Petrol", "CNG"] },
+      { "name": "Altroz", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Punch", "fuelTypes": ["Petrol", "CNG"] },
+      { "name": "Nexon", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Harrier", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Safari", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Tigor EV", "fuelTypes": ["Electric"] },
+      { "name": "Nexon EV", "fuelTypes": ["Electric"] }
+    ]
+  },
+  {
+    "brand": "Mahindra & Mahindra",
+    "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-8.jpeg",
+    "models": [
+      { "name": "Thar", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Scorpio-N", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "XUV700", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "Bolero", "fuelTypes": ["Diesel"] },
+      { "name": "XUV3XO", "fuelTypes": ["Petrol", "Diesel"] },
+      { "name": "XUV400", "fuelTypes": ["Electric"] },
+      { "name": "BE.06", "fuelTypes": ["Electric"] }
+    ]
+  },
+  {
+    "brand": "Honda",
+    "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-6.jpeg",
+    "models": [
+      { "name": "City", "fuelTypes": ["Petrol", "CNG"] },
+      { "name": "Amaze", "fuelTypes": ["Petrol", "Diesel", "CNG"] },
+      { "name": "WR-V", "fuelTypes": ["Petrol"] },
+      { "name": "Elevate", "fuelTypes": ["Petrol"] }
+    ]
+  }
+]

@@ -5,6 +5,7 @@ import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import RootNavigator from "./src/navigation/RootNavigator";
 import { AuthProvider } from "./src/contexts/AuthContext";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 // Prevent auto-hide of splash screen until fonts are ready
 SplashScreen.preventAutoHideAsync();
@@ -25,10 +26,12 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
+    <SafeAreaProvider>
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <AuthProvider>
         <RootNavigator />
       </AuthProvider>
     </View>
+    </SafeAreaProvider>
   );
 }

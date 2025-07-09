@@ -18,6 +18,11 @@ export default StyleSheet.create({
     fontSize: 22,
     color: colors.white,
   },
+  titleBlack: {
+    fontFamily: fonts.bold,
+    fontSize: 22,
+    color: colors.black,
+  },
   textInput: {
     borderBottomWidth: 1,
     borderColor: colors.white,

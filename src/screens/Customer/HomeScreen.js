@@ -5,8 +5,8 @@ import globalStyles from '../../styles/globalStyles';
 export default function HomeScreen() {
   return (
      <View style={[globalStyles.container, globalStyles.center]}>
-      <Text style={globalStyles.title}>Welcome</Text>
-      <Text style={globalStyles.text}>Login to continue</Text>
+      <Text style={globalStyles.titleBlack}>Welcome To</Text>
+      <Text style={globalStyles.text}>My Car Buddy</Text>
     </View>
   );
 }
