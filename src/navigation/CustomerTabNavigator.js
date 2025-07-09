@@ -21,11 +21,7 @@ export default function CustomerTabNavigator({ navigation }) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerShown: true,
-        headerTitle: route.name,
-        headerLeft: () => (
-          <MenuButton onPress={() => console.log("Toggle Drawer")} />
-        ),
+        headerShown: true,      
         headerRight: () => (
           <NotificationButton
             onPress={() => console.log("Go to Notifications")}

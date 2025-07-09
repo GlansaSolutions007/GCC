@@ -1,7 +1,7 @@
 [
   {
     "brand": "Maruti Suzuki",
-    "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-9.jpeg",
+    "logo": "https://imgd.aeplcdn.com/0X0/n/cw/ec/10/brands/logos/maruti-suzuki1647009823420.jpg?v=1647009823707&q=80",
     "models": [
       {
         "name": "Alto K10",
@@ -72,7 +72,7 @@
   },
   {
     "brand": "Mahindra & Mahindra",
-    "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-8.jpeg",
+    "logo": "https://imgd.aeplcdn.com/0X0/n/cw/ec/9/brands/logos/mahindra.jpg?v=1629973668273&q=80",
     "models": [
       { "name": "Thar", "fuelTypes": ["Petrol", "Diesel"] },
       { "name": "Scorpio-N", "fuelTypes": ["Petrol", "Diesel"] },
