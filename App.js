@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+    <View style={{ flex: 1}} onLayout={onLayoutRootView}>
       <AuthProvider>
         <RootNavigator />
       </AuthProvider>
