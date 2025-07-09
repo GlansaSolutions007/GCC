@@ -22,11 +22,14 @@ export default function CustomerTabNavigator({ navigation }) {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: true,
-        headerRight: () => (
-          <NotificationButton
-            onPress={() => console.log("Go to Notifications")}
-          />
+        header: () => (
+          <CustomHeader/>
         ),
+        // headerRight: () => (
+        //   <NotificationButton
+        //     onPress={() => console.log("Go to Notifications")}
+        //   />
+        // ),
         tabBarShowLabel: true,
         tabBarActiveTintColor: "#007AFF",
         tabBarInactiveTintColor: "#8e8e93",
@@ -110,9 +113,7 @@ export default function CustomerTabNavigator({ navigation }) {
       <Tab.Screen
         name="My Cars"
         component={MyCars}
-        options={{
-          header: () => <CustomHeader />,
-        }}
+       
       />
       <Tab.Screen name="Book Service" component={BookServiceScreen} />
       <Tab.Screen name="My Services" component={ServiceList} />
