@@ -41,7 +41,7 @@ export default function MyCars() {
 }
 
 const styles = StyleSheet.create({
-    container: { padding: 12, backgroundColor: "#fff", flex: 1 },
+    container: { padding: 5, backgroundColor: "#fff", flex: 1 },
     heading: { fontSize: 18, fontWeight: "bold", marginBottom: 12 },
     row: { justifyContent: "space-between", marginBottom: 16 },
     card: {
@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
         marginVertical: 4
     },
     logo: {
-        width: 70,
-        height: 70,
+        width: 80,
+        height: 80,
         resizeMode: "contain",
-        marginBottom: 8,
+        marginBottom: 1,
     },
     name: {
-        fontSize: 14,
+        fontSize: 15,
         textAlign: "center",
         fontWeight: "medium",
         fontFamily:"Manrope-Medium",
