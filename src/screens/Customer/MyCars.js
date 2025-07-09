@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react-native";
 import carData from "../../../assets/data/carBrands.json";
 import { useNavigation } from "@react-navigation/native";
+import SearchBox from "../../components/SearchBox";
 
 export default function MyCars() {
     const [brands, setBrands] = useState([]);
@@ -27,6 +28,7 @@ export default function MyCars() {
 
     return (
         <View style={styles.container}>
+            <SearchBox/>
             {/* <Text style={styles.heading}>Select Manufacturer</Text> */}
             <FlatList
                 data={brands}
