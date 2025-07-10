@@ -27,8 +27,8 @@ export default function MyCars() {
     );
 
     return (
-        <View style={styles.container}>
-            <SearchBox/>
+        <View style={[styles.container, { padding: 10 }]}>
+            <SearchBox />
             {/* <Text style={styles.heading}>Select Manufacturer</Text> */}
             <FlatList
                 data={brands}
