@@ -66,11 +66,11 @@ export default function LoginScreen() {
       style={styles.backgroundImage}
       resizeMode="cover"
     >
-      <View style={styles.overlay} />
+      <View />
       <View style={globalStyles.container}>
         {/* Show logo only when keyboard is NOT visible */}
         {!keyboardVisible && (
-          <View style={globalStyles.center}>
+          <View>
             <Image
               source={require("../../../assets/images/applogo.png")}
               style={styles.logo}
@@ -83,18 +83,18 @@ export default function LoginScreen() {
           placeholderTextColor={color.textInputDark} // use correctly here
           value={inputValue}
           onChangeText={(text) => setInputValue(text)}
-          style={[globalStyles.textInput]} // array syntax for styles
+          style={styles.textInput}
         />
 
-        <TouchableOpacity style={globalStyles.button} onPress={handleLogin}>
-          <Text style={globalStyles.buttonText}>Login</Text>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
 
         {/* Hide these when keyboard is visible */}
         {!keyboardVisible && (
           <>
             <TouchableOpacity>
-              <Text style={globalStyles.forgotText}>Forgot Password?</Text>
+              <Text style={styles.forgotText}>Forgot Password?</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.googleButton}>
@@ -124,10 +124,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.3)", // optional dark overlay
-  },
+ 
   logo: {
     width: "50%",
     height: "30%",
@@ -149,5 +146,165 @@ const styles = StyleSheet.create({
     // fontFamily: fonts.medium,
     fontSize: 14,
     color: "#000",
+  },
+   title: {
+    // fontFamily: fonts.bold,
+    fontSize: 22,
+    color: color.white,
+  },
+  titleBlack: {
+    // fontFamily: fonts.bold,
+    fontSize: 22,
+    color: color.black,
+  },
+  textInput: {
+    borderBottomWidth: 1,
+    borderColor: color.white,
+    paddingVertical: 10,
+    color: color.white,
+    // fontFamily: fonts.regular,
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: color.white,
+    paddingVertical: 14,
+    borderRadius: 8,
+    alignItems: "center",
+    marginTop: 10,
+    shadowColor: color.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 5,
+  },
+  buttonText: {
+    color: color.textDark,
+    // fontFamily: fonts.medium,
+    fontSize: 16,
+  },
+  forgotText: {
+    alignSelf: "flex-end",
+    marginTop: 8,
+    fontSize: 12,
+    color: color.white,
+    // fontFamily: fonts.regular,
+  },
+  // Home Screen Styles
+  header: {
+    backgroundColor: color.primary || "#017F77",
+    padding: 20,
+  },
+  greeting: {
+    color: color.white,
+    fontSize: 16,
+    // fontFamily: fonts.medium,
+  },
+  locationRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 4,
+  },
+  location: {
+    color: color.white,
+    fontSize: 14,
+    marginRight: 5,
+    // fontFamily: fonts.regular,
+  },
+  banner: {
+    backgroundColor: color.primary || "#017F77",
+    padding: 20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    alignItems: "center",
+  },
+  carImage: {
+    width: "100%",
+    height: 130,
+  },
+  bannerTitle: {
+    fontSize: 22,
+    color: color.white,
+    // fontFamily: fonts.semiBold,
+    marginTop: 10,
+  },
+
+  bannerSubtitle: {
+    fontSize: 14,
+    color: color.white,
+    // fontFamily: fonts.regular,
+    marginTop: 5,
+    textAlign: "center",
+  },
+  sectionTitle: {
+    fontSize: 16,
+    // fontFamily: fonts.medium,
+    marginVertical: 20,
+    marginLeft: 20,
+    color: color.textDark,
+  },
+  services: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingHorizontal: 16,
+  },
+  card: {
+    backgroundColor: color.lightGreen || "#E0F7F4",
+    borderRadius: 10,
+    width: "42%",
+    overflow: "hidden",
+    alignItems: "center",
+  },
+  cardImage: {
+    width: "100%",
+    height: 100,
+  },
+  cardText: {
+    fontSize: 14,
+    // fontFamily: fonts.medium,
+    padding: 10,
+    color: color.textDark,
+    textAlign: "center",
+  },
+  ctaContainer: {
+    flexDirection: "row",
+    borderRadius: 10,
+    margin: 20,
+    padding: 15,
+    alignItems: "center",
+  },
+  ctaTextContainer: {
+    flex: 1,
+  },
+  ctaTitle: {
+    fontSize: 24,
+    width: "60%",
+    // fontFamily: fonts.medium,
+    color: color.textDark,
+    marginBottom: 5,
+    lineHeight: 25,
+  },
+  ctaSubTitle: {
+    fontSize: 12,
+    // fontFamily: fonts.regular,
+    color: color.textLight || "#555",
+  },
+  ctaImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginLeft: 10,
+  },
+  ctaButton: {
+    backgroundColor: color.black,
+    padding: 14,
+    borderRadius: 10,
+    marginHorizontal: 20,
+    marginBottom: 30,
+    alignItems: "center",
+  },
+  ctaButtonText: {
+    color: color.white,
+    fontSize: 14,
   },
 });
