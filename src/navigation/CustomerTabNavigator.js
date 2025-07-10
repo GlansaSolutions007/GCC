@@ -31,7 +31,7 @@ export default function CustomerTabNavigator({ navigation }) {
         //   />
         // ),
         tabBarShowLabel: true,
-        tabBarActiveTintColor: "#007AFF",
+        tabBarActiveTintColor: "#1e7e84",
         tabBarInactiveTintColor: "#8e8e93",
         tabBarStyle: {
           backgroundColor: "#fff",
@@ -72,7 +72,7 @@ export default function CustomerTabNavigator({ navigation }) {
                 style={{
                   width: 55,
                   height: 26,
-                  tintColor: focused ? "#007AFF" : "#8e8e93",
+                  tintColor: focused ? "#1e7e84" : "#8e8e93",
                   marginBottom: -15,
                 }}
                 resizeMode="contain"
