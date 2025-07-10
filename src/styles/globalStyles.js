@@ -420,5 +420,39 @@ export default StyleSheet.create({
     ...fonts.heroRegular,
   },
 
+
+  f10ExtraLight: {
+    ...fonts.tinyExtraLight,
+  },
+  f12ExtraLight: {
+    ...fonts.smallExtraLight,
+  },
+  f16ExtraLight: {
+    ...fonts.regularExtraLight,
+  },
+  f18ExtraLight: {
+    ...fonts.mediumExtraLight,
+  },
+  f20ExtraLight: {
+    ...fonts.largeExtraLight,
+  },
+  f24ExtraLight: {
+    ...fonts.xLargeExtraLight,
+  },
+  f28ExtraLight: {
+    ...fonts.xxLargeExtraLight,
+  },
+  f32ExtraLight: {
+    ...fonts.titleExtraLight,
+  },
+  f36ExtraLight: {
+    ...fonts.headingExtraLight,
+  },
+  f40ExtraLight: {
+    ...fonts.displayExtraLight,
+  },
+  f44ExtraLight: {
+    ...fonts.heroExtraLight,
+  },
   // Font styles .............. end
 });
