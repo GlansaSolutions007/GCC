@@ -21,7 +21,7 @@ export default function HomeScreen() {
     >
       <View style={styles.banner}>
         <View style={{ display: "flex" }}>
-          <Text style={styles.bannerTitle}>
+          <Text style={globalStyles.xLargeBold}>
             MY CAR BUDDY
           </Text>
           <Text style={styles.bannerSubtitle}>
@@ -102,11 +102,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 130,
   },
-  bannerTitle: {
-    fontSize: 22,
-    color: color.white,
-    marginTop: 10,
-  },
+
 
   bannerSubtitle: {
     fontSize: 14,

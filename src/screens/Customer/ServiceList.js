@@ -5,7 +5,7 @@ import globalStyles from "../../styles/globalStyles";
 export default function ServiceList() {
   const [showAlert, setShowAlert] = useState(false);
   return (
-    <View style={[globalStyles.container, globalStyles.center]}>
+    <View style={[globalStyles.container]}>
       {/* <Text style={globalStyles.titleBlack}>Services</Text>
       <Text style={globalStyles.text}>List of services will be displayed here</Text> */}
 
