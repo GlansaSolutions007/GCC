@@ -2,6 +2,8 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CustomerTabNavigator from "./CustomerTabNavigator";
 import CarModels from "../screens/Customer/CarModels";
+import { MyCarsList } from "../screens/Customer/MyCarsList";
+import MyCars from "../screens/Customer/MyCars";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +21,11 @@ export default function CustomerStackNavigator() {
         options={({ route }) => ({
           title: `${route.params.brand} Models`,
         })}
+      />
+      <Stack.Screen
+        name="SelectCarModel"
+        component={MyCars} 
+        options={{ title: "Select Your Car" }}
       />
     </Stack.Navigator>
   );
