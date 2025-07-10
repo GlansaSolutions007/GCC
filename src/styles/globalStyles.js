@@ -206,219 +206,253 @@ export default StyleSheet.create({
 
 
   // Font styles ----------- start
-  tinyBold: {
+  f10Bold: {
     ...fonts.tinyBold,
   },
-  smallBold: {
+  f12Bold: {
     ...fonts.smallBold,
   },
-  regularBold: {
+  f16Bold: {
     ...fonts.regularBold,
   },
-  mediumBold: {
+  f18Bold: {
     ...fonts.mediumBold,
   },
-  largeBold: {
+  f20Bold: {
     ...fonts.largeBold,
   },
-  xLargeBold: {
+  f24Bold: {
     ...fonts.xLargeBold,
   },
-  xxLargeBold: {
+  f28Bold: {
     ...fonts.xxLargeBold,
   },
-  titleBold: {
+  f32Bold: {
     ...fonts.titleBold,
   },
-  headingBold: {
+  f36Bold: {
     ...fonts.headingBold,
   },
-  displayBold: {
+  f40Bold: {
     ...fonts.displayBold,
   },
-  heroBold: {
+  f44Bold: {
     ...fonts.heroBold,
   },
   // ExtraBold Fonts------------start
-  tinyExtraBold: {
+  f10ExtraBold: {
     ...fonts.tinyExtraBold,
   },
-  smallExtraBold: {
+  f12ExtraBold: {
     ...fonts.smallExtraBold,
   },
-  regularExtraBold: {
+  f16ExtraBold: {
     ...fonts.regularExtraBold,
   },
-  mediumExtraBold: {
+  f18ExtraBold: {
     ...fonts.mediumExtraBold,
   },
-  largeExtraBold: {
+  f20ExtraBold: {
     ...fonts.largeExtraBold,
   },
-  xLargeExtraBold: {
+  f24ExtraBold: {
     ...fonts.xLargeExtraBold,
   },
 
-  xxLargeExtraBold: {
+  f28ExtraBold: {
     ...fonts.xxLargeExtraBold,
   },
-  titleExtraBold: {
+  f32ExtraBold: {
     ...fonts.titleExtraBold,
   },
-  headingExtraBold: {
+  f36ExtraBold: {
     ...fonts.headingExtraBold,
   },
-  displayExtraBold: {
+  f40ExtraBold: {
     ...fonts.displayExtraBold,
   },
-  heroExtraBold: {
+  f44ExtraBold: {
     ...fonts.heroExtraBold,
   },
   // ExtraBold Fonts------------end
 
   // SemiBold Fonts------------start
-  tinySemiBold: {
+  f10SemiBold: {
     ...fonts.tinySemiBold,
   },
-  smallSemiBold: {
+  f12SemiBold: {
     ...fonts.smallSemiBold,
   },
-  regularSemiBold: {
+  f16SemiBold: {
     ...fonts.regularSemiBold,
   },
-  mediumSemiBold: {
+  f18SemiBold: {
     ...fonts.mediumSemiBold,
   },
-  largeSemiBold: {
+  f20SemiBold: {
     ...fonts.largeSemiBold,
   },
-  xLargeSemiBold: {
+  f24SemiBold: {
     ...fonts.xLargeSemiBold,
   },
-  xxLargeSemiBold: {
+  f28SemiBold: {
     ...fonts.xxLargeSemiBold,
   },
-  titleSemiBold: {
+  f32SemiBold: {
     ...fonts.titleSemiBold,
   },
-  headingSemiBold: {
+  f36SemiBold: {
     ...fonts.headingSemiBold,
   },
-  displaySemiBold: {
+  f40SemiBold: {
     ...fonts.displaySemiBold,
   },
-  heroSemiBold: {
+  f44SemiBold: {
     ...fonts.heroSemiBold,
   },
   // SemiBold Fonts------------end
 
   //medium Fonts------------start
-  tinyMedium: {
+  f10Medium: {
     ...fonts.tinyMedium,
   },
-  smallMedium: {
+  f12Medium: {
     ...fonts.smallMedium,
   },
-  regularMedium: {
+  f16Medium: {
     ...fonts.regularMedium,
   },
-  mediumMedium: {
+  f18Medium: {
     ...fonts.mediumMedium,
   },
-  largeMedium: {
+  f20Medium: {
     ...fonts.largeMedium,
   },
-  xLargeMedium: {
+  f24Medium: {
     ...fonts.xLargeMedium,
   },
-  xxLargeMedium: {
+  f28Medium: {
     ...fonts.xxLargeMedium,
   },
-  titleMedium: {
+  f32Medium: {
     ...fonts.titleMedium,
   },
-  headingMedium: {
+  f36Medium: {
     ...fonts.headingMedium,
   },
-  displayMedium: {
+  f40Medium: {
     ...fonts.displayMedium,
   },
-  heroMedium: {
+  f44Medium: {
     ...fonts.heroMedium,
   },
   // medium Fonts------------end
 
   // Light Fonts------------start
-  tinyLight: {
+  f10Light: {
     ...fonts.tinyLight,
   },
-  smallLight: {
+  f12Light: {
     ...fonts.smallLight,
   },
-  regularLight: {
+  f16Light: {
     ...fonts.regularLight,
   },
-  mediumLight: {
+  f18Light: {
     ...fonts.mediumLight,
   },
-  largeLight: {
+  f20Light: {
     ...fonts.largeLight,
   },
-  xLargeLight: {
+  f24Light: {
     ...fonts.xLargeLight,
   },
-  xxLargeLight: {
+  f28Light: {
     ...fonts.xxLargeLight,
   },
-  titleLight: {
+  f32Light: {
     ...fonts.titleLight,
   },
-  headingLight: {
+  f36Light: {
     ...fonts.headingLight,
   },
-  displayLight: {
+  f40Light: {
     ...fonts.displayLight,
   },
-  heroLight: {
+  f44Light: {
     ...fonts.heroLight,
   },
   // Light Fonts------------end
 
   // Regular Fonts------------start
 
-  tinyRegular: {
+  f10Regular: {
     ...fonts.tinyRegular,
   },
-  smallRegular: {
+  f12Regular: {
     ...fonts.smallRegular,
   },
-  regularRegular: {
+  f16Regular: {
     ...fonts.regularRegular,
   },
-  mediumRegular: {
+  f18Regular: {
     ...fonts.mediumRegular,
   },
-  largeRegular: {
+  f20Regular: {
     ...fonts.largeRegular,
   },
-  xLargeRegular: {
+  f24Regular: {
     ...fonts.xLargeRegular,
   },
-  xxLargeRegular: {
+  f28Regular: {
     ...fonts.xxLargeRegular,
   },
-  titleRegular: {
+  f32Regular: {
     ...fonts.titleRegular,
   },
-  headingRegular: {
+  f36Regular: {
     ...fonts.headingRegular,
   },
-  displayRegular: {
+  f40Regular: {
     ...fonts.displayRegular,
   },
-  heroRegular: {
+  f44Regular: {
     ...fonts.heroRegular,
   },
 
+
+  f10ExtraLight: {
+    ...fonts.tinyExtraLight,
+  },
+  f12ExtraLight: {
+    ...fonts.smallExtraLight,
+  },
+  f16ExtraLight: {
+    ...fonts.regularExtraLight,
+  },
+  f18ExtraLight: {
+    ...fonts.mediumExtraLight,
+  },
+  f20ExtraLight: {
+    ...fonts.largeExtraLight,
+  },
+  f24ExtraLight: {
+    ...fonts.xLargeExtraLight,
+  },
+  f28ExtraLight: {
+    ...fonts.xxLargeExtraLight,
+  },
+  f32ExtraLight: {
+    ...fonts.titleExtraLight,
+  },
+  f36ExtraLight: {
+    ...fonts.headingExtraLight,
+  },
+  f40ExtraLight: {
+    ...fonts.displayExtraLight,
+  },
+  f44ExtraLight: {
+    ...fonts.heroExtraLight,
+  },
   // Font styles .............. end
 });

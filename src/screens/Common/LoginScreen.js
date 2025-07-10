@@ -67,7 +67,7 @@ export default function LoginScreen() {
       resizeMode="cover"
     >
       <View />
-      <View style={globalStyles.container}>
+      <View style={[globalStyles.container]}>
         {/* Show logo only when keyboard is NOT visible */}
         {!keyboardVisible && (
           <View>
