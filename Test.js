@@ -19,7 +19,7 @@ export default function HomeScreen() {
         <View style={globalStyles.banner}>
           <Image source={bluecar} style={globalStyles.carImage} resizeMode="contain" />
           <Text style={globalStyles.bannerTitle}>
-            MY <Text style={globalStyles.bold}>CAR</Text> BUDDY
+            MY <Text>CAR</Text> BUDDY
           </Text>
           <Text style={globalStyles.bannerSubtitle}>
             A Professional Car Care Services in Hyderabad
