@@ -9,7 +9,7 @@ export default function CustomerStackNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="CustomerTabs"
+        name="CustomerTabNavigator"
         component={CustomerTabNavigator}
         options={{ headerShown: false }}
       />

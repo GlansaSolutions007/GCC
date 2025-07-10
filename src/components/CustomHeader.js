@@ -1,10 +1,13 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet, Pressable, Image } from "react-native";
+import { View, Text, TextInput, StyleSheet, Pressable, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function CustomHeader({ navigation }) {
+
+  const insets = useSafeAreaInsets();
   return (
-    <View style={styles.headerContainer}>
+    <View style={[styles.headerContainer, { paddingTop: insets.top + 10 }]}>
       <View style={styles.topRow}>
         <View>
           <Text style={styles.hello}>Hello User</Text>
@@ -19,15 +22,6 @@ export default function CustomHeader({ navigation }) {
           <Ionicons name="notifications-outline" size={24} color="#000" />
         </Pressable>
       </View>
-
-      <View style={styles.searchBox}>
-        <Ionicons name="search-outline" size={18} color="#777" style={{ marginRight: 8 }} />
-        <TextInput
-          placeholder="Search for car manufacturer"
-          style={{ flex: 1 }}
-          placeholderTextColor="#777"
-        />
-      </View>
     </View>
   );
 }
@@ -35,10 +29,12 @@ export default function CustomHeader({ navigation }) {
 const styles = StyleSheet.create({
   headerContainer: {
     fontFamily: "Manrope-Medium",
-    paddingTop: 60,
+    paddingTop: 20,
     paddingHorizontal: 16,
     paddingBottom: 0,
     backgroundColor: "#fff",
+    // borderBottomColor: "#eee",
+    // borderBottomWidth: 1,
   },
   topRow: {
     flexDirection: "row",

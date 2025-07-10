@@ -29,11 +29,11 @@ export default function BookServiceScreen() {
           onValueChange={(itemValue) => setSelectedState(itemValue)}
         >
           <Picker.Item label="Select a state..." value="" />
-          {states.map((state) => (
+          {states.map((state,index) => (
             <Picker.Item
-              key={state.stateId}
-              label={state.stateName}
-              value={state.stateId}
+            key={index}
+              label={state.StateName}
+              value={state.StateId}
             />
           ))}
         </Picker>

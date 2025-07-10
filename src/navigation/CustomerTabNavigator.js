@@ -22,13 +22,16 @@ export default function CustomerTabNavigator({ navigation }) {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: true,
-        headerRight: () => (
-          <NotificationButton
-            onPress={() => console.log("Go to Notifications")}
-          />
+        header: () => (
+          <CustomHeader/>
         ),
+        // headerRight: () => (
+        //   <NotificationButton
+        //     onPress={() => console.log("Go to Notifications")}
+        //   />
+        // ),
         tabBarShowLabel: true,
-        tabBarActiveTintColor: "#007AFF",
+        tabBarActiveTintColor: "#1e7e84",
         tabBarInactiveTintColor: "#8e8e93",
         tabBarStyle: {
           backgroundColor: "#fff",
@@ -69,7 +72,7 @@ export default function CustomerTabNavigator({ navigation }) {
                 style={{
                   width: 55,
                   height: 26,
-                  tintColor: focused ? "#007AFF" : "#8e8e93",
+                  tintColor: focused ? "#1e7e84" : "#8e8e93",
                   marginBottom: -15,
                 }}
                 resizeMode="contain"
@@ -100,13 +103,17 @@ export default function CustomerTabNavigator({ navigation }) {
         tabBarLabel: route.name === "My Car Buddy" ? () => null : undefined,
       })}
     >
-      <Tab.Screen name="My Car Buddy" component={HomeScreen} />
+      <Tab.Screen
+        name="My Car Buddy"
+        // options={{
+        //   header: () => <CustomHeader />,
+        // }}
+        component={HomeScreen}
+      />
       <Tab.Screen
         name="My Cars"
         component={MyCars}
-        options={{
-          header: () => <CustomHeader />,
-        }}
+       
       />
       <Tab.Screen name="Book Service" component={BookServiceScreen} />
       <Tab.Screen name="My Services" component={ServiceList} />
