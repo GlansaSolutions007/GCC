@@ -46,7 +46,6 @@ export const MyCarDetails = () => {
                             <Picker.Item label="Automatic" value="Automatic" />
                             <Picker.Item label="Manual" value="Manual" />
                         </Picker>
-                        <Ionicons name="chevron-down" size={16} color="#666" style={styles.dropdownIcon} />
                     </View>
                 </View>
             </View>
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
         color: '#0CA9A3',
     },
     input: {
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#fff',
         borderRadius: 8,
         padding: 12,
         fontSize: 14,
@@ -129,6 +128,7 @@ const styles = StyleSheet.create({
     picker: {
         height: 50,
         color: '#000',
+        backgroundColor: '#fff',
     },
     dropdownIcon: {
         position: 'absolute',
