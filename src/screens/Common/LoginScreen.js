@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   googleText: {
-    fontFamily: fonts.medium,
+    // fontFamily: fonts.medium,
     fontSize: 14,
     color: "#000",
   },
