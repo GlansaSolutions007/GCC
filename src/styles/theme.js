@@ -1,12 +1,12 @@
 export const color = {
   // Brand Colors
-  primary: '#0A74DA',
-  secondary: '#FF8C00',
+  primary: '#136D6E',
+  secondary: '#25878F',
 
   // Backgrounds
-  background: '#FF7F29',
-  backgroundLight: '#FFA86D',
-  backgroundDark: '#FF944B',
+  background: '#F3F3F3',
+  backgroundLight: '#F1F0F5',
+  backgroundDark: '#EEEEEE',
 
   // Alerts status colors
   alertError: '#E34242',
@@ -14,11 +14,11 @@ export const color = {
   alertInfo: '#17A2B8',
 
   // Text
-  text: '#1E1E1E',
-  textGray: '#8C8C8C',
-  textLight: '#EDEDED',
-  textDark: '#1A1A1A',
-  textWhite: '#EDEDED',
+  text: '#454545',
+  textGray: '#777777',
+  textLight: '#9D9D9D',
+  textDark: '#242424',
+  textWhite: '#FFFFFF',
 
   // Utility
   muted: '#888888',

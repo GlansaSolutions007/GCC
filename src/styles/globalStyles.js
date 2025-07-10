@@ -150,7 +150,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   ctaTitle: {
-    fontSize: 24,
+    fontSize: fonts.size.sm,
     width: '60%',
     fontFamily: fonts.medium,
     color: color.textDark,
