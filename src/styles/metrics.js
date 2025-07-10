@@ -1,5 +1,5 @@
 export default {
-  padding: 16,
+  padding: 20,
   margin: 16,
   radius: 10,
 };
