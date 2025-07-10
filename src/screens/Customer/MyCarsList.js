@@ -20,35 +20,35 @@ export const MyCarsList = () => {
     const [cars, setCars] = useState([
         {
             id: '1',
-            model: 'Car Modal No 1',
+            model: 'Car Model No 1',
             fuel: 'Petrol',
             manufacturer: 'Honda',
             image: sampleCar,
         },
         {
             id: '2',
-            model: 'Car Modal No 2',
+            model: 'Car Model No 2',
             fuel: 'Petrol',
             manufacturer: 'Honda',
             image: sampleCar,
         },
         {
             id: '3',
-            model: 'Car Modal No 3',
+            model: 'Car Model No 3',
             fuel: 'Petrol',
             manufacturer: 'Honda',
             image: sampleCar,
         },
         {
             id: '4',
-            model: 'Car Modal No 4',
+            model: 'Car Model No 4',
             fuel: 'Petrol',
             manufacturer: 'Honda',
             image: sampleCar,
         },
         {
             id: '5',
-            model: 'Car Modal No 5',
+            model: 'Car Model No 5',
             fuel: 'Petrol',
             manufacturer: 'Honda',
             image: sampleCar,
@@ -57,22 +57,25 @@ export const MyCarsList = () => {
 
     const renderCar = ({ item }) => (
         <View style={styles.carCard}>
-            <Image source={item.image} style={styles.carImage} />
-            <View style={styles.carInfo}>
-                <Text style={styles.label}>Modal Name</Text>
-                <Text style={styles.value}>{item.model}</Text>
-
-                <Text style={styles.label}>Fuel Type</Text>
-                <Text style={styles.value}>{item.fuel}</Text>
-
-                <Text style={styles.label}>Manufacturer</Text>
-                <Text style={styles.value}>{item.manufacturer}</Text>
-
-                <TouchableOpacity style={styles.detailsButton}>
-                    <Text style={{ color: '#fff' }}>View Details</Text>
-                </TouchableOpacity>
+            <View style={{ flexDirection: 'row' }}>
+                <Image source={item.image} style={styles.carImage} />
+                <View style={styles.carInfo}>
+                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Model Name</Text>
+                    <Text style={globalStyles.f12Bold}>{item.model}</Text>
+                    <View style={{ height: 6 }} />
+                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Fuel Type</Text>
+                    <Text style={globalStyles.f12Bold}>{item.fuel}</Text>
+                    <View style={{ height: 6 }} />
+                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Manufacturer</Text>
+                    <Text style={globalStyles.f12Bold}>{item.manufacturer}</Text>
+                </View>
             </View>
+            <View style={{ height: 10 }} />
+            <TouchableOpacity style={styles.detailsButton}>
+                <Text style={{ color: '#fff' }}>View Details</Text>
+            </TouchableOpacity>
         </View>
+
     );
 
     return (
@@ -139,24 +142,22 @@ const styles = StyleSheet.create({
         tintColor: '#fff',
     },
     carCard: {
-        flexDirection: 'row',
-        backgroundColor: '#F8F8F8',
+        backgroundColor: '#ffffff',
         borderRadius: 12,
-        paddingVertical: 26,
-        paddingHorizontal: 12,
+        padding: 12,
         borderColor: '#0CA9A3',
         borderWidth: 1,
-        marginBottom: 32, // extra space for button
-        position: 'relative',
-        overflow: 'visible', // 👈 important
+        marginBottom: 40,
+        overflow: 'visible',
     },
     carImage: {
-        width: 180,
-        height: 120,
-        resizeMode: 'contain',
-        marginRight: 12,
+        width: '60%',       // 60% of the parent container
+        height: 100,
+        resizeMode: 'contain'
     },
     carInfo: {
+        width: '40%',       // 40% of the parent container
+        paddingLeft: 12,
         flex: 1,
         position: 'relative',
     },
@@ -172,15 +173,16 @@ const styles = StyleSheet.create({
     },
     detailsButton: {
         position: 'absolute',
-        bottom: -46, // push it half outside
-        alignSelf: 'center',
+        bottom: -17,
+        left: '83%',
+        transform: [{ translateX: -60 }], 
         backgroundColor: '#0CA9A3',
         paddingHorizontal: 24,
-        paddingVertical: 12,
+        paddingVertical: 8,
         borderRadius: 10,
-        zIndex: 1,
-        elevation: 4, // for Android shadow
-        shadowColor: '#000', // for iOS shadow
+        zIndex: 2,
+        elevation: 4,
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         shadowRadius: 4,

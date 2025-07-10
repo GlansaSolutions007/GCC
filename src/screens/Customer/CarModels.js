@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import carPic from "../../../assets/images/xuv-3xo-exterior-right-front-three-quarter-34.webp"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CustomAlert from "../../components/CustomAlert";
@@ -15,6 +15,8 @@ export default function CarModels() {
 
   const [selectedModel, setSelectedModel] = useState(null);
   const [alertVisible, setAlertVisible] = useState(false);
+
+  const navigation = useNavigation();
 
   const handleModelPress = (model) => {
     setSelectedModel(model);
@@ -67,6 +69,10 @@ export default function CarModels() {
               onPress={() => {
                 // You can navigate or store fuel selection here
                 console.log(`Selected ${fuel.name} for ${selectedModel?.name}`);
+                navigation.navigate("MyCarDetails", {
+                  model: selectedModel,
+                  fuelType: fuel.name
+                });
                 setAlertVisible(false);
               }}
             >
