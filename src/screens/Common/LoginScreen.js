@@ -62,7 +62,7 @@ export default function LoginScreen() {
 
   return (
     <ImageBackground
-      source={require("../../../assets/images/loginbg.png")}
+      source={require("../../../assets/images/loginbg2.png")}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
@@ -80,7 +80,7 @@ export default function LoginScreen() {
 
         <TextInput
           placeholder="Email -or- Phone Number"
-          // placeholderTextColor={colors.textLight}
+          placeholderTextColor={color.textInputDark} // use correctly here
           value={inputValue}
           onChangeText={(text) => setInputValue(text)}
           style={styles.textInput}
@@ -119,6 +119,7 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
   backgroundImage: {
+    // backgroundColor: globalStyles.primary.color,
     flex: 1,
     width: "100%",
     height: "100%",

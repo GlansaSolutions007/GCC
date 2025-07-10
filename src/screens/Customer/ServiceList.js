@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import globalStyles from "../../styles/globalStyles";
 
 export default function ServiceList() {
+  const [showAlert, setShowAlert] = useState(false);
   return (
     <View style={[globalStyles.container, globalStyles.center]}>
       {/* <Text style={globalStyles.titleBlack}>Services</Text>
