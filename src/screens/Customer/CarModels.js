@@ -4,6 +4,10 @@ import { useRoute } from "@react-navigation/native";
 import carPic from "../../../assets/images/xuv-3xo-exterior-right-front-three-quarter-34.webp"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CustomAlert from "../../components/CustomAlert";
+import Petrol from "../../../assets/icons/fuelTypes/petrol.png";
+import Diesel from "../../../assets/icons/fuelTypes/diesel.png";
+import CNG from "../../../assets/icons/fuelTypes/cng.png";
+import Electric from "../../../assets/icons/fuelTypes/ev.png";
 
 export default function CarModels() {
   const route = useRoute();
@@ -26,10 +30,10 @@ export default function CarModels() {
   );
 
   const fuelOptions = [
-    { name: 'Petrol', icon: 'gas-station' },
-    { name: 'Diesel', icon: 'fuel' },
-    { name: 'CNG', icon: 'leaf' },
-    { name: 'Electric', icon: 'ev-station' }
+    { name: 'Petrol', icon: Petrol },
+    { name: 'Diesel', icon: Diesel },
+    { name: 'CNG', icon: CNG },
+    { name: 'Electric', icon: Electric }
   ];
 
   return (
@@ -66,7 +70,7 @@ export default function CarModels() {
                 setAlertVisible(false);
               }}
             >
-              <MaterialCommunityIcons name={fuel.icon} size={28} color="#444" />
+              <Image source={fuel.icon} style={styles.fuelImage} />
               <Text style={styles.fuelText}>{fuel.name}</Text>
             </TouchableOpacity>
           ))}
@@ -118,6 +122,12 @@ const styles = StyleSheet.create({
   fuelIcon: {
     alignItems: 'center',
     marginHorizontal: 2,
+  },
+  fuelImage: {
+    width: 60,
+    height: 50,
+    resizeMode: "contain",
+    marginBottom: 4,
   },
   fuelText: {
     fontSize: 12,
