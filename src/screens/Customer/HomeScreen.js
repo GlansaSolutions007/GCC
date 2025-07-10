@@ -29,7 +29,7 @@ export default function HomeScreen() {
       <View style={globalStyles.banner}>
         <View style={{ display: "flex" }}>
           <Text style={globalStyles.bannerTitle}>
-            MY <Text style={globalStyles.bold}>CAR</Text> BUDDY
+            MY CAR BUDDY
           </Text>
           <Text style={globalStyles.bannerSubtitle}>
             A Professional Car Care Services in Hyderabad
