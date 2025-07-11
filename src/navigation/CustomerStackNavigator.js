@@ -24,7 +24,7 @@ export default function CustomerStackNavigator() {
         })}
       />
       <Stack.Screen
-        name="SelectCarModel"
+        name="SelectCarBrand"
         component={MyCars} 
         options={{ title: "Select Your Car" }}
       />

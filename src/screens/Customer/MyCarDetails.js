@@ -17,6 +17,8 @@ import { color } from '../../styles/theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Platform } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
+import CustomAlert from '../../components/CustomAlert';
+import { useNavigation } from '@react-navigation/native';
 
 export const MyCarDetails = () => {
     const [transmission, setTransmission] = useState('');
@@ -24,6 +26,9 @@ export const MyCarDetails = () => {
 
     const [yearOfPurchase, setYearOfPurchase] = useState(null);
     const [showYearPicker, setShowYearPicker] = useState(false);
+
+    const [alertVisible, setAlertVisible] = useState(false);
+
 
     // Function to format year
     const formatDate = (date) => {
@@ -33,6 +38,18 @@ export const MyCarDetails = () => {
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     };
+
+    const handleSubmit = () => {
+        setAlertVisible(true)
+    }
+
+    const navigation = useNavigation();
+
+    const goCarList = () => {
+        setAlertVisible(false);
+        navigation.navigate('CustomerTabNavigator', { screen: 'My Cars' });
+    }
+
     return (
         <ScrollView contentContainerStyle={globalStyles.container} showsVerticalScrollIndicator={false}>
             <Image source={bannerImage} style={styles.banner} />
@@ -124,10 +141,23 @@ export const MyCarDetails = () => {
                 <Text style={styles.checkboxLabel}>Accept Privacy Policy</Text>
             </View> */}
 
-            <TouchableOpacity style={styles.submitButton}>
+            <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                 <Text style={{ ...globalStyles.f12Bold, color: color.white }}>Submit</Text>
             </TouchableOpacity>
-        </ScrollView>
+            <CustomAlert
+                visible={alertVisible}
+                onClose={goCarList}
+                title="Success"
+                message="Your Car Added Successfully"
+                status="info"
+                showButton={false} // hide default button
+            >
+                <TouchableOpacity onPress={goCarList} style={styles.submitButton} >
+                    <Text style={{ ...globalStyles.f12Bold, color: color.white }}>Go To Cars List</Text>
+                </TouchableOpacity>
+            </CustomAlert>
+
+        </ScrollView >
     );
 }
 const styles = StyleSheet.create({
@@ -203,6 +233,7 @@ const styles = StyleSheet.create({
     submitButton: {
         backgroundColor: color.secondary,
         paddingVertical: 14,
+        paddingHorizontal:16,
         borderRadius: 8,
         alignItems: 'center',
         marginTop: 15

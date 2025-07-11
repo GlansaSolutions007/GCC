@@ -1,18 +1,14 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { color } from '../styles/theme';
 
 const SearchBox = () => {
   return (
     <View style={styles.searchBox}>
-      <Ionicons
-        name="search-outline"
-        size={18}
-        color="#777"
-        style={{ marginRight: 8 }}
-      />
+     <FontAwesome name="search" size={20} color={color.secondary} marginRight={8} />
       <TextInput
-        placeholder="Search for car manufacturer"
+        placeholder="Search"
         style={{ flex: 1 }}
         placeholderTextColor="#777"
       />
