@@ -13,30 +13,48 @@ import CTAbannerhome from "../../../assets/images/CTAbannerhome.png";
 import exteriorservice from "../../../assets/images/exteriorservice.png";
 import bluecar from "../../../assets/images/bluecar.png";
 import { color } from "../../styles/theme";
+
 export default function HomeScreen() {
   return (
     <ScrollView
-      style={{ backgroundColor: "#fff" }}
+      style={ { backgroundColor: color.white  }}
       contentContainerStyle={{ paddingBottom: 30 }}
     >
-      <View style={styles.banner}>
-        <View style={{ display: "flex" }}>
-          <Text style={globalStyles.xLargeBold}>
-            MY CAR BUDDY
-          </Text>
-          <Text style={styles.bannerSubtitle}>
+      <View style={[styles.banner, globalStyles.mb35]}>
+        <Text
+          style={[
+            globalStyles.xLargeBold,
+            globalStyles.f36Bold,
+            globalStyles.white,
+          ]}
+        >
+           MY CAR
+        </Text>
+        <Text
+          style={[
+            globalStyles.xLargeBold,
+            globalStyles.mb90,
+            globalStyles.f36Bold,
+                        globalStyles.white,
+          ]}
+        >
+           BUDDY
+        </Text>
+        <View style={[globalStyles.flexrow, styles.bannercar]}>
+          <Image
+            source={bluecar}
+            style={[styles.carImage, globalStyles.alineSelfend]}
+            resizeMode="contain"
+          />
+          <Text style={[styles.bannerSubtitle, globalStyles.f18Regular]}>
             A Professional Car Care Services in Hyderabad
           </Text>
         </View>
-        <Image
-          source={bluecar}
-          style={styles.carImage}
-          resizeMode="contain"
-        />
       </View>
+<View style={globalStyles.container}>
 
-      <Text style={styles.sectionTitle}>Browse Services</Text>
-      <View style={styles.services}>
+      <Text style={[globalStyles.mt4,globalStyles.mb2,globalStyles.f18Bold]}>Providing Services</Text>
+      <View style={[globalStyles.flexrow,globalStyles.justifysb]}>
         <TouchableOpacity style={styles.card}>
           <Image source={exteriorservice} style={styles.cardImage} />
           <Text style={styles.cardText}>Interior Service</Text>
@@ -48,15 +66,15 @@ export default function HomeScreen() {
       </View>
       <ImageBackground
         source={CTAbannerhome}
-        style={styles.ctaContainer}
+        style={[styles.ctaContainer, globalStyles.radius, globalStyles.p5, globalStyles.mt5]}
         resizeMode="cover"
       >
-        <View >
+        <View>
           <View style={styles.ctaTextContainer}>
-            <Text style={styles.ctaTitle}>
+            <Text style={[styles.ctaTitle,globalStyles.w60]}>
               Give your car’s intro to your care buddy
             </Text>
-            <Text style={styles.ctaSubTitle}>
+            <Text style={[globalStyles.w50]}>
               We’ll remember it, pamper it, and keep it shining.
             </Text>
           </View>
@@ -64,14 +82,18 @@ export default function HomeScreen() {
       </ImageBackground>
 
       <TouchableOpacity style={styles.ctaButton}>
-          <Text style={styles.ctaButtonText}>Add My Car</Text>
-        </TouchableOpacity>
+        <Text >Add My Car</Text>
+      </TouchableOpacity>
+      </View>
+
     </ScrollView>
   );
 }
 const styles = StyleSheet.create({
-
-   title: {
+  bannercar: {
+    marginBottom: -70,
+  },
+  title: {
     fontSize: 22,
     color: color.white,
   },
@@ -96,41 +118,30 @@ const styles = StyleSheet.create({
     padding: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    alignItems: "center",
   },
   carImage: {
-    width: "100%",
-    height: 130,
+    width: "60%",
+    // height: 130,
   },
-
 
   bannerSubtitle: {
-    fontSize: 14,
+    width: "40%",
     color: color.white,
-    marginTop: 5,
-    textAlign: "center",
   },
-  sectionTitle: {
-    fontSize: 16,
-    marginVertical: 20,
-    marginLeft: 20,
-    color: color.textDark,
-  },
-  services: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingHorizontal: 16,
-  },
+ 
+ 
   card: {
     backgroundColor: color.lightGreen || "#E0F7F4",
     borderRadius: 10,
-    width: "42%",
+    width: "47%",
+    height: 150,
     overflow: "hidden",
     alignItems: "center",
   },
   cardImage: {
     width: "100%",
-    height: 100,
+    height: 110,
+
   },
   cardText: {
     fontSize: 14,
@@ -141,8 +152,6 @@ const styles = StyleSheet.create({
   ctaContainer: {
     flexDirection: "row",
     borderRadius: 10,
-    margin: 20,
-    padding: 15,
     alignItems: "center",
   },
   ctaTextContainer: {
@@ -151,25 +160,16 @@ const styles = StyleSheet.create({
   ctaTitle: {
     fontSize: 24,
     width: "60%",
-    color: color.textDark,
     marginBottom: 5,
     lineHeight: 25,
   },
-  ctaSubTitle: {
-    fontSize: 12,
-    color: color.textLight || "#555",
-  },
+
 
   ctaButton: {
-    backgroundColor: color.black,
-    padding: 14,
     borderRadius: 10,
     marginHorizontal: 20,
     marginBottom: 30,
     alignItems: "center",
   },
-  ctaButtonText: {
-    color: color.white,
-    fontSize: 14,
-  },
+
 });

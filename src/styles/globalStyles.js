@@ -50,6 +50,12 @@ export default StyleSheet.create({
   w40: {
     width: "40%",
   },
+  w50: {
+    width: "50%",
+  },
+  w60: {
+    width: "60%",
+  },
 
   // Bootstrap styles .............. end
 
@@ -59,6 +65,9 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     justifyContent: "center",
+  },
+  radius: {
+    borderRadius: 8,
   },
   // Default styles .............. end
 
@@ -70,6 +79,9 @@ export default StyleSheet.create({
   },
   secondary: {
     color: color.secondary,
+  },
+  white:{
+    color: color.white,
   },
   // Color styles .............. end
 
@@ -105,7 +117,8 @@ export default StyleSheet.create({
   mb4: { marginBottom: 16 },
   mb5: { marginBottom: 20 },
   mb6: { marginBottom: 24 },
-  mb50: { marginBottom: 50 },
+  mb35: { marginBottom: 35 },
+  mb90: { marginBottom: 90 },
   // Left margins
   ml0: { marginLeft: 0 },
   ml1: { marginLeft: 4 },
