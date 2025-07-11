@@ -16,6 +16,7 @@ import globalStyles from '../../styles/globalStyles';
 import { color } from '../../styles/theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Platform } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
 
 export const MyCarDetails = () => {
     const [transmission, setTransmission] = useState('');
@@ -73,15 +74,20 @@ export const MyCarDetails = () => {
                 </View>
                 <View style={{ flex: 1, marginLeft: 8 }}>
                     <Text style={styles.label}>Transmission Type</Text>
-                    <Picker
-                        selectedValue={transmission}
-                        onValueChange={(itemValue) => setTransmission(itemValue)}
-                        style={styles.picker}
-                    >
-                        <Picker.Item label="Select Type" value="" />
-                        <Picker.Item label="Automatic" value="Automatic" />
-                        <Picker.Item label="Manual" value="Manual" />
-                    </Picker>
+                    <Dropdown
+                        data={[
+                            { label: 'Automatic', value: 'Automatic' },
+                            { label: 'Manual', value: 'Manual' },
+                        ]}
+                        labelField="label"
+                        valueField="value"
+                        placeholder="Select Type"
+                        value={transmission}
+                        onChange={(item) => setTransmission(item.value)}
+                        style={styles.dropdown}
+                        placeholderStyle={{ color: '#888' }}
+                        itemTextStyle={{ fontSize: 14 }}
+                    />
                 </View>
             </View>
 
@@ -148,6 +154,14 @@ const styles = StyleSheet.create({
         ...globalStyles.f12Regular,
         marginBottom: 10,
     },
+    dropdown: {
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        paddingHorizontal: 12,
+        height: 44,
+        justifyContent: 'center',
+        ...globalStyles.f12Regular,
+    },
     helperText: {
         ...globalStyles.f10Regular,
         color: '#999',
@@ -191,6 +205,7 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         borderRadius: 8,
         alignItems: 'center',
+        marginTop: 15
     },
 
 });
