@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import axios from "axios";
 import { Picker } from "@react-native-picker/picker";
+import CustomText from "../../components/CustomText";
 
 export default function BookServiceScreen() {
   const [states, setStates] = useState([]);
@@ -22,7 +23,7 @@ export default function BookServiceScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Select State</Text>
+      <CustomText style={styles.label}>Select State</CustomText>
       <View style={styles.pickerContainer}>
         <Picker
           selectedValue={selectedState}
@@ -39,7 +40,7 @@ export default function BookServiceScreen() {
         </Picker>
       </View>
       {selectedState !== "" && (
-        <Text style={styles.resultText}>Selected State ID: {selectedState}</Text>
+        <CustomText style={styles.resultText}>Selected State ID: {selectedState}</CustomText>
       )}
     </View>
   );

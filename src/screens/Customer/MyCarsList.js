@@ -14,6 +14,7 @@ import sampleCar from '../../../assets/images/xuv-3xo-exterior-right-front-three
 import carIconPlus from '../../../assets/images/My Car.png'; // Your custom icon
 import SearchBox from '../../components/SearchBox';
 import { color } from '../../styles/theme';
+import CustomText from '../../components/CustomText';
 // import {color} from '../../../'
 
 export const MyCarsList = () => {
@@ -62,19 +63,19 @@ export const MyCarsList = () => {
             <View style={{ flexDirection: 'row' }}>
                 <Image source={item.image} style={styles.carImage} />
                 <View style={styles.carInfo}>
-                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Model Name</Text>
-                    <Text style={globalStyles.f12Bold}>{item.model}</Text>
+                    <CustomText style={[globalStyles.f10Bold, { color: '#737373' }]}>Model Name</CustomText>
+                    <CustomText style={globalStyles.f12Bold}>{item.model}</CustomText>
                     <View style={{ height: 6 }} />
-                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Fuel Type</Text>
-                    <Text style={globalStyles.f12Bold}>{item.fuel}</Text>
+                    <CustomText style={[globalStyles.f10Bold, { color: '#737373' }]}>Fuel Type</CustomText>
+                    <CustomText style={globalStyles.f12Bold}>{item.fuel}</CustomText>
                     <View style={{ height: 6 }} />
-                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Manufacturer</Text>
-                    <Text style={globalStyles.f12Bold}>{item.manufacturer}</Text>
+                    <CustomText style={[globalStyles.f10Bold, { color: '#737373' }]}>Manufacturer</CustomText>
+                    <CustomText style={globalStyles.f12Bold}>{item.manufacturer}</CustomText>
                 </View>
             </View>
             <View style={{ height: 10 }} />
             <TouchableOpacity style={styles.detailsButton}>
-                <Text style={{ color: '#fff' }}>View Details</Text>
+                <CustomText style={{ color: '#fff' }}>View Details</CustomText>
             </TouchableOpacity>
         </View>
 
@@ -84,12 +85,12 @@ export const MyCarsList = () => {
         <View style={[globalStyles.container, { backgroundColor: '#fff' }]}>
             {cars.length === 0 ? (
                 <View style={styles.centered}>
-                    <Text style={styles.emptyText}>Please add your car</Text>
+                    <CustomText style={styles.emptyText}>Please add your car</CustomText>
                     <TouchableOpacity
                         style={styles.addButton}
                         onPress={() => navigation.navigate('SelectCarBrand')}
                     >
-                        <Text style={styles.addButtonText}>Add Your Car</Text>
+                        <CustomText style={styles.addButtonText}>Add Your Car</CustomText>
                     </TouchableOpacity>
                 </View>
             ) : (

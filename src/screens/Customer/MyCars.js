@@ -4,6 +4,7 @@ import carData from "../../../assets/data/carBrands.json";
 import { useNavigation } from "@react-navigation/native";
 import SearchBox from "../../components/SearchBox";
 import globalStyles from "../../styles/globalStyles";
+import CustomText from "../../components/CustomText";
 
 export default function MyCars() {
     const [brands, setBrands] = useState([]);
@@ -23,7 +24,7 @@ export default function MyCars() {
             }}
         >
             <Image source={{ uri: item.logo }} style={styles.logo} />
-            <Text style={globalStyles.f12Bold}>{item.brand}</Text>
+            <CustomText style={globalStyles.f12Bold}>{item.brand}</CustomText>
         </TouchableOpacity>
     );
 
@@ -31,8 +32,8 @@ export default function MyCars() {
         <View style={[styles.container, { padding: 10 }]}>
             <SearchBox />
             <View style={{ marginVertical: 10 }}>
-                <Text style={globalStyles.f12Bold}>Add Your Car</Text>
-                <Text style={globalStyles.f10Regular}>Start From Selecting Your Manufacturer.</Text>
+                <CustomText style={globalStyles.f12Bold}>Add Your Car</CustomText>
+                <CustomText style={globalStyles.f10Regular}>Start From Selecting Your Manufacturer.</CustomText>
             </View>
             <FlatList
                 data={brands}

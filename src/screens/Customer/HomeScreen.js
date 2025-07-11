@@ -63,19 +63,19 @@ export default function HomeScreen() {
         </View>
       </View>
       <View style={globalStyles.container}>
-        <Text
+        <CustomText
           style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f16Bold]}
         >
           Providing Services
-        </Text>
+        </CustomText>
         <View style={[globalStyles.flexrow, globalStyles.justifysb]}>
           <TouchableOpacity style={styles.card}>
             <Image source={interiorservice} style={styles.cardImage} />
-            <Text style={[styles.cardText, globalStyles.textWhite]}>Interior Service</Text>
+            <CustomText style={[styles.cardText, globalStyles.textWhite]}>Interior Service</CustomText>
           </TouchableOpacity>
           <TouchableOpacity style={styles.card}>
             <Image source={exteriorservice} style={styles.cardImage} />
-            <Text style={[styles.cardText, globalStyles.textWhite]}>Exterior Service</Text>
+            <CustomText style={[styles.cardText, globalStyles.textWhite]}>Exterior Service</CustomText>
           </TouchableOpacity>
         </View>
         <ImageBackground
@@ -90,7 +90,7 @@ export default function HomeScreen() {
         >
           <View>
             <View>
-              <Text
+              <CustomText
                 style={[
                   styles.ctaTitle,
                   globalStyles.f20Bold,
@@ -100,10 +100,10 @@ export default function HomeScreen() {
                 ]}
               >
                 Give your car’s intro to your care buddy
-              </Text>
-              <Text style={[globalStyles.w50, globalStyles.textWhite, globalStyles.f12Regular]}>
+              </CustomText>
+              <CustomText style={[globalStyles.w50, globalStyles.textWhite, globalStyles.f12Regular]}>
                 We’ll remember it, pamper it, and keep it shining.
-              </Text>
+              </CustomText>
             </View>
 
 
@@ -113,7 +113,7 @@ export default function HomeScreen() {
               style={[styles.ctaButton, globalStyles.bgwhite]}
               onPress={goToCar}
             >
-              <Text style={globalStyles.f16Bold}>Add My Car</Text>
+              <CustomText style={globalStyles.f16Bold}>Add My Car</CustomText>
             </TouchableOpacity>
           </View>
         </ImageBackground>

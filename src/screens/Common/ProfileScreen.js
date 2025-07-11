@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useAuth } from '../../contexts/AuthContext';
+import CustomText from '../../components/CustomText';
 
 export default function ProfileScreen() {
   const { logout } = useAuth();
@@ -11,10 +12,10 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Profile Screen</Text>
+      <CustomText style={styles.heading}>Profile Screen</CustomText>
 
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>Logout</Text>
+        <CustomText style={styles.buttonText}>Logout</CustomText>
       </TouchableOpacity>
     </View>
   );
