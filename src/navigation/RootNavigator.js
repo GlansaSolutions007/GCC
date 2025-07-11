@@ -9,7 +9,7 @@ import CustomerTabNavigator from "./CustomerTabNavigator";
 import TechnicianTabNavigator from "./TechnicianTabNavigator";
 import { useAuth } from "../contexts/AuthContext";
 import CustomerStackNavigator from "./CustomerStackNavigator";
-
+import CustomText from "../components/CustomText";
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {

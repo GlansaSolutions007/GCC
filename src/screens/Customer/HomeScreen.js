@@ -14,6 +14,7 @@ import exteriorservice from "../../../assets/images/exteriorservice.png";
 import interiorservice from "../../../assets/images/interiorservice.png"
 import bluecar from "../../../assets/images/bluecar.png";
 import { color } from "../../styles/theme";
+import CustomText from "../../components/CustomText";
 
 export default function HomeScreen() {
   return (
@@ -22,7 +23,7 @@ export default function HomeScreen() {
       contentContainerStyle={{ paddingBottom: 30 }}
     >
       <View style={[styles.banner, globalStyles.mb35]}>
-        <Text
+        <CustomText
           style={[
             globalStyles.xLargeBold,
             globalStyles.f36Bold,
@@ -30,8 +31,8 @@ export default function HomeScreen() {
           ]}
         >
           MY CAR
-        </Text>
-        <Text
+        </CustomText>
+        <CustomText
           style={[
             globalStyles.xLargeBold,
             globalStyles.mb40,
@@ -40,7 +41,7 @@ export default function HomeScreen() {
           ]}
         >
           BUDDY
-        </Text>
+        </CustomText>
 
         <View style={styles.bannerAbsolute}>
           <Image
@@ -48,9 +49,9 @@ export default function HomeScreen() {
             style={styles.carImagePositioned}
             resizeMode="contain"
           />
-          <Text style={[styles.bannerSubtitlePositioned,globalStyles.f20Regular]}>
+          <CustomText style={[styles.bannerSubtitlePositioned,globalStyles.f20Regular]}>
             A Professional Car Care Services in Hyderabad
-          </Text>
+          </CustomText>
         </View>
       </View>
       <View style={globalStyles.container}>
