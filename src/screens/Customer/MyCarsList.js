@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     detailsButton: {
         position: 'absolute',
         bottom: -17,
-        left: '83%',
+        left: '80%',
         transform: [{ translateX: -60 }], 
         backgroundColor: color.secondary,
         paddingHorizontal: 24,
