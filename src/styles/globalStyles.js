@@ -80,7 +80,7 @@ export default StyleSheet.create({
   secondary: {
     color: color.secondary,
   },
-  white:{
+  textWhite:{
     color: color.white,
   },
   // Color styles .............. end
@@ -88,6 +88,9 @@ export default StyleSheet.create({
   // background color ----------- start
   bgprimary: {
     backgroundColor: color.primary,
+  },
+  bgwhite: {
+    backgroundColor: color.white,
   },
   // background color .............. end
 

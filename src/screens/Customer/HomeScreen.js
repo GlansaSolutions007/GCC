@@ -17,7 +17,7 @@ import { color } from "../../styles/theme";
 export default function HomeScreen() {
   return (
     <ScrollView
-      style={ { backgroundColor: color.white  }}
+      style={{ backgroundColor: color.textWhite }}
       contentContainerStyle={{ paddingBottom: 30 }}
     >
       <View style={[styles.banner, globalStyles.mb35]}>
@@ -25,20 +25,20 @@ export default function HomeScreen() {
           style={[
             globalStyles.xLargeBold,
             globalStyles.f36Bold,
-            globalStyles.white,
+            globalStyles.textWhite,
           ]}
         >
-           MY CAR
+          MY CAR
         </Text>
         <Text
           style={[
             globalStyles.xLargeBold,
             globalStyles.mb90,
             globalStyles.f36Bold,
-                        globalStyles.white,
+            globalStyles.textWhite,
           ]}
         >
-           BUDDY
+          BUDDY
         </Text>
         <View style={[globalStyles.flexrow, styles.bannercar]}>
           <Image
@@ -51,41 +51,60 @@ export default function HomeScreen() {
           </Text>
         </View>
       </View>
-<View style={globalStyles.container}>
-
-      <Text style={[globalStyles.mt4,globalStyles.mb2,globalStyles.f18Bold]}>Providing Services</Text>
-      <View style={[globalStyles.flexrow,globalStyles.justifysb]}>
-        <TouchableOpacity style={styles.card}>
-          <Image source={exteriorservice} style={styles.cardImage} />
-          <Text style={styles.cardText}>Interior Service</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Image source={exteriorservice} style={styles.cardImage} />
-          <Text style={styles.cardText}>Exterior Service</Text>
-        </TouchableOpacity>
-      </View>
-      <ImageBackground
-        source={CTAbannerhome}
-        style={[styles.ctaContainer, globalStyles.radius, globalStyles.p5, globalStyles.mt5]}
-        resizeMode="cover"
-      >
-        <View>
-          <View style={styles.ctaTextContainer}>
-            <Text style={[styles.ctaTitle,globalStyles.w60]}>
-              Give your car’s intro to your care buddy
-            </Text>
-            <Text style={[globalStyles.w50]}>
-              We’ll remember it, pamper it, and keep it shining.
-            </Text>
-          </View>
+      <View style={globalStyles.container}>
+        <Text
+          style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f18Bold]}
+        >
+          Providing Services
+        </Text>
+        <View style={[globalStyles.flexrow, globalStyles.justifysb]}>
+          <TouchableOpacity style={styles.card}>
+            <Image source={exteriorservice} style={styles.cardImage} />
+            <Text style={styles.cardText}>Interior Service</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.card}>
+            <Image source={exteriorservice} style={styles.cardImage} />
+            <Text style={styles.cardText}>Exterior Service</Text>
+          </TouchableOpacity>
         </View>
-      </ImageBackground>
+        <ImageBackground
+          source={CTAbannerhome}
+          style={[
+            styles.ctaContainer,
+            globalStyles.radius,
+            globalStyles.p5,
+            globalStyles.mt5,
+          ]}
+          resizeMode="cover"
+        >
+          <View>
+            <View style={styles.ctaTextContainer}>
+              <Text
+                style={[
+                  styles.ctaTitle,
+                  globalStyles.w60,
+                  globalStyles.textWhite,
+                ]}
+              >
+                Give your car’s intro to your care buddy
+              </Text>
+              <Text style={[globalStyles.w50, globalStyles.textWhite]}>
+                We’ll remember it, pamper it, and keep it shining.
+              </Text>
+            </View>
 
-      <TouchableOpacity style={styles.ctaButton}>
-        <Text >Add My Car</Text>
-      </TouchableOpacity>
+            <View style={styles.ctaButtonWrapper}>
+              <TouchableOpacity style={[styles.ctaButton, globalStyles.bgwhite]}>
+                <Text>Add My Car</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ImageBackground>
+
+        {/* <TouchableOpacity style={styles.ctaButton}>
+          <Text>Add My Car</Text>
+        </TouchableOpacity> */}
       </View>
-
     </ScrollView>
   );
 }
@@ -128,8 +147,7 @@ const styles = StyleSheet.create({
     width: "40%",
     color: color.white,
   },
- 
- 
+
   card: {
     backgroundColor: color.lightGreen || "#E0F7F4",
     borderRadius: 10,
@@ -141,7 +159,6 @@ const styles = StyleSheet.create({
   cardImage: {
     width: "100%",
     height: 110,
-
   },
   cardText: {
     fontSize: 14,
@@ -163,13 +180,17 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     lineHeight: 25,
   },
-
-
-  ctaButton: {
-    borderRadius: 10,
-    marginHorizontal: 20,
-    marginBottom: 30,
-    alignItems: "center",
+  ctaButtonWrapper: {
+    position: "absolute",
+    bottom: -20,
+    right: 40,
   },
 
+  ctaButton: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    alignItems: "center",
+  },
 });
