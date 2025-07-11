@@ -11,7 +11,7 @@ export default function ServiceList() {
         <Text style={globalStyles.text}>List of services will be displayed here</Text> */}
 
     
-  <View style={[globalStyles.flexrow, globalStyles.alineItemscenter]}>
+  <View  style={[globalStyles.flexrow, globalStyles.alineItemscenter]}>
         <Text style={[globalStyles.mr2, globalStyles.w40]}>tinyRegular-10:</Text>
         <Text style={globalStyles.f10Regular}>Hyderabad</Text>
       </View>

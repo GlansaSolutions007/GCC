@@ -16,6 +16,9 @@ import globalStyles from '../../styles/globalStyles';
 import { color } from '../../styles/theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Platform } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
+import CustomAlert from '../../components/CustomAlert';
+import { useNavigation } from '@react-navigation/native';
 
 export const MyCarDetails = () => {
     const [transmission, setTransmission] = useState('');
@@ -23,6 +26,9 @@ export const MyCarDetails = () => {
 
     const [yearOfPurchase, setYearOfPurchase] = useState(null);
     const [showYearPicker, setShowYearPicker] = useState(false);
+
+    const [alertVisible, setAlertVisible] = useState(false);
+
 
     // Function to format year
     const formatDate = (date) => {
@@ -32,6 +38,18 @@ export const MyCarDetails = () => {
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     };
+
+    const handleSubmit = () => {
+        setAlertVisible(true)
+    }
+
+    const navigation = useNavigation();
+
+    const goCarList = () => {
+        setAlertVisible(false);
+        navigation.navigate('CustomerTabNavigator', { screen: 'My Cars' });
+    }
+
     return (
         <ScrollView contentContainerStyle={globalStyles.container} showsVerticalScrollIndicator={false}>
             <Image source={bannerImage} style={styles.banner} />
@@ -73,15 +91,20 @@ export const MyCarDetails = () => {
                 </View>
                 <View style={{ flex: 1, marginLeft: 8 }}>
                     <Text style={styles.label}>Transmission Type</Text>
-                    <Picker
-                        selectedValue={transmission}
-                        onValueChange={(itemValue) => setTransmission(itemValue)}
-                        style={styles.picker}
-                    >
-                        <Picker.Item label="Select Type" value="" />
-                        <Picker.Item label="Automatic" value="Automatic" />
-                        <Picker.Item label="Manual" value="Manual" />
-                    </Picker>
+                    <Dropdown
+                        data={[
+                            { label: 'Automatic', value: 'Automatic' },
+                            { label: 'Manual', value: 'Manual' },
+                        ]}
+                        labelField="label"
+                        valueField="value"
+                        placeholder="Select Type"
+                        value={transmission}
+                        onChange={(item) => setTransmission(item.value)}
+                        style={styles.dropdown}
+                        placeholderStyle={{ color: '#888' }}
+                        itemTextStyle={{ fontSize: 14 }}
+                    />
                 </View>
             </View>
 
@@ -118,10 +141,23 @@ export const MyCarDetails = () => {
                 <Text style={styles.checkboxLabel}>Accept Privacy Policy</Text>
             </View> */}
 
-            <TouchableOpacity style={styles.submitButton}>
+            <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                 <Text style={{ ...globalStyles.f12Bold, color: color.white }}>Submit</Text>
             </TouchableOpacity>
-        </ScrollView>
+            <CustomAlert
+                visible={alertVisible}
+                onClose={goCarList}
+                title="Success"
+                message="Your Car Added Successfully"
+                status="info"
+                showButton={false} // hide default button
+            >
+                <TouchableOpacity onPress={goCarList} style={styles.submitButton} >
+                    <Text style={{ ...globalStyles.f12Bold, color: color.white }}>Go To Cars List</Text>
+                </TouchableOpacity>
+            </CustomAlert>
+
+        </ScrollView >
     );
 }
 const styles = StyleSheet.create({
@@ -147,6 +183,14 @@ const styles = StyleSheet.create({
         padding: 12,
         ...globalStyles.f12Regular,
         marginBottom: 10,
+    },
+    dropdown: {
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        paddingHorizontal: 12,
+        height: 44,
+        justifyContent: 'center',
+        ...globalStyles.f12Regular,
     },
     helperText: {
         ...globalStyles.f10Regular,
@@ -189,8 +233,10 @@ const styles = StyleSheet.create({
     submitButton: {
         backgroundColor: color.secondary,
         paddingVertical: 14,
+        paddingHorizontal:16,
         borderRadius: 8,
         alignItems: 'center',
+        marginTop: 15
     },
 
 });

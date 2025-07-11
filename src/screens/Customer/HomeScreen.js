@@ -11,6 +11,7 @@ import { Ionicons } from "@expo/vector-icons";
 import globalStyles from "../../styles/globalStyles";
 import CTAbannerhome from "../../../assets/images/CTAbannerhome.png";
 import exteriorservice from "../../../assets/images/exteriorservice.png";
+import interiorservice from "../../../assets/images/interiorservice.png"
 import bluecar from "../../../assets/images/bluecar.png";
 import { color } from "../../styles/theme";
 
@@ -33,7 +34,7 @@ export default function HomeScreen() {
         <Text
           style={[
             globalStyles.xLargeBold,
-            globalStyles.mb90,
+            globalStyles.mb40,
             globalStyles.f36Bold,
             globalStyles.textWhite,
           ]}
@@ -41,32 +42,31 @@ export default function HomeScreen() {
           BUDDY
         </Text>
 
-        {/* Absolutely positioned container for car and subtitle */}
         <View style={styles.bannerAbsolute}>
           <Image
             source={bluecar}
             style={styles.carImagePositioned}
             resizeMode="contain"
           />
-          <Text style={styles.bannerSubtitlePositioned}>
+          <Text style={[styles.bannerSubtitlePositioned,globalStyles.f20Regular]}>
             A Professional Car Care Services in Hyderabad
           </Text>
         </View>
       </View>
       <View style={globalStyles.container}>
         <Text
-          style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f18Bold]}
+          style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f16Bold]}
         >
           Providing Services
         </Text>
         <View style={[globalStyles.flexrow, globalStyles.justifysb]}>
           <TouchableOpacity style={styles.card}>
-            <Image source={exteriorservice} style={styles.cardImage} />
-            <Text style={styles.cardText}>Interior Service</Text>
+            <Image source={interiorservice} style={styles.cardImage} />
+            <Text style={[styles.cardText, globalStyles.textWhite]}>Interior Service</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.card}>
             <Image source={exteriorservice} style={styles.cardImage} />
-            <Text style={styles.cardText}>Exterior Service</Text>
+            <Text style={[styles.cardText, globalStyles.textWhite]}>Exterior Service</Text>
           </TouchableOpacity>
         </View>
         <ImageBackground
@@ -80,29 +80,32 @@ export default function HomeScreen() {
           resizeMode="cover"
         >
           <View>
-            <View style={styles.ctaTextContainer}>
+            <View>
               <Text
                 style={[
                   styles.ctaTitle,
+                  globalStyles.f20Bold,
                   globalStyles.w60,
                   globalStyles.textWhite,
+                  globalStyles.f18Bold
                 ]}
               >
                 Give your car’s intro to your care buddy
               </Text>
-              <Text style={[globalStyles.w50, globalStyles.textWhite]}>
+              <Text style={[globalStyles.w50, globalStyles.textWhite, globalStyles.f12Regular]}>
                 We’ll remember it, pamper it, and keep it shining.
               </Text>
             </View>
 
-            <View style={styles.ctaButtonWrapper}>
+         
+          </View>
+             <View style={styles.ctaButtonWrapper}>
               <TouchableOpacity
                 style={[styles.ctaButton, globalStyles.bgwhite]}
               >
-                <Text>Add My Car</Text>
+                <Text style={globalStyles.f16Bold}>Add My Car</Text>
               </TouchableOpacity>
             </View>
-          </View>
         </ImageBackground>
       </View>
     </ScrollView>
@@ -135,24 +138,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: color.white,
   },
-  button: {
-    backgroundColor: color.white,
-    paddingVertical: 14,
-    borderRadius: 8,
-    alignItems: "center",
-    marginTop: 10,
-    shadowColor: color.black,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    elevation: 5,
-  },
+
   buttonText: {
     color: color.textDark,
     fontSize: 16,
   },
   banner: {
-    backgroundColor: color.primary || "#017F77",
+    backgroundColor: color.primary,
     padding: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
@@ -168,7 +160,7 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    backgroundColor: color.lightGreen || "#E0F7F4",
+    backgroundColor: color.primary,
     borderRadius: 10,
     width: "47%",
     height: 150,
@@ -189,26 +181,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 10,
     alignItems: "center",
+    position: "relative", 
+    minHeight: 160,
   },
-  ctaTextContainer: {
-    flex: 1,
-  },
+
   ctaTitle: {
-    fontSize: 24,
     width: "60%",
     marginBottom: 5,
     lineHeight: 25,
   },
   ctaButtonWrapper: {
     position: "absolute",
-    bottom: -20,
-    right: 40,
+    bottom: 10,
+    right: 10,
   },
 
   ctaButton: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     paddingVertical: 10,
     alignItems: "center",
   },

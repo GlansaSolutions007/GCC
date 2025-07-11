@@ -121,7 +121,8 @@ export default StyleSheet.create({
   mb5: { marginBottom: 20 },
   mb6: { marginBottom: 24 },
   mb35: { marginBottom: 35 },
-  mb90: { marginBottom: 90 },
+  mb40: { marginBottom: 40 },
+  mb90: { marginBottom: 40 },
   // Left margins
   ml0: { marginLeft: 0 },
   ml1: { marginLeft: 4 },
