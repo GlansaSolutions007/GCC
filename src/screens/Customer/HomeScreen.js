@@ -40,13 +40,15 @@ export default function HomeScreen() {
         >
           BUDDY
         </Text>
-        <View style={[globalStyles.flexrow, styles.bannercar]}>
+
+        {/* Absolutely positioned container for car and subtitle */}
+        <View style={styles.bannerAbsolute}>
           <Image
             source={bluecar}
-            style={[styles.carImage, globalStyles.alineSelfend]}
+            style={styles.carImagePositioned}
             resizeMode="contain"
           />
-          <Text style={[styles.bannerSubtitle, globalStyles.f18Regular]}>
+          <Text style={styles.bannerSubtitlePositioned}>
             A Professional Car Care Services in Hyderabad
           </Text>
         </View>
@@ -94,24 +96,41 @@ export default function HomeScreen() {
             </View>
 
             <View style={styles.ctaButtonWrapper}>
-              <TouchableOpacity style={[styles.ctaButton, globalStyles.bgwhite]}>
+              <TouchableOpacity
+                style={[styles.ctaButton, globalStyles.bgwhite]}
+              >
                 <Text>Add My Car</Text>
               </TouchableOpacity>
             </View>
           </View>
         </ImageBackground>
-
-        {/* <TouchableOpacity style={styles.ctaButton}>
-          <Text>Add My Car</Text>
-        </TouchableOpacity> */}
       </View>
     </ScrollView>
   );
 }
 const styles = StyleSheet.create({
-  bannercar: {
-    marginBottom: -70,
+  bannerAbsolute: {
+    position: "relative",
+    height: 100,
   },
+
+  carImagePositioned: {
+    position: "absolute",
+    bottom: -50,
+    left: 0,
+    width: "55%",
+    height: 130,
+  },
+
+  bannerSubtitlePositioned: {
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+    width: "45%",
+    textAlign: "right",
+    color: color.white,
+  },
+
   title: {
     fontSize: 22,
     color: color.white,
