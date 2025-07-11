@@ -19,6 +19,7 @@ import { Platform } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import CustomAlert from '../../components/CustomAlert';
 import { useNavigation } from '@react-navigation/native';
+import CustomText from '../../components/CustomText';
 
 export const MyCarDetails = () => {
     const [transmission, setTransmission] = useState('');
@@ -54,7 +55,7 @@ export const MyCarDetails = () => {
         <ScrollView contentContainerStyle={globalStyles.container} showsVerticalScrollIndicator={false}>
             <Image source={bannerImage} style={styles.banner} />
 
-            <Text style={styles.label}>Registration Number</Text>
+            <CustomText style={styles.label}>Registration Number</CustomText>
             <TextInput
                 placeholder="e.g. TS08-AB-1234"
                 style={styles.input}
@@ -63,7 +64,7 @@ export const MyCarDetails = () => {
 
             <View style={styles.row}>
                 <View style={{ flex: 1, marginRight: 8 }}>
-                    <Text style={styles.label}>Year of Purchase</Text>
+                    <CustomText style={styles.label}>Year of Purchase</CustomText>
                     <TouchableOpacity onPress={() => setShowYearPicker(true)}>
                         <TextInput
                             value={formatDate(yearOfPurchase)}
@@ -90,7 +91,7 @@ export const MyCarDetails = () => {
                     )}
                 </View>
                 <View style={{ flex: 1, marginLeft: 8 }}>
-                    <Text style={styles.label}>Transmission Type</Text>
+                    <CustomText style={styles.label}>Transmission Type</CustomText>
                     <Dropdown
                         data={[
                             { label: 'Automatic', value: 'Automatic' },
@@ -109,10 +110,10 @@ export const MyCarDetails = () => {
             </View>
 
             <View style={styles.labelWithHelperRow}>
-                <Text style={styles.label}>
-                    Engine Type / Size <Text style={styles.optional}>(optional)</Text>
-                </Text>
-                <Text style={styles.helperTextInline}>Useful for technicians</Text>
+                <CustomText style={styles.label}>
+                    Engine Type / Size <CustomText style={styles.optional}>(optional)</CustomText>
+                </CustomText>
+                <CustomText style={styles.helperTextInline}>Useful for technicians</CustomText>
             </View>
             <TextInput
                 placeholder="e.g. 1.2L i-VTEC"
@@ -122,10 +123,10 @@ export const MyCarDetails = () => {
 
             {/* Kilometers Driven with inline helper */}
             <View style={styles.labelWithHelperRow}>
-                <Text style={styles.label}>
-                    Kilometers Driven <Text style={styles.optional}>(optional)</Text>
-                </Text>
-                <Text style={styles.helperTextInline}>Useful for technicians</Text>
+                <CustomText style={styles.label}>
+                    Kilometers Driven <CustomText style={styles.optional}>(optional)</CustomText>
+                </CustomText>
+                <CustomText style={styles.helperTextInline}>Useful for technicians</CustomText>
             </View>
             <TextInput
                 placeholder="---"
@@ -138,11 +139,11 @@ export const MyCarDetails = () => {
                     value={privacyAccepted}
                     onValueChange={setPrivacyAccepted}
                 />
-                <Text style={styles.checkboxLabel}>Accept Privacy Policy</Text>
+                <CustomText style={styles.checkboxLabel}>Accept Privacy Policy</CustomText>
             </View> */}
 
             <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-                <Text style={{ ...globalStyles.f12Bold, color: color.white }}>Submit</Text>
+                <CustomText style={{ ...globalStyles.f12Bold, color: color.white }}>Submit</CustomText>
             </TouchableOpacity>
             <CustomAlert
                 visible={alertVisible}
@@ -153,7 +154,7 @@ export const MyCarDetails = () => {
                 showButton={false} // hide default button
             >
                 <TouchableOpacity onPress={goCarList} style={styles.submitButton} >
-                    <Text style={{ ...globalStyles.f12Bold, color: color.white }}>Go To Cars List</Text>
+                    <CustomText style={{ ...globalStyles.f12Bold, color: color.white }}>Go To Cars List</CustomText>
                 </TouchableOpacity>
             </CustomAlert>
 

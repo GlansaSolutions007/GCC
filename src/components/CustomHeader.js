@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, TextInput, StyleSheet, Pressable, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import CustomText from "./CustomText";
 
 export default function CustomHeader({ navigation }) {
 
@@ -10,11 +11,11 @@ export default function CustomHeader({ navigation }) {
     <View style={[styles.headerContainer, { paddingTop: insets.top + 10 }]}>
       <View style={styles.topRow}>
         <View>
-          <Text style={styles.hello}>Hello User</Text>
+          <CustomText style={styles.hello}>Hello User</CustomText>
           <Pressable>
-            <Text style={styles.location}>
+            <CustomText style={styles.location}>
               Hyderabad, Telangana <Ionicons name="chevron-down" size={14} />
-            </Text>
+            </CustomText>
           </Pressable>
         </View>
 

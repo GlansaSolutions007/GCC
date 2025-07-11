@@ -10,6 +10,7 @@ import CNG from "../../../assets/icons/fuelTypes/cng.png";
 import Electric from "../../../assets/icons/fuelTypes/ev.png";
 import globalStyles from "../../styles/globalStyles";
 import { color } from "../../styles/theme";
+import CustomText from "../../components/CustomText";
 
 export default function CarModels() {
   const route = useRoute();
@@ -29,7 +30,7 @@ export default function CarModels() {
   const renderModel = ({ item }) => (
     <TouchableOpacity style={styles.card} onPress={() => handleModelPress(item)}>
       <Image source={carPic} style={styles.image} />
-      <Text style={{ ...globalStyles.f16SemiBold, color: color.primary }}>{item.name}</Text>
+      <CustomText style={{ ...globalStyles.f16SemiBold, color: color.primary }}>{item.name}</CustomText>
     </TouchableOpacity>
   );
 
@@ -78,7 +79,7 @@ export default function CarModels() {
               }}
             >
               <Image source={fuel.icon} style={styles.fuelImage} />
-              <Text style={globalStyles.f10Bold}>{fuel.name}</Text>
+              <CustomText style={globalStyles.f10Bold}>{fuel.name}</CustomText>
             </TouchableOpacity>
           ))}
         </View>
