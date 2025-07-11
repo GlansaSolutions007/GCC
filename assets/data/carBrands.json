@@ -71,7 +71,7 @@
     ]
   },
   {
-    "brand": "Mahindra & Mahindra",
+    "brand": "Mahindra",
     "logo": "https://imgd.aeplcdn.com/0X0/n/cw/ec/9/brands/logos/mahindra.jpg?v=1629973668273&q=80",
     "models": [
       { "name": "Thar", "fuelTypes": ["Petrol", "Diesel"] },
@@ -95,7 +95,6 @@
   },
   { "brand": "Ford", "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-5.jpeg", "models": [] },
   { "brand": "Volkswagen", "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-16.jpeg", "models": [] },
-  { "brand": "Mahindra", "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-8.jpeg", "models": [] },
   { "brand": "Renault", "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-12.jpeg", "models": [] },
   { "brand": "Chevrolet", "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-1.jpeg", "models": [] },
   { "brand": "Toyota", "logo": "https://gomechprod.blob.core.windows.net/gm-retail-app/thumbnails/brand-15.jpeg", "models": [] },

@@ -8,6 +8,8 @@ import Petrol from "../../../assets/icons/fuelTypes/petrol.png";
 import Diesel from "../../../assets/icons/fuelTypes/diesel.png";
 import CNG from "../../../assets/icons/fuelTypes/cng.png";
 import Electric from "../../../assets/icons/fuelTypes/ev.png";
+import globalStyles from "../../styles/globalStyles";
+import { color } from "../../styles/theme";
 
 export default function CarModels() {
   const route = useRoute();
@@ -27,7 +29,7 @@ export default function CarModels() {
   const renderModel = ({ item }) => (
     <TouchableOpacity style={styles.card} onPress={() => handleModelPress(item)}>
       <Image source={carPic} style={styles.image} />
-      <Text style={styles.modelName}>{item.name}</Text>
+      <Text style={{ ...globalStyles.f16SemiBold, color: color.primary }}>{item.name}</Text>
     </TouchableOpacity>
   );
 
@@ -40,7 +42,6 @@ export default function CarModels() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>{brand} Models</Text>
       <FlatList
         data={models}
         renderItem={renderModel}
@@ -77,7 +78,7 @@ export default function CarModels() {
               }}
             >
               <Image source={fuel.icon} style={styles.fuelImage} />
-              <Text style={styles.fuelText}>{fuel.name}</Text>
+              <Text style={globalStyles.f10Bold}>{fuel.name}</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -92,12 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     flex: 1,
   },
-  heading: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 10,
-    textAlign: "center",
-  },
+
   row: {
     justifyContent: "space-between",
     marginBottom: 12,
@@ -113,11 +109,6 @@ const styles = StyleSheet.create({
     height: 60,
     resizeMode: "contain",
     marginBottom: 4,
-  },
-  modelName: {
-    fontSize: 14,
-    color: "#015366",
-    fontFamily: "Manrope-SemiBold",
   },
   fuelRow: {
     flexDirection: 'row',
@@ -143,6 +134,6 @@ const styles = StyleSheet.create({
     width: 320,
     height: 90,
     resizeMode: "contain",
-    marginBottom: 12,
+    marginBottom: 14,
   },
 });

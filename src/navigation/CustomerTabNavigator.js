@@ -13,6 +13,8 @@ import ServiceList from "../screens/Customer/ServiceList";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import CustomHeader from "../components/CustomHeader";
 import { MyCarsList } from "../screens/Customer/MyCarsList";
+import globalStyles from "../styles/globalStyles";
+import { color } from "../styles/theme";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +34,7 @@ export default function CustomerTabNavigator({ navigation }) {
         //   />
         // ),
         tabBarShowLabel: true,
-        tabBarActiveTintColor: "#1e7e84",
+        tabBarActiveTintColor: color.primary,
         tabBarInactiveTintColor: "#8e8e93",
         tabBarStyle: {
           backgroundColor: "#fff",
@@ -73,7 +75,7 @@ export default function CustomerTabNavigator({ navigation }) {
                 style={{
                   width: 55,
                   height: 26,
-                  tintColor: focused ? "#1e7e84" : "#8e8e93",
+                  tintColor: focused ? '#136d6e' : "#8e8e93",
                   marginBottom: -15,
                 }}
                 resizeMode="contain"

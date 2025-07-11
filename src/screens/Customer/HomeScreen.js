@@ -13,65 +13,125 @@ import CTAbannerhome from "../../../assets/images/CTAbannerhome.png";
 import exteriorservice from "../../../assets/images/exteriorservice.png";
 import bluecar from "../../../assets/images/bluecar.png";
 import { color } from "../../styles/theme";
+
 export default function HomeScreen() {
   return (
     <ScrollView
-      style={{ backgroundColor: "#fff" }}
+      style={{ backgroundColor: color.textWhite }}
       contentContainerStyle={{ paddingBottom: 30 }}
     >
-      <View style={styles.banner}>
-        <View style={{ display: "flex" }}>
-          <Text style={globalStyles.xLargeBold}>
-            MY CAR BUDDY
-          </Text>
-          <Text style={styles.bannerSubtitle}>
+      <View style={[styles.banner, globalStyles.mb35]}>
+        <Text
+          style={[
+            globalStyles.xLargeBold,
+            globalStyles.f36Bold,
+            globalStyles.textWhite,
+          ]}
+        >
+          MY CAR
+        </Text>
+        <Text
+          style={[
+            globalStyles.xLargeBold,
+            globalStyles.mb90,
+            globalStyles.f36Bold,
+            globalStyles.textWhite,
+          ]}
+        >
+          BUDDY
+        </Text>
+
+        {/* Absolutely positioned container for car and subtitle */}
+        <View style={styles.bannerAbsolute}>
+          <Image
+            source={bluecar}
+            style={styles.carImagePositioned}
+            resizeMode="contain"
+          />
+          <Text style={styles.bannerSubtitlePositioned}>
             A Professional Car Care Services in Hyderabad
           </Text>
         </View>
-        <Image
-          source={bluecar}
-          style={styles.carImage}
-          resizeMode="contain"
-        />
       </View>
-
-      <Text style={styles.sectionTitle}>Browse Services</Text>
-      <View style={styles.services}>
-        <TouchableOpacity style={styles.card}>
-          <Image source={exteriorservice} style={styles.cardImage} />
-          <Text style={styles.cardText}>Interior Service</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Image source={exteriorservice} style={styles.cardImage} />
-          <Text style={styles.cardText}>Exterior Service</Text>
-        </TouchableOpacity>
-      </View>
-      <ImageBackground
-        source={CTAbannerhome}
-        style={styles.ctaContainer}
-        resizeMode="cover"
-      >
-        <View >
-          <View style={styles.ctaTextContainer}>
-            <Text style={styles.ctaTitle}>
-              Give your car’s intro to your care buddy
-            </Text>
-            <Text style={styles.ctaSubTitle}>
-              We’ll remember it, pamper it, and keep it shining.
-            </Text>
-          </View>
+      <View style={globalStyles.container}>
+        <Text
+          style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f18Bold]}
+        >
+          Providing Services
+        </Text>
+        <View style={[globalStyles.flexrow, globalStyles.justifysb]}>
+          <TouchableOpacity style={styles.card}>
+            <Image source={exteriorservice} style={styles.cardImage} />
+            <Text style={styles.cardText}>Interior Service</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.card}>
+            <Image source={exteriorservice} style={styles.cardImage} />
+            <Text style={styles.cardText}>Exterior Service</Text>
+          </TouchableOpacity>
         </View>
-      </ImageBackground>
+        <ImageBackground
+          source={CTAbannerhome}
+          style={[
+            styles.ctaContainer,
+            globalStyles.radius,
+            globalStyles.p5,
+            globalStyles.mt5,
+          ]}
+          resizeMode="cover"
+        >
+          <View>
+            <View style={styles.ctaTextContainer}>
+              <Text
+                style={[
+                  styles.ctaTitle,
+                  globalStyles.w60,
+                  globalStyles.textWhite,
+                ]}
+              >
+                Give your car’s intro to your care buddy
+              </Text>
+              <Text style={[globalStyles.w50, globalStyles.textWhite]}>
+                We’ll remember it, pamper it, and keep it shining.
+              </Text>
+            </View>
 
-      <TouchableOpacity style={styles.ctaButton}>
-          <Text style={styles.ctaButtonText}>Add My Car</Text>
-        </TouchableOpacity>
+            <View style={styles.ctaButtonWrapper}>
+              <TouchableOpacity
+                style={[styles.ctaButton, globalStyles.bgwhite]}
+              >
+                <Text>Add My Car</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ImageBackground>
+      </View>
     </ScrollView>
   );
 }
 const styles = StyleSheet.create({
+  bannerAbsolute: {
+    position: "relative",
+    height: 100,
+  },
 
-   title: {
+  carImagePositioned: {
+    position: "absolute",
+    bottom: -50,
+    left: 0,
+    width: "55%",
+    height: 130,
+  },
+
+  bannerSubtitlePositioned: {
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+    width: "45%",
+    textAlign: "right",
+    color: color.white,
+  },
+
+  title: {
     fontSize: 22,
     color: color.white,
   },
@@ -96,41 +156,28 @@ const styles = StyleSheet.create({
     padding: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    alignItems: "center",
   },
   carImage: {
-    width: "100%",
-    height: 130,
+    width: "60%",
+    // height: 130,
   },
-
 
   bannerSubtitle: {
-    fontSize: 14,
+    width: "40%",
     color: color.white,
-    marginTop: 5,
-    textAlign: "center",
   },
-  sectionTitle: {
-    fontSize: 16,
-    marginVertical: 20,
-    marginLeft: 20,
-    color: color.textDark,
-  },
-  services: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingHorizontal: 16,
-  },
+
   card: {
     backgroundColor: color.lightGreen || "#E0F7F4",
     borderRadius: 10,
-    width: "42%",
+    width: "47%",
+    height: 150,
     overflow: "hidden",
     alignItems: "center",
   },
   cardImage: {
     width: "100%",
-    height: 100,
+    height: 110,
   },
   cardText: {
     fontSize: 14,
@@ -141,8 +188,6 @@ const styles = StyleSheet.create({
   ctaContainer: {
     flexDirection: "row",
     borderRadius: 10,
-    margin: 20,
-    padding: 15,
     alignItems: "center",
   },
   ctaTextContainer: {
@@ -151,25 +196,20 @@ const styles = StyleSheet.create({
   ctaTitle: {
     fontSize: 24,
     width: "60%",
-    color: color.textDark,
     marginBottom: 5,
     lineHeight: 25,
   },
-  ctaSubTitle: {
-    fontSize: 12,
-    color: color.textLight || "#555",
+  ctaButtonWrapper: {
+    position: "absolute",
+    bottom: -20,
+    right: 40,
   },
 
   ctaButton: {
-    backgroundColor: color.black,
-    padding: 14,
-    borderRadius: 10,
-    marginHorizontal: 20,
-    marginBottom: 30,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     alignItems: "center",
-  },
-  ctaButtonText: {
-    color: color.white,
-    fontSize: 14,
   },
 });
