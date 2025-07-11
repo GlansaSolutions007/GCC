@@ -30,6 +30,10 @@ export default function MyCars() {
     return (
         <View style={[styles.container, { padding: 10 }]}>
             <SearchBox />
+            <View style={{ marginVertical: 10 }}>
+                <Text style={globalStyles.f12Bold}>Add Your Car</Text>
+                <Text style={globalStyles.f10Regular}>Start From Selecting Your Manufacturer.</Text>
+            </View>
             <FlatList
                 data={brands}
                 renderItem={renderBrand}

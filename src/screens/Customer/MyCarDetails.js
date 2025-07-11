@@ -13,11 +13,26 @@ import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import bannerImage from '../../../assets/images/CTAbannerhome.png'
 import globalStyles from '../../styles/globalStyles';
+import { color } from '../../styles/theme';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { Platform } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
 
 export const MyCarDetails = () => {
     const [transmission, setTransmission] = useState('');
     const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
+    const [yearOfPurchase, setYearOfPurchase] = useState(null);
+    const [showYearPicker, setShowYearPicker] = useState(false);
+
+    // Function to format year
+    const formatDate = (date) => {
+        if (!date) return '';
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    };
     return (
         <ScrollView contentContainerStyle={globalStyles.container} showsVerticalScrollIndicator={false}>
             <Image source={bannerImage} style={styles.banner} />
@@ -32,39 +47,74 @@ export const MyCarDetails = () => {
             <View style={styles.row}>
                 <View style={{ flex: 1, marginRight: 8 }}>
                     <Text style={styles.label}>Year of Purchase</Text>
-                    <TextInput placeholder="DD/MM/YYYY" style={styles.input} placeholderTextColor="#888" />
+                    <TouchableOpacity onPress={() => setShowYearPicker(true)}>
+                        <TextInput
+                            value={formatDate(yearOfPurchase)}
+                            placeholder="DD/MM/YYYY"
+                            style={styles.input}
+                            placeholderTextColor="#888"
+                            editable={false}
+                            pointerEvents="none"
+                        />
+                    </TouchableOpacity>
+                    {showYearPicker && (
+                        <DateTimePicker
+                            value={yearOfPurchase || new Date()}
+                            mode="date"
+                            display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                            onChange={(event, selectedDate) => {
+                                setShowYearPicker(false);
+                                if (selectedDate) {
+                                    setYearOfPurchase(selectedDate);
+                                }
+                            }}
+                            maximumDate={new Date()}
+                        />
+                    )}
                 </View>
                 <View style={{ flex: 1, marginLeft: 8 }}>
                     <Text style={styles.label}>Transmission Type</Text>
-                    <View style={styles.dropdownWrapper}>
-                        <Picker
-                            selectedValue={transmission}
-                            onValueChange={(itemValue) => setTransmission(itemValue)}
-                            style={styles.picker}
-                        >
-                            <Picker.Item label="Select Type" value="" />
-                            <Picker.Item label="Automatic" value="Automatic" />
-                            <Picker.Item label="Manual" value="Manual" />
-                        </Picker>
-                    </View>
+                    <Dropdown
+                        data={[
+                            { label: 'Automatic', value: 'Automatic' },
+                            { label: 'Manual', value: 'Manual' },
+                        ]}
+                        labelField="label"
+                        valueField="value"
+                        placeholder="Select Type"
+                        value={transmission}
+                        onChange={(item) => setTransmission(item.value)}
+                        style={styles.dropdown}
+                        placeholderStyle={{ color: '#888' }}
+                        itemTextStyle={{ fontSize: 14 }}
+                    />
                 </View>
             </View>
 
-            <Text style={styles.label}>
-                Engine Type / Size <Text style={styles.optional}>(optional)</Text>
-            </Text>
+            <View style={styles.labelWithHelperRow}>
+                <Text style={styles.label}>
+                    Engine Type / Size <Text style={styles.optional}>(optional)</Text>
+                </Text>
+                <Text style={styles.helperTextInline}>Useful for technicians</Text>
+            </View>
             <TextInput
                 placeholder="e.g. 1.2L i-VTEC"
                 style={styles.input}
                 placeholderTextColor="#888"
             />
-            <Text style={styles.helperText}>Useful for technicians</Text>
 
-            <Text style={styles.label}>
-                Kilometers Driven <Text style={styles.optional}>(optional)</Text>
-            </Text>
-            <TextInput placeholder="---" style={styles.input} placeholderTextColor="#888" />
-            <Text style={styles.helperText}>Useful for technicians</Text>
+            {/* Kilometers Driven with inline helper */}
+            <View style={styles.labelWithHelperRow}>
+                <Text style={styles.label}>
+                    Kilometers Driven <Text style={styles.optional}>(optional)</Text>
+                </Text>
+                <Text style={styles.helperTextInline}>Useful for technicians</Text>
+            </View>
+            <TextInput
+                placeholder="---"
+                style={styles.input}
+                placeholderTextColor="#888"
+            />
 
             {/* <View style={styles.checkboxContainer}>
                 <CheckBox
@@ -75,15 +125,13 @@ export const MyCarDetails = () => {
             </View> */}
 
             <TouchableOpacity style={styles.submitButton}>
-                <Text style={styles.submitText}>Submit</Text>
+                <Text style={{ ...globalStyles.f12Bold, color: color.white }}>Submit</Text>
             </TouchableOpacity>
         </ScrollView>
     );
 }
 const styles = StyleSheet.create({
-    container: {
-        padding: 16,
-    },
+
     banner: {
         width: '100%',
         height: 140,
@@ -92,48 +140,55 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     label: {
-        fontSize: 14,
-        fontWeight: '600',
-        color: '#333',
-        marginBottom: 6,
+        ...globalStyles.f12Bold,
+        marginBottom: 4,
     },
     optional: {
-        fontSize: 12,
-        color: '#0CA9A3',
+        ...globalStyles.f10Bold,
+        color: color.secondary,
     },
     input: {
         backgroundColor: '#fff',
         borderRadius: 8,
         padding: 12,
-        fontSize: 14,
+        ...globalStyles.f12Regular,
         marginBottom: 10,
     },
+    dropdown: {
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        paddingHorizontal: 12,
+        height: 44,
+        justifyContent: 'center',
+        ...globalStyles.f12Regular,
+    },
     helperText: {
-        fontSize: 12,
+        ...globalStyles.f10Regular,
         color: '#999',
         marginBottom: 10,
         marginLeft: 4,
         alignSelf: 'flex-end',
     },
+    labelWithHelperRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    helperTextInline: {
+        ...globalStyles.f10Regular,
+        color: '#999',
+    },
     row: {
         flexDirection: 'row',
         marginBottom: 10,
     },
-    dropdownWrapper: {
-        backgroundColor: '#f5f5f5',
-        borderRadius: 8,
-        paddingRight: 12,
-        position: 'relative',
-    },
+
     picker: {
-        height: 50,
+        height: 48, // try increasing
+        paddingVertical: 6,
         color: '#000',
         backgroundColor: '#fff',
-    },
-    dropdownIcon: {
-        position: 'absolute',
-        right: 12,
-        top: 18,
+        borderRadius: 8, // optional for consistency with TextInput
     },
     checkboxContainer: {
         flexDirection: 'row',
@@ -146,14 +201,11 @@ const styles = StyleSheet.create({
         color: '#333',
     },
     submitButton: {
-        backgroundColor: '#0CA9A3',
+        backgroundColor: color.secondary,
         paddingVertical: 14,
         borderRadius: 8,
         alignItems: 'center',
+        marginTop: 15
     },
-    submitText: {
-        color: '#fff',
-        fontWeight: '600',
-        fontSize: 16,
-    },
+
 });
