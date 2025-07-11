@@ -14,8 +14,16 @@ import exteriorservice from "../../../assets/images/exteriorservice.png";
 import interiorservice from "../../../assets/images/interiorservice.png"
 import bluecar from "../../../assets/images/bluecar.png";
 import { color } from "../../styles/theme";
+import { useNavigation } from "@react-navigation/native";
 
 export default function HomeScreen() {
+
+  const navigation = useNavigation();
+
+  const goToCar = () => {
+    navigation.navigate('SelectCarBrand');
+  }
+
   return (
     <ScrollView
       style={{ backgroundColor: color.textWhite }}
@@ -48,7 +56,7 @@ export default function HomeScreen() {
             style={styles.carImagePositioned}
             resizeMode="contain"
           />
-          <Text style={[styles.bannerSubtitlePositioned,globalStyles.f20Regular]}>
+          <Text style={[styles.bannerSubtitlePositioned, globalStyles.f20Regular]}>
             A Professional Car Care Services in Hyderabad
           </Text>
         </View>
@@ -97,15 +105,16 @@ export default function HomeScreen() {
               </Text>
             </View>
 
-         
+
           </View>
-             <View style={styles.ctaButtonWrapper}>
-              <TouchableOpacity
-                style={[styles.ctaButton, globalStyles.bgwhite]}
-              >
-                <Text style={globalStyles.f16Bold}>Add My Car</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.ctaButtonWrapper}>
+            <TouchableOpacity
+              style={[styles.ctaButton, globalStyles.bgwhite]}
+              onPress={goToCar}
+            >
+              <Text style={globalStyles.f16Bold}>Add My Car</Text>
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </View>
     </ScrollView>
@@ -181,7 +190,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 10,
     alignItems: "center",
-    position: "relative", 
+    position: "relative",
     minHeight: 160,
   },
 

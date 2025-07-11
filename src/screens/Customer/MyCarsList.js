@@ -87,7 +87,7 @@ export const MyCarsList = () => {
                     <Text style={styles.emptyText}>Please add your car</Text>
                     <TouchableOpacity
                         style={styles.addButton}
-                        onPress={() => navigation.navigate('SelectCarModel')}
+                        onPress={() => navigation.navigate('SelectCarBrand')}
                     >
                         <Text style={styles.addButtonText}>Add Your Car</Text>
                     </TouchableOpacity>
@@ -101,7 +101,7 @@ export const MyCarsList = () => {
                             <SearchBox />
                         </View>
                         <TouchableOpacity
-                            onPress={() => navigation.navigate('SelectCarModel')}
+                            onPress={() => navigation.navigate('SelectCarBrand')}
                             style={styles.addIconWrapper}
                         >
                             <Image source={carIconPlus} style={styles.plusIcon} />
