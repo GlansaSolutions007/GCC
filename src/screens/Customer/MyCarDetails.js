@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         height: 140,
         resizeMode: 'cover',
         marginBottom: 20,
-        borderRadius: 12,
+        borderRadius: 20,
     },
     label: {
         fontSize: 14,
