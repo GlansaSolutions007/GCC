@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 12,
     height: 50,
-    margin: 10,
+    // margin: 10,
   },
 });

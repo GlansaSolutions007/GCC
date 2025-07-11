@@ -12,6 +12,7 @@ import MyCars from "../screens/Customer/MyCars";
 import ServiceList from "../screens/Customer/ServiceList";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import CustomHeader from "../components/CustomHeader";
+import { MyCarsList } from "../screens/Customer/MyCarsList";
 
 const Tab = createBottomTabNavigator();
 
@@ -112,7 +113,7 @@ export default function CustomerTabNavigator({ navigation }) {
       />
       <Tab.Screen
         name="My Cars"
-        component={MyCars}
+        component={MyCarsList}
        
       />
       <Tab.Screen name="Book Service" component={BookServiceScreen} />
