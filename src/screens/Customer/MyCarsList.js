@@ -13,6 +13,8 @@ import globalStyles from '../../styles/globalStyles';
 import sampleCar from '../../../assets/images/xuv-3xo-exterior-right-front-three-quarter-34.webp';
 import carIconPlus from '../../../assets/images/My Car.png'; // Your custom icon
 import SearchBox from '../../components/SearchBox';
+import { color } from '../../styles/theme';
+// import {color} from '../../../'
 
 export const MyCarsList = () => {
     const navigation = useNavigation();
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
     addIconWrapper: {
         marginLeft: 10,
         padding: 6,
-        backgroundColor: '#0CA9A3',
+        backgroundColor: color.secondary,
         borderRadius: 8,
     },
 
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         borderRadius: 12,
         padding: 12,
-        borderColor: '#0CA9A3',
+        borderColor: color.secondary,
         borderWidth: 1,
         marginBottom: 40,
         overflow: 'visible',
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
         bottom: -17,
         left: '83%',
         transform: [{ translateX: -60 }], 
-        backgroundColor: '#0CA9A3',
+        backgroundColor: color.secondary,
         paddingHorizontal: 24,
         paddingVertical: 8,
         borderRadius: 10,

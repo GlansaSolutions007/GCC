@@ -3,6 +3,7 @@ import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react
 import carData from "../../../assets/data/carBrands.json";
 import { useNavigation } from "@react-navigation/native";
 import SearchBox from "../../components/SearchBox";
+import globalStyles from "../../styles/globalStyles";
 
 export default function MyCars() {
     const [brands, setBrands] = useState([]);
@@ -22,14 +23,13 @@ export default function MyCars() {
             }}
         >
             <Image source={{ uri: item.logo }} style={styles.logo} />
-            <Text style={styles.name}>{item.brand}</Text>
+            <Text style={globalStyles.f12Bold}>{item.brand}</Text>
         </TouchableOpacity>
     );
 
     return (
         <View style={[styles.container, { padding: 10 }]}>
             <SearchBox />
-            {/* <Text style={styles.heading}>Select Manufacturer</Text> */}
             <FlatList
                 data={brands}
                 renderItem={renderBrand}
@@ -37,6 +37,7 @@ export default function MyCars() {
                 numColumns={3}
                 columnWrapperStyle={styles.row}
                 contentContainerStyle={{ paddingBottom: 20 }}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     );
@@ -44,24 +45,17 @@ export default function MyCars() {
 
 const styles = StyleSheet.create({
     container: { padding: 5, backgroundColor: "#fff", flex: 1 },
-    heading: { fontSize: 18, fontWeight: "bold", marginBottom: 12 },
     row: { justifyContent: "space-between", marginBottom: 16 },
     card: {
         alignItems: "center",
         flex: 1,
-        marginHorizontal: 4,
-        marginVertical: 4
+        marginHorizontal: 2,
+        marginVertical: 2
     },
     logo: {
         width: 80,
         height: 80,
         resizeMode: "contain",
         marginBottom: 1,
-    },
-    name: {
-        fontSize: 15,
-        textAlign: "center",
-        fontWeight: "medium",
-        fontFamily:"Manrope-Medium",
     },
 });
