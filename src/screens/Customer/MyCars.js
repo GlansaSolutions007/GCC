@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import SearchBox from "../../components/SearchBox";
 import globalStyles from "../../styles/globalStyles";
 import CustomText from "../../components/CustomText";
+import { color } from "../../styles/theme";
 
 export default function MyCars() {
     const [brands, setBrands] = useState([]);
@@ -33,7 +34,7 @@ export default function MyCars() {
             <SearchBox />
             <View style={{ marginVertical: 10 }}>
                 <CustomText style={globalStyles.f12Bold}>Add Your Car</CustomText>
-                <CustomText style={globalStyles.f10Regular}>Start From Selecting Your Manufacturer.</CustomText>
+                <CustomText style={{...globalStyles.f10Bold, color: color.secondary}}>Start From Selecting Your Manufacturer.</CustomText>
             </View>
             <FlatList
                 data={brands}

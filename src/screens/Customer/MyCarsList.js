@@ -15,6 +15,7 @@ import carIconPlus from '../../../assets/images/My Car.png'; // Your custom icon
 import SearchBox from '../../components/SearchBox';
 import { color } from '../../styles/theme';
 import CustomText from '../../components/CustomText';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 // import {color} from '../../../'
 
 export const MyCarsList = () => {
@@ -73,7 +74,7 @@ export const MyCarsList = () => {
                     <CustomText style={globalStyles.f12Bold}>{item.manufacturer}</CustomText>
                 </View>
             </View>
-            <View style={{ height: 10 }} />
+            <View style={{ height: 16 }} />
             <TouchableOpacity style={styles.detailsButton}>
                 <CustomText style={{ color: '#fff' }}>View Details</CustomText>
             </TouchableOpacity>
@@ -105,7 +106,7 @@ export const MyCarsList = () => {
                             onPress={() => navigation.navigate('SelectCarBrand')}
                             style={styles.addIconWrapper}
                         >
-                            <Image source={carIconPlus} style={styles.plusIcon} />
+                            <MaterialCommunityIcons name="car-info" size={24} color="white" />
                         </TouchableOpacity>
                     </View>
 
@@ -154,12 +155,12 @@ const styles = StyleSheet.create({
         overflow: 'visible',
     },
     carImage: {
-        width: '60%',       // 60% of the parent container
+        width: '57%',       // 60% of the parent container
         height: 100,
         resizeMode: 'contain'
     },
     carInfo: {
-        width: '40%',       // 40% of the parent container
+        width: '43%',       // 40% of the parent container
         paddingLeft: 12,
         flex: 1,
         position: 'relative',
@@ -178,10 +179,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: -17,
         left: '80%',
-        transform: [{ translateX: -60 }], 
+        transform: [{ translateX: -60 }],
         backgroundColor: color.secondary,
         paddingHorizontal: 24,
-        paddingVertical: 8,
+        paddingVertical: 10,
         borderRadius: 10,
         zIndex: 2,
         elevation: 4,

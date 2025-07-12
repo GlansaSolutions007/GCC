@@ -7,7 +7,6 @@ import {
     StyleSheet,
     ScrollView,
     Image,
-    CheckBox, // or use @react-native-community/checkbox if needed
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
@@ -20,6 +19,7 @@ import { Dropdown } from 'react-native-element-dropdown';
 import CustomAlert from '../../components/CustomAlert';
 import { useNavigation } from '@react-navigation/native';
 import CustomText from '../../components/CustomText';
+import Checkbox from 'expo-checkbox';
 
 export const MyCarDetails = () => {
     const [transmission, setTransmission] = useState('');
@@ -134,13 +134,15 @@ export const MyCarDetails = () => {
                 placeholderTextColor="#888"
             />
 
-            {/* <View style={styles.checkboxContainer}>
-                <CheckBox
-                    value={privacyAccepted}
-                    onValueChange={setPrivacyAccepted}
-                />
-                <CustomText style={styles.checkboxLabel}>Accept Privacy Policy</CustomText>
-            </View> */}
+            <View style={styles.privacyContainer}>
+                <View style={styles.privacyRow}>
+                    <CustomText style={styles.privacyText}>I accept the Privacy Policy</CustomText>
+                    <Checkbox
+                        value={privacyAccepted}
+                        onValueChange={setPrivacyAccepted}
+                    />
+                </View>
+            </View>
 
             <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                 <CustomText style={{ ...globalStyles.f12Bold, color: color.white }}>Submit</CustomText>
@@ -182,7 +184,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 8,
         padding: 12,
-        ...globalStyles.f12Regular,
+        ...globalStyles.f10Bold,
         marginBottom: 10,
     },
     dropdown: {
@@ -215,26 +217,30 @@ const styles = StyleSheet.create({
     },
 
     picker: {
-        height: 48, // try increasing
+        height: 48,
         paddingVertical: 6,
         color: '#000',
         backgroundColor: '#fff',
-        borderRadius: 8, // optional for consistency with TextInput
+        borderRadius: 8,
     },
-    checkboxContainer: {
+    privacyContainer: {
+        alignItems: 'flex-end',
+    },
+
+    privacyRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 12,
     },
-    checkboxLabel: {
-        marginLeft: 8,
-        fontSize: 14,
-        color: '#333',
+
+    privacyText: {
+        marginRight: 6,
+        ...globalStyles.f10Regular,
+        color: '#999',
     },
     submitButton: {
         backgroundColor: color.secondary,
         paddingVertical: 14,
-        paddingHorizontal:16,
+        paddingHorizontal: 16,
         borderRadius: 8,
         alignItems: 'center',
         marginTop: 15

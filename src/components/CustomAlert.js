@@ -36,7 +36,7 @@ export default function CustomAlert({
       <View style={styles.backdrop}>
         <View style={styles.alertBox}>
           <TouchableOpacity style={styles.closeIcon} onPress={onClose}>
-            <Ionicons name="close" size={20} color="#ffffff" />
+            <Ionicons name="close" size={20} style={{color:color.primary}}/>
           </TouchableOpacity>
           <CustomText style={[styles.alertTitle, { color: alertColor }]}>
             {title}
@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     right: 10,
     zIndex: 1,
     padding: 4,
-    backgroundColor: color.secondary,
     borderRadius: 20,
   },
 });

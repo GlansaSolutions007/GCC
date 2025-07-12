@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-import { fontFamilies } from '../styles/fonts'; 
+import { fontFamilies } from '../styles/fonts';
 
 const CustomText = ({ children, style, numberOfLines, ...props }) => {
   return (
     <Text
-      style={[styles.default, style]}
+      style={style}
       allowFontScaling={false}
       numberOfLines={numberOfLines}
       {...props}
@@ -14,13 +14,5 @@ const CustomText = ({ children, style, numberOfLines, ...props }) => {
     </Text>
   );
 };
-
-const styles = StyleSheet.create({
-  default: {
-    fontFamily: fontFamilies.regular,
-    fontSize: 16,
-    color: '#000',
-  },
-});
 
 export default CustomText;
