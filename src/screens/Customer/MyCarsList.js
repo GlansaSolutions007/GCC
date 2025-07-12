@@ -11,7 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import globalStyles from '../../styles/globalStyles';
 import sampleCar from '../../../assets/images/xuv-3xo-exterior-right-front-three-quarter-34.webp';
-import carIconPlus from '../../../assets/images/My Car.png'; // Your custom icon
+import carIconPlus from '../../../assets/images/My Car.png';
 import SearchBox from '../../components/SearchBox';
 import { color } from '../../styles/theme';
 import CustomText from '../../components/CustomText';
@@ -99,7 +99,7 @@ export const MyCarsList = () => {
                     {/* Header */}
 
                     <View style={styles.header}>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1,marginTop:8 }}>
                             <SearchBox />
                         </View>
                         <TouchableOpacity

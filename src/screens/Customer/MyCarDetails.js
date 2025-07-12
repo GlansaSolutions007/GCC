@@ -136,11 +136,11 @@ export const MyCarDetails = () => {
 
             <View style={styles.privacyContainer}>
                 <View style={styles.privacyRow}>
-                    <CustomText style={styles.privacyText}>I accept the Privacy Policy</CustomText>
                     <Checkbox
                         value={privacyAccepted}
                         onValueChange={setPrivacyAccepted}
                     />
+                    <CustomText style={styles.privacyText}>I accept the Privacy Policy</CustomText>
                 </View>
             </View>
 
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     privacyContainer: {
-        alignItems: 'flex-end',
+        alignItems: 'flex-start',
     },
 
     privacyRow: {
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     },
 
     privacyText: {
-        marginRight: 6,
+        marginLeft: 6,
         ...globalStyles.f10Regular,
         color: '#999',
     },
