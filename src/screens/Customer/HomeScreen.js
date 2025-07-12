@@ -16,6 +16,7 @@ import bluecar from "../../../assets/images/bluecar.png";
 import { color } from "../../styles/theme";
 import CustomText from "../../components/CustomText";
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomeScreen() {
 
@@ -57,7 +58,7 @@ export default function HomeScreen() {
             style={styles.carImagePositioned}
             resizeMode="contain"
           />
-          <CustomText style={[styles.bannerSubtitlePositioned,globalStyles.f20Regular]}>
+          <CustomText style={[styles.bannerSubtitlePositioned, globalStyles.f20Regular]}>
             A Professional Car Care Services in Hyderabad
           </CustomText>
         </View>
@@ -70,12 +71,30 @@ export default function HomeScreen() {
         </CustomText>
         <View style={[globalStyles.flexrow, globalStyles.justifysb]}>
           <TouchableOpacity style={styles.card}>
-            <Image source={interiorservice} style={styles.cardImage} />
-            <CustomText style={[styles.cardText, globalStyles.textWhite]}>Interior Service</CustomText>
+            <Image source={exteriorservice} style={styles.cardImage} />
+
+            <LinearGradient
+              colors={[color.primary, 'transparent']}
+              start={{ x: 0.5, y: 1 }}
+              end={{ x: 0.5, y: 0 }}
+              style={styles.gradientOverlay}
+            >
+              <CustomText style={[globalStyles.f12Bold, globalStyles.textWhite]}>Exterior</CustomText>
+              <CustomText style={[globalStyles.f12Regular, globalStyles.textWhite]}>Service</CustomText>
+            </LinearGradient>
           </TouchableOpacity>
           <TouchableOpacity style={styles.card}>
-            <Image source={exteriorservice} style={styles.cardImage} />
-            <CustomText style={[styles.cardText, globalStyles.textWhite]}>Exterior Service</CustomText>
+            <Image source={interiorservice} style={styles.cardImage} />
+
+            <LinearGradient
+              colors={[color.primary, 'transparent']}
+              start={{ x: 0.5, y: 1 }}
+              end={{ x: 0.5, y: 0 }}
+              style={styles.gradientOverlay}
+            >
+              <CustomText style={[globalStyles.f12Bold, globalStyles.textWhite]}>Interior</CustomText>
+              <CustomText style={[globalStyles.f12Regular, globalStyles.textWhite]}>Service</CustomText>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
         <ImageBackground
@@ -170,22 +189,27 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    backgroundColor: color.primary,
-    borderRadius: 10,
-    width: "47%",
+    width: '47%',
     height: 150,
-    overflow: "hidden",
-    alignItems: "center",
+    borderRadius: 12,
+    overflow: 'hidden',
+    position: 'relative',
+    backgroundColor: '#ccc',
   },
+
   cardImage: {
-    width: "100%",
-    height: 110,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
-  cardText: {
-    fontSize: 14,
+  gradientOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '70%', // adjust how far the gradient fades up
+    justifyContent: 'flex-end',
     padding: 10,
-    color: color.textDark,
-    textAlign: "center",
   },
   ctaContainer: {
     flexDirection: "row",
