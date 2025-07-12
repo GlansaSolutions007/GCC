@@ -11,20 +11,20 @@ import { Ionicons } from "@expo/vector-icons";
 import globalStyles from "../../styles/globalStyles";
 import CTAbannerhome from "../../../assets/images/CTAbannerhome.png";
 import exteriorservice from "../../../assets/images/exteriorservice.png";
-import interiorservice from "../../../assets/images/interiorservice.png"
+import interiorservice from "../../../assets/images/interiorservice.png";
 import bluecar from "../../../assets/images/bluecar.png";
+import logo from "../../../assets/Logo/logo.png";
 import { color } from "../../styles/theme";
 import CustomText from "../../components/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomeScreen() {
-
   const navigation = useNavigation();
 
   const goToCar = () => {
-    navigation.navigate('SelectCarBrand');
-  }
+    navigation.navigate("SelectCarBrand");
+  };
 
   return (
     <ScrollView
@@ -32,40 +32,23 @@ export default function HomeScreen() {
       contentContainerStyle={{ paddingBottom: 30 }}
     >
       <View style={[styles.banner, globalStyles.mb35]}>
-        <CustomText
-          style={[
-            globalStyles.xLargeBold,
-            globalStyles.f36Bold,
-            globalStyles.textWhite,
-          ]}
-        >
-          MY CAR
-        </CustomText>
-        <CustomText
-          style={[
-            globalStyles.xLargeBold,
-            globalStyles.mb40,
-            globalStyles.f36Bold,
-            globalStyles.textWhite,
-          ]}
-        >
-          BUDDY
-        </CustomText>
-
+        <Image source={logo} style={styles.logo}  resizeMode="contain" />
         <View style={styles.bannerAbsolute}>
           <Image
             source={bluecar}
             style={styles.carImagePositioned}
             resizeMode="contain"
           />
-          <CustomText style={[styles.bannerSubtitlePositioned, globalStyles.f20Regular]}>
+          <CustomText
+            style={[styles.bannerSubtitlePositioned, globalStyles.f18Regular]}
+          >
             A Professional Car Care Services in Hyderabad
           </CustomText>
         </View>
       </View>
       <View style={globalStyles.container}>
         <CustomText
-          style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f16Bold]}
+          style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f18Bold]}
         >
           Providing Services
         </CustomText>
@@ -115,17 +98,21 @@ export default function HomeScreen() {
                   globalStyles.f20Bold,
                   globalStyles.w60,
                   globalStyles.textWhite,
-                  globalStyles.f18Bold
+                  globalStyles.f18Bold,
                 ]}
               >
                 Give your car’s intro to your care buddy
               </CustomText>
-              <CustomText style={[globalStyles.w50, globalStyles.textWhite, globalStyles.f12Regular]}>
+              <CustomText
+                style={[
+                  globalStyles.w50,
+                  globalStyles.textWhite,
+                  globalStyles.f12Regular,
+                ]}
+              >
                 We’ll remember it, pamper it, and keep it shining.
               </CustomText>
             </View>
-
-
           </View>
           <View style={styles.ctaButtonWrapper}>
             <TouchableOpacity
@@ -141,6 +128,10 @@ export default function HomeScreen() {
   );
 }
 const styles = StyleSheet.create({
+  logo: {
+   width: 200,
+    height: 100,
+  },
   bannerAbsolute: {
     position: "relative",
     height: 100,
