@@ -204,7 +204,6 @@ const styles = StyleSheet.create({
   },
   ctaContainer: {
     flexDirection: "row",
-    borderRadius: 10,
     alignItems: "center",
     position: "relative",
     minHeight: 160,
@@ -217,7 +216,7 @@ const styles = StyleSheet.create({
   },
   ctaButtonWrapper: {
     position: "absolute",
-    bottom: 10,
+    bottom: 8,
     right: 10,
   },
 
