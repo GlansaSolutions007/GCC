@@ -20,6 +20,8 @@ import { demoUsers } from "../../constants/demoUsers";
 import { useAuth } from "../../contexts/AuthContext";
 import { color } from "../../styles/theme";
 import CustomText from "../../components/CustomText";
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function LoginScreen() {
   const { login } = useAuth();
@@ -29,6 +31,8 @@ export default function LoginScreen() {
   const [status, setStatus] = React.useState("info");
   const [message, setMessage] = React.useState("");
   const [title, setTitle] = React.useState("Login Info");
+
+ const navigation = useNavigation();
 
   useEffect(() => {
     const showSub = Keyboard.addListener(
@@ -45,6 +49,7 @@ export default function LoginScreen() {
       hideSub.remove();
     };
   }, []);
+
 
   const handleLogin = () => {
     const matchedUser = demoUsers.find(
@@ -69,7 +74,6 @@ export default function LoginScreen() {
     >
       <View />
       <View style={[globalStyles.container]}>
-        {/* Show logo only when keyboard is NOT visible */}
         {!keyboardVisible && (
           <View>
             <Image
@@ -81,7 +85,7 @@ export default function LoginScreen() {
 
         <TextInput
           placeholder="Email -or- Phone Number"
-          placeholderTextColor={color.textInputDark} // use correctly here
+          placeholderTextColor={color.textInputDark} 
           value={inputValue}
           onChangeText={(text) => setInputValue(text)}
           style={styles.textInput}
@@ -90,17 +94,27 @@ export default function LoginScreen() {
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <CustomText style={styles.buttonText}>Login</CustomText>
         </TouchableOpacity>
-
-        {/* Hide these when keyboard is visible */}
         {!keyboardVisible && (
           <>
-            <TouchableOpacity>
-              <CustomText style={styles.forgotText}>Forgot Password?</CustomText>
-            </TouchableOpacity>
+            <View style={[globalStyles.flexrow,globalStyles.alineItemscenter,globalStyles.justifysb,globalStyles.mt1]}>
+            <View style={[globalStyles.flexrow,globalStyles.alineItemscenter]}>
+              <CustomText style={globalStyles.textWhite}>Create new account? </CustomText>
+              <TouchableOpacity  onPress={() => navigation.navigate('Register')}>
+              <CustomText style={globalStyles.textWhite}>Sign Up</CustomText>
+              </TouchableOpacity>
+            </View>
+              <TouchableOpacity>
+                <CustomText style={globalStyles.textWhite}>
+                  Forgot Password?
+                </CustomText>
+              </TouchableOpacity>
+            </View>
 
             <TouchableOpacity style={styles.googleButton}>
               <Ionicons name="logo-google" size={20} color="#000" />
-              <CustomText style={styles.googleText}>Sign in with Google</CustomText>
+              <CustomText style={styles.googleText}>
+                Sign in with Google
+              </CustomText>
             </TouchableOpacity>
           </>
         )}
@@ -125,7 +139,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
- 
+
   logo: {
     width: "45%",
     height: "41%",
@@ -148,7 +162,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#000",
   },
-   title: {
+  title: {
     // fontFamily: fonts.bold,
     fontSize: 22,
     color: color.white,
@@ -184,13 +198,7 @@ const styles = StyleSheet.create({
     // fontFamily: fonts.medium,
     fontSize: 16,
   },
-  forgotText: {
-    alignSelf: "flex-end",
-    marginTop: 8,
-    fontSize: 12,
-    color: color.white,
-    // fontFamily: fonts.regular,
-  },
+
   // Home Screen Styles
   header: {
     backgroundColor: color.primary || "#017F77",
