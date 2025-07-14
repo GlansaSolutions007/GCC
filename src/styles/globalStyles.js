@@ -62,6 +62,7 @@ export default StyleSheet.create({
   // Default styles ----------- start
 
   container: {
+    // backgroundColor: color.white,
     flex: 1,
     paddingHorizontal: 20,
     justifyContent: "center",

@@ -68,7 +68,7 @@ export default function LoginScreen() {
 
   return (
     <ImageBackground
-      source={require("../../../assets/images/loginbg2.png")}
+      source={require("../../../assets/images/loginbg3.png")}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
@@ -77,7 +77,7 @@ export default function LoginScreen() {
         {!keyboardVisible && (
           <View>
             <Image
-              source={require("../../../assets/images/applogo.png")}
+              source={require("../../../assets/images/GCCL1-01.png")}
               style={styles.logo}
             />
           </View>
@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: "50%",
-    height: "30%",
+    width: "45%",
+    height: "41%",
     marginBottom: 10,
   },
   googleButton: {

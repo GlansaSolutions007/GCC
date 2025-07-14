@@ -69,7 +69,6 @@ export default function CarModels() {
               key={fuel.name}
               style={styles.fuelIcon}
               onPress={() => {
-                // You can navigate or store fuel selection here
                 console.log(`Selected ${fuel.name} for ${selectedModel?.name}`);
                 navigation.navigate("MyCarDetails", {
                   model: selectedModel,
