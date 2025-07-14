@@ -62,8 +62,16 @@ export const MyCarDetails = () => {
                     showsVerticalScrollIndicator={false}
                     keyboardShouldPersistTaps="handled"
                 >
-                    <Image source={bannerImage} style={styles.banner} />
+                    <View style={styles.bannerContainer}>
+                        <Image source={bannerImage} style={styles.bannerImage} />
 
+                        <View style={styles.bannerTextContainer}>
+                            <CustomText style={styles.bannerTitle}>Your car,{'\n'}our priority</CustomText>
+                            <CustomText style={styles.bannerSubtitle}>
+                                Filling these details ensures better{'\n'}service accuracy & reminders
+                            </CustomText>
+                        </View>
+                    </View>
                     <CustomText style={styles.label}>Registration Number</CustomText>
                     <TextInput
                         placeholder="e.g. TS08-AB-1234"
@@ -112,10 +120,15 @@ export const MyCarDetails = () => {
                                 value={transmission}
                                 onChange={(item) => setTransmission(item.value)}
                                 style={styles.dropdown}
-                                placeholderStyle={{ color: '#888' }}
-                                itemTextStyle={{ fontSize: 14 }}
+                                placeholderStyle={styles.placeholderStyle}
+                                selectedTextStyle={styles.selectedTextStyle}
+                                itemTextStyle={styles.itemTextStyle}
+                                containerStyle={styles.dropdownContainer}
+                                activeColor="#f0f0f0"
+                                itemContainerStyle={styles.itemContainerStyle}
                             />
                         </View>
+
                     </View>
 
                     <View style={styles.labelWithHelperRow}>
@@ -177,13 +190,37 @@ export const MyCarDetails = () => {
 }
 const styles = StyleSheet.create({
 
-    banner: {
+    bannerContainer: {
+        position: 'relative',
         width: '100%',
         height: 140,
-        resizeMode: 'cover',
         marginBottom: 20,
         borderRadius: 20,
+        overflow: 'hidden', // ensures rounded corners affect children
     },
+
+    bannerImage: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover',
+    },
+
+    bannerTextContainer: {
+        position: 'absolute',
+        padding: 20
+    },
+
+    bannerTitle: {
+        ...globalStyles.textWhite,
+        ...globalStyles.f16Bold,
+        marginBottom: 4,
+    },
+
+    bannerSubtitle: {
+        ...globalStyles.textWhite,
+        ...globalStyles.f10Regular,
+    },
+
     label: {
         ...globalStyles.f12Bold,
         marginBottom: 4,
@@ -203,10 +240,30 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 8,
         paddingHorizontal: 12,
-        height: 44,
-        justifyContent: 'center',
-        ...globalStyles.f12Regular,
+        height: 42,
+        justifyContent: 'center',      
     },
+    itemTextStyle: {
+        ...globalStyles.f10Bold,
+    },
+
+    itemContainerStyle: {
+        paddingVertical: 10,
+        paddingHorizontal: 12,
+    },
+
+    dropdownContainer: {
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 3,
+    },
+
     helperText: {
         ...globalStyles.f10Regular,
         color: '#999',

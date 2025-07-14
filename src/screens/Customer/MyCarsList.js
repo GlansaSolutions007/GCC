@@ -106,7 +106,7 @@ export const MyCarsList = () => {
                             onPress={() => navigation.navigate('SelectCarBrand')}
                             style={styles.addIconWrapper}
                         >
-                            <MaterialCommunityIcons name="car-info" size={24} color="white" />
+                            <MaterialCommunityIcons name="car-info" size={28} color="white" />
                         </TouchableOpacity>
                     </View>
 
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 16,
-
+        justifyContent:'center'
     },
     addIconWrapper: {
         marginLeft: 10,

@@ -48,9 +48,9 @@ export default function HomeScreen() {
       </View>
       <View style={globalStyles.container}>
         <CustomText
-          style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f18Bold]}
+          style={[globalStyles.mt4, globalStyles.mb1, globalStyles.f16Bold]}
         >
-          Providing Services
+         We Provide Services Like
         </CustomText>
         <View style={[globalStyles.flexrow, globalStyles.justifysb]}>
           <TouchableOpacity style={styles.card}>

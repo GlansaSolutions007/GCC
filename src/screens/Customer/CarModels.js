@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import carPic from "../../../assets/images/xuv-3xo-exterior-right-front-three-quarter-34.webp"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -29,7 +29,7 @@ export default function CarModels() {
 
   const renderModel = ({ item }) => (
     <TouchableOpacity style={styles.card} onPress={() => handleModelPress(item)}>
-      <Image source={carPic} style={styles.image} />
+      <ImageBackground source={{ uri: item.image }} style={styles.image} imageStyle={{ resizeMode: 'contain' }}></ImageBackground>
       <CustomText style={{ ...globalStyles.f16SemiBold, color: color.primary }}>{item.name}</CustomText>
     </TouchableOpacity>
   );
@@ -106,8 +106,8 @@ const styles = StyleSheet.create({
     marginVertical: 4,
   },
   image: {
-    width: 90,
-    height: 60,
+    width: 100,
+    height: 70,
     resizeMode: "contain",
     marginBottom: 4,
   },
