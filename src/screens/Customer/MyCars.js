@@ -28,11 +28,11 @@ export default function MyCars() {
     );
 
     return (
-        <View style={[styles.container, { padding: 10 }]}>
+        <View style={[globalStyles.container]}>
             <SearchBox />
             <View style={{ marginVertical: 10 }}>
-                <Text style={globalStyles.f12Bold}>Add Your Car</Text>
-                <Text style={globalStyles.f10Regular}>Start From Selecting Your Manufacturer.</Text>
+                <Text style={globalStyles.f24Bold}>Add Your Car</Text>
+                <Text style={globalStyles.f16Regular}>Start From Selecting Your Manufacturer.</Text>
             </View>
             <FlatList
                 data={brands}
@@ -48,7 +48,7 @@ export default function MyCars() {
 }
 
 const styles = StyleSheet.create({
-    container: { padding: 5, backgroundColor: "#fff", flex: 1 },
+    container: { padding: 20, backgroundColor: "#fff", flex: 1 },
     row: { justifyContent: "space-between", marginBottom: 16 },
     card: {
         alignItems: "center",
