@@ -6,15 +6,13 @@ import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../screens/Customer/HomeScreen";
 import ProfileScreen from "../screens/Common/ProfileScreen";
 import BookServiceScreen from "../screens/Customer/BookServiceScreen";
-import MenuButton from "../components/MenuButton";
-import NotificationButton from "../components/NotificationButton";
-import MyCars from "../screens/Customer/MyCars";
 import ServiceList from "../screens/Customer/ServiceList";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import CustomHeader from "../components/CustomHeader";
 import { MyCarsList } from "../screens/Customer/MyCarsList";
 import globalStyles from "../styles/globalStyles";
 import { color } from "../styles/theme";
+import logo from '../../assets/Logo/logo.png'
 
 const Tab = createBottomTabNavigator();
 
@@ -71,7 +69,7 @@ export default function CustomerTabNavigator({ navigation }) {
           if (route.name === "My Car Buddy") {
             return (
               <Image
-                source={require("../../assets/images/Home.png")}
+                source={logo}
                 style={{
                   width: 55,
                   height: 26,

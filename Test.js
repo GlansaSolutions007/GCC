@@ -9,45 +9,45 @@ export default function HomeScreen() {
   return (
   <ScrollView style={{ backgroundColor: '#fff' }} contentContainerStyle={{ paddingBottom: 30 }}>
         <View style={globalStyles.header}>
-          <Text style={globalStyles.greeting}>Hello User</Text>
+          <CustomText style={globalStyles.greeting}>Hello User</CustomText>
           <View style={globalStyles.locationRow}>
-            <Text style={globalStyles.location}>Hyderabad, Telangana</Text>
+            <CustomText style={globalStyles.location}>Hyderabad, Telangana</CustomText>
             <Ionicons name="chevron-down" size={16} color="#fff" />
           </View>
         </View>
   
         <View style={globalStyles.banner}>
           <Image source={bluecar} style={globalStyles.carImage} resizeMode="contain" />
-          <Text style={globalStyles.bannerTitle}>
-            MY <Text>CAR</Text> BUDDY
-          </Text>
-          <Text style={globalStyles.bannerSubtitle}>
+          <CustomText style={globalStyles.bannerTitle}>
+            MY <CustomText>CAR</CustomText> BUDDY
+          </CustomText>
+          <CustomText style={globalStyles.bannerSubtitle}>
             A Professional Car Care Services in Hyderabad
-          </Text>
+          </CustomText>
         </View>
   
-        <Text style={globalStyles.sectionTitle}>Browse Services</Text>
+        <CustomText style={globalStyles.sectionTitle}>Browse Services</CustomText>
         <View style={globalStyles.services}>
           <TouchableOpacity style={globalStyles.card}>
             <Image source={exteriorservice} style={globalStyles.cardImage} />
-            <Text style={globalStyles.cardText}>Interior Service</Text>
+            <CustomText style={globalStyles.cardText}>Interior Service</CustomText>
           </TouchableOpacity>
           <TouchableOpacity style={globalStyles.card}>
             <Image source={exteriorservice} style={globalStyles.cardImage} />
-            <Text style={globalStyles.cardText}>Exterior Service</Text>
+            <CustomText style={globalStyles.cardText}>Exterior Service</CustomText>
           </TouchableOpacity>
         </View>
   
         <View style={globalStyles.ctaContainer}>
           <View style={globalStyles.ctaTextContainer}>
-            <Text style={globalStyles.ctaTitle}>Give your car’s intro to your care buddy</Text>
-            <Text style={globalStyles.ctaSubTitle}>We’ll remember it, pamper it, and keep it shining.</Text>
+            <CustomText style={globalStyles.ctaTitle}>Give your car’s intro to your care buddy</CustomText>
+            <CustomText style={globalStyles.ctaSubTitle}>We’ll remember it, pamper it, and keep it shining.</CustomText>
           </View>
           <Image source={CTAbannerhome} style={globalStyles.ctaImage} />
         </View>
   
         <TouchableOpacity style={globalStyles.ctaButton}>
-          <Text style={globalStyles.ctaButtonText}>Add My Car</Text>
+          <CustomText style={globalStyles.ctaButtonText}>Add My Car</CustomText>
         </TouchableOpacity>
       </ScrollView>
   );

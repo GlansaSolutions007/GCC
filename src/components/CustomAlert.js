@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { color } from "../styles/theme";
 import { Ionicons } from '@expo/vector-icons';
+import CustomText from "./CustomText";
 
 export default function CustomAlert({
   visible,
@@ -35,13 +36,13 @@ export default function CustomAlert({
       <View style={styles.backdrop}>
         <View style={styles.alertBox}>
           <TouchableOpacity style={styles.closeIcon} onPress={onClose}>
-            <Ionicons name="close" size={20} color="#ffffff" />
+            <Ionicons name="close" size={20} style={{color:color.primary}}/>
           </TouchableOpacity>
-          <Text style={[styles.alertTitle, { color: alertColor }]}>
+          <CustomText style={[styles.alertTitle, { color: alertColor }]}>
             {title}
-          </Text>
+          </CustomText>
           {message ? (
-            <Text style={styles.alertMessage}>{message}</Text>
+            <CustomText style={styles.alertMessage}>{message}</CustomText>
           ) : null}
           {children}
           {showButton && (
@@ -49,7 +50,7 @@ export default function CustomAlert({
               style={[styles.alertButton, { backgroundColor: alertColor }]}
               onPress={onClose}
             >
-              <Text style={styles.alertButtonText}>{buttonText}</Text>
+              <CustomText style={styles.alertButtonText}>{buttonText}</CustomText>
             </TouchableOpacity>
           )}
         </View>
@@ -105,7 +106,6 @@ const styles = StyleSheet.create({
     right: 10,
     zIndex: 1,
     padding: 4,
-    backgroundColor: color.secondary,
     borderRadius: 20,
   },
 });

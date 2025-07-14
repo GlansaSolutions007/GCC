@@ -11,9 +11,11 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import globalStyles from '../../styles/globalStyles';
 import sampleCar from '../../../assets/images/xuv-3xo-exterior-right-front-three-quarter-34.webp';
-import carIconPlus from '../../../assets/images/My Car.png'; // Your custom icon
+import carIconPlus from '../../../assets/images/My Car.png';
 import SearchBox from '../../components/SearchBox';
 import { color } from '../../styles/theme';
+import CustomText from '../../components/CustomText';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 // import {color} from '../../../'
 
 export const MyCarsList = () => {
@@ -62,19 +64,19 @@ export const MyCarsList = () => {
             <View style={{ flexDirection: 'row' }}>
                 <Image source={item.image} style={styles.carImage} />
                 <View style={styles.carInfo}>
-                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Model Name</Text>
-                    <Text style={globalStyles.f12Bold}>{item.model}</Text>
+                    <CustomText style={[globalStyles.f10Bold, { color: '#737373' }]}>Model Name</CustomText>
+                    <CustomText style={globalStyles.f12Bold}>{item.model}</CustomText>
                     <View style={{ height: 6 }} />
-                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Fuel Type</Text>
-                    <Text style={globalStyles.f12Bold}>{item.fuel}</Text>
+                    <CustomText style={[globalStyles.f10Bold, { color: '#737373' }]}>Fuel Type</CustomText>
+                    <CustomText style={globalStyles.f12Bold}>{item.fuel}</CustomText>
                     <View style={{ height: 6 }} />
-                    <Text style={[globalStyles.f10Bold, { color: '#737373' }]}>Manufacturer</Text>
-                    <Text style={globalStyles.f12Bold}>{item.manufacturer}</Text>
+                    <CustomText style={[globalStyles.f10Bold, { color: '#737373' }]}>Manufacturer</CustomText>
+                    <CustomText style={globalStyles.f12Bold}>{item.manufacturer}</CustomText>
                 </View>
             </View>
-            <View style={{ height: 10 }} />
+            <View style={{ height: 16 }} />
             <TouchableOpacity style={styles.detailsButton}>
-                <Text style={{ color: '#fff' }}>View Details</Text>
+                <CustomText style={{ color: '#fff' }}>View Details</CustomText>
             </TouchableOpacity>
         </View>
 
@@ -84,12 +86,12 @@ export const MyCarsList = () => {
         <View style={[globalStyles.container, { backgroundColor: '#fff' }]}>
             {cars.length === 0 ? (
                 <View style={styles.centered}>
-                    <Text style={styles.emptyText}>Please add your car</Text>
+                    <CustomText style={styles.emptyText}>Please add your car</CustomText>
                     <TouchableOpacity
                         style={styles.addButton}
-                        onPress={() => navigation.navigate('SelectCarModel')}
+                        onPress={() => navigation.navigate('SelectCarBrand')}
                     >
-                        <Text style={styles.addButtonText}>Add Your Car</Text>
+                        <CustomText style={styles.addButtonText}>Add Your Car</CustomText>
                     </TouchableOpacity>
                 </View>
             ) : (
@@ -97,14 +99,14 @@ export const MyCarsList = () => {
                     {/* Header */}
 
                     <View style={styles.header}>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1,marginTop:8 }}>
                             <SearchBox />
                         </View>
                         <TouchableOpacity
-                            onPress={() => navigation.navigate('SelectCarModel')}
+                            onPress={() => navigation.navigate('SelectCarBrand')}
                             style={styles.addIconWrapper}
                         >
-                            <Image source={carIconPlus} style={styles.plusIcon} />
+                            <MaterialCommunityIcons name="car-info" size={28} color="white" />
                         </TouchableOpacity>
                     </View>
 
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 16,
-
+        justifyContent:'center'
     },
     addIconWrapper: {
         marginLeft: 10,
@@ -153,12 +155,12 @@ const styles = StyleSheet.create({
         overflow: 'visible',
     },
     carImage: {
-        width: '60%',       // 60% of the parent container
+        width: '57%',       // 60% of the parent container
         height: 100,
         resizeMode: 'contain'
     },
     carInfo: {
-        width: '40%',       // 40% of the parent container
+        width: '43%',       // 40% of the parent container
         paddingLeft: 12,
         flex: 1,
         position: 'relative',
@@ -176,11 +178,11 @@ const styles = StyleSheet.create({
     detailsButton: {
         position: 'absolute',
         bottom: -17,
-        left: '83%',
-        transform: [{ translateX: -60 }], 
+        left: '80%',
+        transform: [{ translateX: -60 }],
         backgroundColor: color.secondary,
         paddingHorizontal: 24,
-        paddingVertical: 8,
+        paddingVertical: 10,
         borderRadius: 10,
         zIndex: 2,
         elevation: 4,

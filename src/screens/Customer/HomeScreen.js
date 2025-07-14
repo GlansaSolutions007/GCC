@@ -11,62 +11,73 @@ import { Ionicons } from "@expo/vector-icons";
 import globalStyles from "../../styles/globalStyles";
 import CTAbannerhome from "../../../assets/images/CTAbannerhome.png";
 import exteriorservice from "../../../assets/images/exteriorservice.png";
-import interiorservice from "../../../assets/images/interiorservice.png"
+import interiorservice from "../../../assets/images/interiorservice.png";
 import bluecar from "../../../assets/images/bluecar.png";
+import logo from "../../../assets/Logo/logo.png";
 import { color } from "../../styles/theme";
+import CustomText from "../../components/CustomText";
+import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
+
+  const goToCar = () => {
+    navigation.navigate("SelectCarBrand");
+  };
+
   return (
     <ScrollView
       style={{ backgroundColor: color.textWhite }}
       contentContainerStyle={{ paddingBottom: 30 }}
     >
       <View style={[styles.banner, globalStyles.mb35]}>
-        <Text
-          style={[
-            globalStyles.xLargeBold,
-            globalStyles.f36Bold,
-            globalStyles.textWhite,
-          ]}
-        >
-          MY CAR
-        </Text>
-        <Text
-          style={[
-            globalStyles.xLargeBold,
-            globalStyles.mb40,
-            globalStyles.f36Bold,
-            globalStyles.textWhite,
-          ]}
-        >
-          BUDDY
-        </Text>
-
+        <Image source={logo} style={styles.logo}  resizeMode="contain" />
         <View style={styles.bannerAbsolute}>
           <Image
             source={bluecar}
             style={styles.carImagePositioned}
             resizeMode="contain"
           />
-          <Text style={[styles.bannerSubtitlePositioned,globalStyles.f20Regular]}>
+          <CustomText
+            style={[styles.bannerSubtitlePositioned, globalStyles.f18Regular]}
+          >
             A Professional Car Care Services in Hyderabad
-          </Text>
+          </CustomText>
         </View>
       </View>
       <View style={globalStyles.container}>
-        <Text
-          style={[globalStyles.mt4, globalStyles.mb2, globalStyles.f16Bold]}
+        <CustomText
+          style={[globalStyles.mt4, globalStyles.mb1, globalStyles.f16Bold]}
         >
-          Providing Services
-        </Text>
+         We Provide Services Like
+        </CustomText>
         <View style={[globalStyles.flexrow, globalStyles.justifysb]}>
           <TouchableOpacity style={styles.card}>
-            <Image source={interiorservice} style={styles.cardImage} />
-            <Text style={[styles.cardText, globalStyles.textWhite]}>Interior Service</Text>
+            <Image source={exteriorservice} style={styles.cardImage} />
+
+            <LinearGradient
+              colors={[color.primary, 'transparent']}
+              start={{ x: 0.5, y: 1 }}
+              end={{ x: 0.5, y: 0 }}
+              style={styles.gradientOverlay}
+            >
+              <CustomText style={[globalStyles.f12Bold, globalStyles.textWhite]}>Exterior</CustomText>
+              <CustomText style={[globalStyles.f12Regular, globalStyles.textWhite]}>Service</CustomText>
+            </LinearGradient>
           </TouchableOpacity>
           <TouchableOpacity style={styles.card}>
-            <Image source={exteriorservice} style={styles.cardImage} />
-            <Text style={[styles.cardText, globalStyles.textWhite]}>Exterior Service</Text>
+            <Image source={interiorservice} style={styles.cardImage} />
+
+            <LinearGradient
+              colors={[color.primary, 'transparent']}
+              start={{ x: 0.5, y: 1 }}
+              end={{ x: 0.5, y: 0 }}
+              style={styles.gradientOverlay}
+            >
+              <CustomText style={[globalStyles.f12Bold, globalStyles.textWhite]}>Interior</CustomText>
+              <CustomText style={[globalStyles.f12Regular, globalStyles.textWhite]}>Service</CustomText>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
         <ImageBackground
@@ -81,37 +92,46 @@ export default function HomeScreen() {
         >
           <View>
             <View>
-              <Text
+              <CustomText
                 style={[
                   styles.ctaTitle,
                   globalStyles.f20Bold,
                   globalStyles.w60,
                   globalStyles.textWhite,
-                  globalStyles.f18Bold
+                  globalStyles.f18Bold,
                 ]}
               >
                 Give your car’s intro to your care buddy
-              </Text>
-              <Text style={[globalStyles.w50, globalStyles.textWhite, globalStyles.f12Regular]}>
-                We’ll remember it, pamper it, and keep it shining.
-              </Text>
-            </View>
-
-         
-          </View>
-             <View style={styles.ctaButtonWrapper}>
-              <TouchableOpacity
-                style={[styles.ctaButton, globalStyles.bgwhite]}
+              </CustomText>
+              <CustomText
+                style={[
+                  globalStyles.w50,
+                  globalStyles.textWhite,
+                  globalStyles.f12Regular,
+                ]}
               >
-                <Text style={globalStyles.f16Bold}>Add My Car</Text>
-              </TouchableOpacity>
+                We’ll remember it, pamper it, and keep it shining.
+              </CustomText>
             </View>
+          </View>
+          <View style={styles.ctaButtonWrapper}>
+            <TouchableOpacity
+              style={[styles.ctaButton, globalStyles.bgwhite]}
+              onPress={goToCar}
+            >
+              <CustomText style={globalStyles.f16Bold}>Add My Car</CustomText>
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </View>
     </ScrollView>
   );
 }
 const styles = StyleSheet.create({
+  logo: {
+   width: 200,
+    height: 100,
+  },
   bannerAbsolute: {
     position: "relative",
     height: 100,
@@ -160,28 +180,32 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    backgroundColor: color.primary,
-    borderRadius: 10,
-    width: "47%",
+    width: '47%',
     height: 150,
-    overflow: "hidden",
-    alignItems: "center",
+    borderRadius: 12,
+    overflow: 'hidden',
+    position: 'relative',
+    backgroundColor: '#ccc',
   },
+
   cardImage: {
-    width: "100%",
-    height: 110,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
-  cardText: {
-    fontSize: 14,
+  gradientOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '70%', // adjust how far the gradient fades up
+    justifyContent: 'flex-end',
     padding: 10,
-    color: color.textDark,
-    textAlign: "center",
   },
   ctaContainer: {
     flexDirection: "row",
-    borderRadius: 10,
     alignItems: "center",
-    position: "relative", 
+    position: "relative",
     minHeight: 160,
   },
 
@@ -192,7 +216,7 @@ const styles = StyleSheet.create({
   },
   ctaButtonWrapper: {
     position: "absolute",
-    bottom: 10,
+    bottom: 8,
     right: 10,
   },
 

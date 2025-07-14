@@ -19,6 +19,7 @@ import CustomAlert from "../../components/CustomAlert";
 import { demoUsers } from "../../constants/demoUsers";
 import { useAuth } from "../../contexts/AuthContext";
 import { color } from "../../styles/theme";
+import CustomText from "../../components/CustomText";
 
 export default function LoginScreen() {
   const { login } = useAuth();
@@ -87,19 +88,19 @@ export default function LoginScreen() {
         />
 
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
+          <CustomText style={styles.buttonText}>Login</CustomText>
         </TouchableOpacity>
 
         {/* Hide these when keyboard is visible */}
         {!keyboardVisible && (
           <>
             <TouchableOpacity>
-              <Text style={styles.forgotText}>Forgot Password?</Text>
+              <CustomText style={styles.forgotText}>Forgot Password?</CustomText>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.googleButton}>
               <Ionicons name="logo-google" size={20} color="#000" />
-              <Text style={styles.googleText}>Sign in with Google</Text>
+              <CustomText style={styles.googleText}>Sign in with Google</CustomText>
             </TouchableOpacity>
           </>
         )}

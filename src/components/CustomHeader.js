@@ -2,24 +2,26 @@ import React from "react";
 import { View, Text, TextInput, StyleSheet, Pressable, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import CustomText from "./CustomText";
+import globalStyles from "../styles/globalStyles";
 
 export default function CustomHeader({ navigation }) {
 
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.headerContainer, { paddingTop: insets.top + 10 }]}>
+    <View style={[styles.headerContainer,globalStyles.bgprimary, { paddingTop: insets.top + 10 }]}>
       <View style={styles.topRow}>
         <View>
-          <Text style={styles.hello}>Hello User</Text>
+          <CustomText style={[globalStyles.textWhite,globalStyles.mt1]}>Hello User</CustomText>
           <Pressable>
-            <Text style={styles.location}>
+            <CustomText style={[globalStyles.f12Bold,globalStyles.mt1,globalStyles.textWhite]}>
               Hyderabad, Telangana <Ionicons name="chevron-down" size={14} />
-            </Text>
+            </CustomText>
           </Pressable>
         </View>
 
         <Pressable onPress={() => console.log("Notifications")}>
-          <Ionicons name="notifications-outline" size={24} color="#000" />
+          <Ionicons name="notifications-outline" size={24} style={globalStyles.textWhite} />
         </Pressable>
       </View>
     </View>
@@ -42,17 +44,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 12,
   },
-  hello: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#333",
-    marginBottom: 5,
-  },
-  location: {
-    fontSize: 14,
-    color: "#007AFF",
-    marginTop: 2,
-  },
+
+
   searchBox: {
     flexDirection: "row",
     alignItems: "center",
