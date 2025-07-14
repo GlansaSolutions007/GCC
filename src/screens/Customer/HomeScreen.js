@@ -23,7 +23,7 @@ export default function HomeScreen() {
   const navigation = useNavigation();
 
   const goToCar = () => {
-    navigation.navigate("SelectCarBrand");
+    navigation.navigate("InteriorService");
   };
 
   return (
@@ -66,7 +66,7 @@ export default function HomeScreen() {
               <CustomText style={[globalStyles.f12Regular, globalStyles.textWhite]}>Service</CustomText>
             </LinearGradient>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={goToCar}>
             <Image source={interiorservice} style={styles.cardImage} />
 
             <LinearGradient
