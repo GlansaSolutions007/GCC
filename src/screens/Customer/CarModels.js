@@ -60,7 +60,7 @@ export default function CarModels() {
         showButton={false}
       >
         {selectedModel && (
-          <Image source={carPic} style={styles.alertCarImage} />
+          <Image source={{ uri: selectedModel.image }} style={styles.alertCarImage} />
         )}
 
         <View style={styles.fuelRow}>

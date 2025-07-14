@@ -7,9 +7,11 @@ import globalStyles from "../../styles/globalStyles";
 import CustomText from "../../components/CustomText";
 import { color } from "../../styles/theme";
 import axios from "axios";
+import Loader from "../../components/Loader";
 
 export default function MyCars() {
     const [brands, setBrands] = useState([]);
+    const [loading, setLoading] = useState(true)
 
     const getBrands = async () => {
         try {
@@ -27,8 +29,8 @@ export default function MyCars() {
                         const imagePath = model.VehicleImage.includes("Images/VehicleModel")
                             ? model.VehicleImage
                             : `Images/VehicleModel/${model.VehicleImage}`;
-                            console.log("Model Image URL:", `https://api.mycarsbuddy.com/${imagePath.replace(/^\/+/, '')}` );
-                            
+                        console.log("Model Image URL:", `https://api.mycarsbuddy.com/${imagePath.replace(/^\/+/, '')}`);
+
                         return {
                             id: model.ModelID,
                             name: model.ModelName,
@@ -48,6 +50,8 @@ export default function MyCars() {
             setBrands(formattedBrands);
         } catch (error) {
             console.error('Failed to fetch car brands or models:', error);
+        } finally {
+            setLoading(false);
         }
     };
     useEffect(() => {
@@ -73,6 +77,8 @@ export default function MyCars() {
             <CustomText style={globalStyles.f12Bold}>{item.brand} {item.brandId}</CustomText>
         </TouchableOpacity>
     );
+
+    if (loading) return <Loader />;
 
     return (
         <View style={[styles.container, { padding: 10, flex: 1 }]}>
