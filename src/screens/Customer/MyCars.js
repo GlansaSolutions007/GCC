@@ -29,7 +29,7 @@ export default function MyCars() {
                         const imagePath = model.VehicleImage.includes("Images/VehicleModel")
                             ? model.VehicleImage
                             : `Images/VehicleModel/${model.VehicleImage}`;
-                        console.log("Model Image URL:", `https://api.mycarsbuddy.com/${imagePath.replace(/^\/+/, '')}`);
+                        // console.log("Model Image URL:", `https://api.mycarsbuddy.com/${imagePath.replace(/^\/+/, '')}`);
 
                         return {
                             id: model.ModelID,

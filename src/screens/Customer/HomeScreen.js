@@ -24,8 +24,14 @@ export default function HomeScreen() {
   const navigation = useNavigation();
 
   const goToCar = () => {
-    navigation.navigate("InteriorService");
+    navigation.navigate("CustomerTabs", {
+      screen: "SelectCarBrand"
+    });
   };
+
+  const interiorService = () => {
+    navigation.navigate("InteriorService");
+  }
 
   const DeviceId = Device.osInternalBuildId || Device.osBuildId || "unknown-device-id";
 
@@ -71,7 +77,7 @@ export default function HomeScreen() {
               <CustomText style={[globalStyles.f12Regular, globalStyles.textWhite]}>Service</CustomText>
             </LinearGradient>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={goToCar}>
+          <TouchableOpacity style={styles.card} onPress={interiorService}>
             <Image source={interiorservice} style={styles.cardImage} />
 
             <LinearGradient

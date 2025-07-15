@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -9,17 +9,30 @@ import {
   FlatList,
   TouchableOpacity,
   ImageBackground,
+  Platform
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { color } from '../../styles/theme';
 import globalStyles from '../../styles/globalStyles';
 import SearchBox from '../../components/SearchBox';
+import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import interior from '../../../assets/images/interiorservice.png'
+import { StatusBar } from 'react-native';
+import Garage from '../../../assets/icons/garageIcon.png'
+import CustomText from '../../components/CustomText';
 
 const popularServices = [
   { id: '1', title: 'Dashboard & Co...', image: require('../../../assets/images/exteriorservice.png') },
   { id: '2', title: 'Roof / Headliner...', image: require('../../../assets/images/exteriorservice.png') },
   { id: '3', title: 'Door Pad & Panel...', image: require('../../../assets/images/exteriorservice.png') },
   { id: '4', title: 'Seat Vacuuming...', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '5', title: 'Dashboard & Co...', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '6', title: 'Roof / Headliner...', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '7', title: 'Door Pad & Panel...', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '8', title: 'Seat Vacuuming...', image: require('../../../assets/images/exteriorservice.png') },
 ];
 
 const allServices = [
@@ -32,53 +45,116 @@ const allServices = [
 ];
 
 const InteriorService = () => {
+  const navigation = useNavigation();
+  const [activeBannerIndex, setActiveBannerIndex] = useState(0);
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.header}>
-       
-       <SearchBox/>
-      </View>
+      <ImageBackground
+        source={interior}
+        style={styles.imageBackground}
+      >
+        <StatusBar
+          barStyle="light-content"
+          translucent
+          backgroundColor="transparent"
+        />
+        <LinearGradient
+          colors={['rgba(19, 109, 110, .6)', 'rgba(19, 109, 110, .10)', 'rgba(19, 109, 110, .6)']}
+          locations={[0.13, 0.52, 0.91]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.overlay}
+        >
+          {/* Top Row */}
+          <View style={styles.topRow}>
+            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backIcon}>
+              <Ionicons name="arrow-back" size={24} color="black" />
+            </TouchableOpacity>
+
+            <View style={styles.iconWrapper}>
+              <Image source={Garage} style={styles.garageIcon} />
+              <View style={styles.badge}>
+                <CustomText style={styles.badgeText}>2</CustomText>
+              </View>
+            </View>
+          </View>
+
+          {/* Search Box */}
+          <View style={styles.searchContainer}>
+            <SearchBox />
+          </View>
+        </LinearGradient>
+      </ImageBackground>
 
       <View style={styles.section}>
-        <Text style={[globalStyles.mb3,globalStyles.f16Bold,globalStyles.primary]}>Our Popular Services</Text>
+        <View style={styles.sectionHeader}>
+          <CustomText style={[globalStyles.f16Bold, globalStyles.primary]}>Our Popular Services</CustomText>
+          <Ionicons name="arrow-forward-circle" size={20} color={color.primary} style={styles.scrollHintIcon} />
+        </View>
+
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
           data={popularServices}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={styles.flatListContainer}
           renderItem={({ item }) => (
             <View style={styles.popularItem}>
               <Image source={item.image} style={styles.popularImage} />
-              <Text style={[globalStyles.f10Bold,styles.popularText]}>{item.title}</Text>
+              <CustomText
+                style={[globalStyles.f10Bold, styles.popularText]}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                {item.title}
+              </CustomText>
             </View>
           )}
         />
       </View>
 
       <View style={styles.bannerContainer}>
-        <Image
-          source={require('../../../assets/images/exteriorservice.png') }
-          style={styles.bannerImage}
-          resizeMode="cover"
+        <FlatList
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          data={[interior, interior, interior]}
+          keyExtractor={(_, index) => index.toString()}
+          onScroll={(event) => {
+            const index = Math.round(event.nativeEvent.contentOffset.x / event.nativeEvent.layoutMeasurement.width);
+            setActiveBannerIndex(index);
+          }}
+          renderItem={({ item }) => (
+            <Image source={item} style={styles.bannerImage} resizeMode="cover" />
+          )}
         />
+        <View style={styles.dotContainer}>
+          {[0, 1, 2].map((_, i) => (
+            <View key={i} style={i === activeBannerIndex ? styles.activeDot : styles.inactiveDot} />
+          ))}
+        </View>
       </View>
 
       <View style={styles.section}>
-        <Text style={[globalStyles.mb3,globalStyles.f16Bold,globalStyles.primary]}>All Services</Text>
+        <CustomText style={[globalStyles.mb3, globalStyles.f16Bold, globalStyles.primary]}>All Services</CustomText>
         <View style={styles.grid}>
           {allServices.map((service, index) => (
             <View style={styles.gridItem} key={index}>
-                  <ImageBackground
-                          source={service.image}
-                          style={[
-                            styles.ctaContainer,
-                            globalStyles.radius,
-                          ]}
-                          resizeMode="cover"
-                        >
-
-              <Text style={[globalStyles.p2,globalStyles.textWhite,globalStyles.f12Bold]}>{service.title}</Text>
-                        </ImageBackground>
+              <ImageBackground
+                source={service.image}
+                style={[styles.gridImage, globalStyles.radius]}
+                imageStyle={{ borderRadius: 10 }}
+                resizeMode="cover"
+              >
+                <LinearGradient
+                  colors={['transparent', 'rgba(19, 109, 110, .6)']}
+                  style={styles.gradientOverlay}
+                >
+                  <CustomText style={[globalStyles.p2, globalStyles.textWhite, globalStyles.f12Bold]}>
+                    {service.title}
+                  </CustomText>
+                </LinearGradient>
+              </ImageBackground>
             </View>
           ))}
         </View>
@@ -88,17 +164,63 @@ const InteriorService = () => {
 };
 
 const styles = StyleSheet.create({
-   ctaContainer: {
+  ctaContainer: {
     flexDirection: "row",
     alignItems: "center",
     position: "relative",
-    minHeight: 70,
+    minHeight: 90,
   },
-  header: {
-    height: 200,
-    backgroundColor: color.primary,
-    justifyContent: 'flex-end',
-    padding: 10,
+  imageBackground: {
+    height: 260,
+    resizeMode: 'cover',
+  },
+  overlay: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingTop: Platform.OS === 'ios' ? 60 : 40,
+    paddingHorizontal: 16,
+    paddingBottom: 20,
+  },
+  topRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 20
+  },
+  iconWrapper: {
+    position: 'relative',
+  },
+  backIcon: {
+    padding: 5,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.79)',
+  },
+  garageIcon: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
+  },
+  badge: {
+    position: 'absolute',
+    top: -6,
+    right: -6,
+    backgroundColor: 'yellow',
+    borderRadius: 8,
+    paddingHorizontal: 4,
+    minWidth: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeTextWrapper: {
+    alignItems: 'center',
+  },
+  badgeText: {
+    color: '#000',
+    fontSize: 10,
+    fontWeight: 'bold',
+  },
+  searchContainer: {
+    marginTop: 20,
   },
   backBtn: {
     position: 'absolute',
@@ -111,20 +233,35 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 12,
     paddingLeft: 40,
-    color:color.black
+    color: color.black
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  scrollHintIcon: {
+    marginLeft: 10,
   },
   section: {
     padding: 20,
+    borderTopEndRadius: 30
   },
-
+  flatListContainer: {
+    paddingHorizontal: 10,
+  },
   popularItem: {
+    width: 80,
     alignItems: 'center',
-    marginRight: 15,
+    marginRight: 26,
   },
   popularImage: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 90,
+    height: 90,
+    borderRadius: 50,
+    resizeMode: 'cover',
+    marginBottom: 6,
   },
   popularText: {
     marginTop: 5,
@@ -138,8 +275,10 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   bannerImage: {
-    width: '100%',
+    width: 360,
     height: 150,
+    borderRadius: 10,
+    marginRight: 10,
   },
   grid: {
     flexDirection: 'row',
@@ -155,8 +294,32 @@ const styles = StyleSheet.create({
   gridImage: {
     width: '100%',
     height: 100,
+    justifyContent: 'flex-end',
   },
-
+  gradientOverlay: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingHorizontal: 4,
+  },
+  dotContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 8,
+  },
+  activeDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 4,
+    backgroundColor: color.secondary,
+    marginHorizontal: 4,
+  },
+  inactiveDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 4,
+    backgroundColor: '#ccc',
+    marginHorizontal: 4,
+  },
 });
 
 export default InteriorService;

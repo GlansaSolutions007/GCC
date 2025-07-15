@@ -27,20 +27,19 @@ export default function CustomerStackNavigator() {
       />
       <Stack.Screen
         name="SelectCarBrand"
-        component={MyCars} 
+        component={MyCars}
         options={{ title: "Select Your Car" }}
       />
       <Stack.Screen
         name="MyCarDetails"
-        component={MyCarDetails} 
+        component={MyCarDetails}
         options={{ title: "My Car Details" }}
       />
       <Stack.Screen
         name="InteriorService"
-        component={InteriorService} 
-        options={{ title: "interior Service" }}
-      />
-    
+        component={InteriorService}
+        options={{ headerShown: false }} />
+
     </Stack.Navigator>
   );
 }
