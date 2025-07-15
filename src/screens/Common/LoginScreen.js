@@ -23,6 +23,7 @@ import CustomText from "../../components/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import * as Device from "expo-device";
 import { registerForPushNotificationsAsync } from "../../utils/notifications";
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default function LoginScreen() {
   const { login } = useAuth();
@@ -67,7 +68,7 @@ export default function LoginScreen() {
       }
     } catch (error) {
       setTitle("Send OTP Failed");
-      setMessage(error.message || "Something went wrong.");
+      setMessage("Something went wrong." || error.message);
       setStatus("error");
     } finally {
       setShowAlert(true);
@@ -159,6 +160,17 @@ export default function LoginScreen() {
       style={styles.backgroundImage}
       resizeMode="cover"
     >
+      {!keyboardVisible && (
+        <TouchableOpacity
+          style={styles.skipButton}
+          onPress={() => navigation.replace("CustomerTabs")}
+        >
+          <View style={styles.skipContent}>
+            <CustomText style={styles.skipText}>Skip</CustomText>
+            <AntDesign name="doubleright" size={16} color="white" />
+          </View>
+        </TouchableOpacity>
+      )}
       <View />
       <View style={[globalStyles.container]}>
         {!keyboardVisible && (
@@ -251,6 +263,26 @@ const styles = StyleSheet.create({
     width: "45%",
     height: "41%",
     marginBottom: 10,
+  },
+  skipButton: {
+    position: "absolute",
+    top: 50, // adjust for safe area
+    right: 20,
+    zIndex: 10,
+    backgroundColor: "rgba(255, 255, 255, 0.3)", // optional subtle bg
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
+  },
+  skipContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+  },
+  skipText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
   },
   googleButton: {
     marginTop: 40,
