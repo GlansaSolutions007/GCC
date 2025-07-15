@@ -40,7 +40,7 @@ const InteriorService = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Our Popular Services</Text>
+        <Text style={[globalStyles.mb3,globalStyles.f16Bold,globalStyles.primary]}>Our Popular Services</Text>
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -49,7 +49,7 @@ const InteriorService = () => {
           renderItem={({ item }) => (
             <View style={styles.popularItem}>
               <Image source={item.image} style={styles.popularImage} />
-              <Text style={styles.popularText}>{item.title}</Text>
+              <Text style={[globalStyles.f10Bold,styles.popularText]}>{item.title}</Text>
             </View>
           )}
         />
@@ -64,7 +64,7 @@ const InteriorService = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>All Services</Text>
+        <Text style={[globalStyles.mb3,globalStyles.f16Bold,globalStyles.primary]}>All Services</Text>
         <View style={styles.grid}>
           {allServices.map((service, index) => (
             <View style={styles.gridItem} key={index}>
@@ -77,9 +77,8 @@ const InteriorService = () => {
                           resizeMode="cover"
                         >
 
-              <Text style={[globalStyles.p2,globalStyles.textWhite,]}>{service.title}</Text>
+              <Text style={[globalStyles.p2,globalStyles.textWhite,globalStyles.f12Bold]}>{service.title}</Text>
                         </ImageBackground>
-              {/* <Image source={service.image} style={styles.gridImage} /> */}
             </View>
           ))}
         </View>
@@ -117,10 +116,7 @@ const styles = StyleSheet.create({
   section: {
     padding: 20,
   },
-  sectionTitle: {
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
+
   popularItem: {
     alignItems: 'center',
     marginRight: 15,

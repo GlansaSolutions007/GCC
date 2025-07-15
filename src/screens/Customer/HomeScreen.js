@@ -103,7 +103,7 @@ export default function HomeScreen() {
                   globalStyles.f20Bold,
                   globalStyles.w60,
                   globalStyles.textWhite,
-                  globalStyles.f18Bold,
+                  globalStyles.f16Bold,
                 ]}
               >
                 Give your car’s intro to your care buddy
