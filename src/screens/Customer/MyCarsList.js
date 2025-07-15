@@ -99,7 +99,7 @@ export const MyCarsList = () => {
                     {/* Header */}
 
                     <View style={styles.header}>
-                        <View style={{ flex: 1,marginTop:8 }}>
+                        <View style={{ flex: 1 }}>
                             <SearchBox />
                         </View>
                         <TouchableOpacity
@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 16,
-        justifyContent:'center'
     },
     addIconWrapper: {
         marginLeft: 10,

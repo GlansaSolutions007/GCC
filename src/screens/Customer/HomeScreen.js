@@ -18,6 +18,7 @@ import { color } from "../../styles/theme";
 import CustomText from "../../components/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
+import * as Device from "expo-device";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -26,13 +27,16 @@ export default function HomeScreen() {
     navigation.navigate("InteriorService");
   };
 
+  const DeviceId = Device.osInternalBuildId || Device.osBuildId || "unknown-device-id";
+
+
   return (
     <ScrollView
       style={{ backgroundColor: color.textWhite }}
       contentContainerStyle={{ paddingBottom: 30 }}
     >
       <View style={[styles.banner, globalStyles.mb35]}>
-        <Image source={logo} style={styles.logo}  resizeMode="contain" />
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
         <View style={styles.bannerAbsolute}>
           <Image
             source={bluecar}
@@ -47,10 +51,11 @@ export default function HomeScreen() {
         </View>
       </View>
       <View style={globalStyles.container}>
+        <CustomText>{DeviceId}</CustomText>
         <CustomText
           style={[globalStyles.mt4, globalStyles.mb1, globalStyles.f16Bold]}
         >
-         We Provide Services Like
+          We Provide Services Like
         </CustomText>
         <View style={[globalStyles.flexrow, globalStyles.justifysb]}>
           <TouchableOpacity style={styles.card}>
@@ -129,7 +134,7 @@ export default function HomeScreen() {
 }
 const styles = StyleSheet.create({
   logo: {
-   width: 200,
+    width: 200,
     height: 100,
   },
   bannerAbsolute: {

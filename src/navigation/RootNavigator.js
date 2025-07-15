@@ -24,27 +24,31 @@ export default function RootNavigator() {
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen
+            name="CustomerTabs"
+            component={CustomerStackNavigator}
+          />
         </>
       );
     }
 
-    if (user.role === "customer") {
-      return (
-        <Stack.Screen
-          name="CustomerTabs"
-          component={CustomerStackNavigator}
-        />
-      );
-    }
+    // if (user.role === "customer") {
+    //   return (
+    //     <Stack.Screen
+    //       name="CustomerTabs"
+    //       component={CustomerStackNavigator}
+    //     />
+    //   );
+    // }
 
-    if (user.role === "technician") {
-      return (
-        <Stack.Screen
-          name="TechnicianTabs"
-          component={TechnicianTabNavigator}
-        />
-      );
-    }
+    // if (user.role === "technician") {
+    //   return (
+    //     <Stack.Screen
+    //       name="TechnicianTabs"
+    //       component={TechnicianTabNavigator}
+    //     />
+    //   );
+    // }
 
     return null;
   };

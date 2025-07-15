@@ -21,18 +21,105 @@ import { useAuth } from "../../contexts/AuthContext";
 import { color } from "../../styles/theme";
 import CustomText from "../../components/CustomText";
 import { useNavigation } from "@react-navigation/native";
-
+import * as Device from "expo-device";
+import { registerForPushNotificationsAsync } from "../../utils/notifications";
 
 export default function LoginScreen() {
   const { login } = useAuth();
   const [keyboardVisible, setKeyboardVisible] = useState(false);
-  const [inputValue, setInputValue] = React.useState("");
-  const [showAlert, setShowAlert] = React.useState(false);
-  const [status, setStatus] = React.useState("info");
-  const [message, setMessage] = React.useState("");
-  const [title, setTitle] = React.useState("Login Info");
+  const [inputValue, setInputValue] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [status, setStatus] = useState("info");
+  const [message, setMessage] = useState("");
+  const [title, setTitle] = useState("Login Info");
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
- const navigation = useNavigation();
+
+  const handleSendOtp = async () => {
+    if (!email) {
+      setTitle("Missing Email");
+      setMessage("Please enter your email.");
+      setStatus("error");
+      setShowAlert(true);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch("https://api.mycarsbuddy.com/api/Auth/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ Email: email }),
+      });
+
+      if (response.ok) {
+        setOtpSent(true);
+        setTitle("OTP Sent");
+        setMessage("Please check your email for the OTP.");
+        setStatus("success");
+      } else {
+        const errorText = await response.text();
+        throw new Error(errorText);
+      }
+    } catch (error) {
+      setTitle("Send OTP Failed");
+      setMessage(error.message || "Something went wrong.");
+      setStatus("error");
+    } finally {
+      setShowAlert(true);
+      setLoading(false);
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    if (!otp) {
+      setTitle("Missing OTP");
+      setMessage("Please enter the OTP.");
+      setStatus("error");
+      setShowAlert(true);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const DeviceId = Device.osInternalBuildId || Device.osBuildId || "unknown-device-id";
+
+      // const deviceToken = await registerForPushNotificationsAsync();
+      const DeviceToken = 'dummy_token';
+
+      const response = await fetch("https://api.mycarsbuddy.com/api/Auth/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ Email: email, otp }),
+      });
+
+      const result = await response.json();
+      console.log("Device Id:", DeviceId);
+      console.log("Device Token:", DeviceToken);
+
+      if (response.ok && result?.success) {
+        // Store token if needed: result.token
+        login({ email: result.email, token: result.token, DeviceToken, DeviceId, });
+
+        // Navigate to home (replace so user can't go back to login)
+        navigation.replace("CustomerTabs");
+
+      } else {
+        throw new Error(result?.message || "Invalid OTP.");
+      }
+    } catch (error) {
+      setTitle("OTP Verification Failed");
+      setMessage(error.message || "Unable to verify OTP.");
+      setStatus("error");
+      setShowAlert(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const showSub = Keyboard.addListener(
@@ -51,20 +138,20 @@ export default function LoginScreen() {
   }, []);
 
 
-  const handleLogin = () => {
-    const matchedUser = demoUsers.find(
-      (user) => user.email.toLowerCase() === inputValue.trim().toLowerCase()
-    );
+  // const handleLogin = () => {
+  //   const matchedUser = demoUsers.find(
+  //     (user) => user.email.toLowerCase() === inputValue.trim().toLowerCase()
+  //   );
 
-    if (matchedUser) {
-      login(matchedUser);
-    } else {
-      setMessage("Invalid email or phone number. Please try again.");
-      setTitle("Login Failed");
-      setStatus("error");
-      setShowAlert(true);
-    }
-  };
+  //   if (matchedUser) {
+  //     login(matchedUser);
+  //   } else {
+  //     setMessage("Invalid email or phone number. Please try again.");
+  //     setTitle("Login Failed");
+  //     setStatus("error");
+  //     setShowAlert(true);
+  //   }
+  // };
 
   return (
     <ImageBackground
@@ -84,25 +171,45 @@ export default function LoginScreen() {
         )}
 
         <TextInput
-          placeholder="Email -or- Phone Number"
-          placeholderTextColor={color.textInputDark} 
-          value={inputValue}
-          onChangeText={(text) => setInputValue(text)}
+          placeholder="Enter your email"
+          placeholderTextColor={color.textInputDark}
+          value={email}
+          onChangeText={setEmail}
           style={styles.textInput}
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <CustomText style={styles.buttonText}>Login</CustomText>
+        {otpSent && (
+          <TextInput
+            placeholder="Enter OTP"
+            placeholderTextColor={color.textInputDark}
+            value={otp}
+            onChangeText={setOtp}
+            style={styles.textInput}
+            keyboardType="number-pad"
+            maxLength={6}
+          />
+        )}
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={otpSent ? handleVerifyOtp : handleSendOtp}
+          disabled={loading}
+        >
+          <CustomText style={styles.buttonText}>
+            {loading ? "Please wait..." : otpSent ? "Verify OTP" : "Send OTP"}
+          </CustomText>
         </TouchableOpacity>
         {!keyboardVisible && (
           <>
-            <View style={[globalStyles.flexrow,globalStyles.alineItemscenter,globalStyles.justifysb,globalStyles.mt1]}>
-            <View style={[globalStyles.flexrow,globalStyles.alineItemscenter]}>
-              <CustomText style={globalStyles.textWhite}>Create new account? </CustomText>
-              <TouchableOpacity  onPress={() => navigation.navigate('Register')}>
-              <CustomText style={globalStyles.textWhite}>Sign Up</CustomText>
-              </TouchableOpacity>
-            </View>
+            <View style={[globalStyles.flexrow, globalStyles.alineItemscenter, globalStyles.justifysb, globalStyles.mt1]}>
+              <View style={[globalStyles.flexrow, globalStyles.alineItemscenter]}>
+                <CustomText style={globalStyles.textWhite}>Create new account? </CustomText>
+                <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                  <CustomText style={globalStyles.textWhite}>Sign Up</CustomText>
+                </TouchableOpacity>
+              </View>
               <TouchableOpacity>
                 <CustomText style={globalStyles.textWhite}>
                   Forgot Password?

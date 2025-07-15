@@ -13,6 +13,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import { color } from '../../styles/theme';
 import globalStyles from '../../styles/globalStyles';
+import SearchBox from '../../components/SearchBox';
 
 const popularServices = [
   { id: '1', title: 'Dashboard & Co...', image: require('../../../assets/images/exteriorservice.png') },
@@ -35,11 +36,7 @@ const InteriorService = () => {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
        
-        <TextInput
-          placeholder="Search for car modal"
-          placeholderTextColor="#999"
-          style={styles.searchBox}
-        />
+       <SearchBox/>
       </View>
 
       <View style={styles.section}>
@@ -102,7 +99,7 @@ const styles = StyleSheet.create({
     height: 200,
     backgroundColor: color.primary,
     justifyContent: 'flex-end',
-    padding: 20,
+    padding: 10,
   },
   backBtn: {
     position: 'absolute',

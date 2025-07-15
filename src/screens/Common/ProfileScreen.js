@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useAuth } from '../../contexts/AuthContext';
 import CustomText from '../../components/CustomText';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ProfileScreen() {
   const { logout } = useAuth();
+  const navigate = useNavigation();
 
   const handleLogout = () => {
-    logout();
+    navigate.navigate('Login')
   };
 
   return (
