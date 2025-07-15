@@ -230,10 +230,10 @@ export default StyleSheet.create({
   f12Bold: {
     ...fonts.smallBold,
   },
-  f16Bold: {
+  f14Bold: {
     ...fonts.regularBold,
   },
-  f18Bold: {
+  f16Bold: {
     ...fonts.mediumBold,
   },
   f20Bold: {
