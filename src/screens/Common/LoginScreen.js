@@ -24,6 +24,8 @@ import { useNavigation } from "@react-navigation/native";
 import * as Device from "expo-device";
 import { registerForPushNotificationsAsync } from "../../utils/notifications";
 import AntDesign from '@expo/vector-icons/AntDesign';
+import Logo from '../../../assets/Logo/my car buddy-02 yellow-01.png'
+import BgImage from '../../../assets/images/loginbg2.png'
 
 export default function LoginScreen() {
   const { login } = useAuth();
@@ -140,7 +142,7 @@ export default function LoginScreen() {
 
   return (
     <ImageBackground
-      source={require("../../../assets/images/loginbg3.png")}
+      source={BgImage}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
@@ -160,7 +162,7 @@ export default function LoginScreen() {
         {!keyboardVisible && (
           <View>
             <Image
-              source={require("../../../assets/images/GCCL1-01.png")}
+              source={Logo}
               style={styles.logo}
             />
           </View>
@@ -244,9 +246,10 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: "45%",
-    height: "41%",
-    marginBottom: 10,
+    width: 200,
+    height: 100,
+    marginBottom: 100,
+    alignSelf:'center'
   },
   skipButton: {
     position: "absolute",

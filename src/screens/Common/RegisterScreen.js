@@ -4,19 +4,40 @@ import {
   TouchableOpacity,
   StyleSheet,
   ImageBackground,
+  Keyboard,
+  Platform,
+  Image,
 } from "react-native";
 import CustomText from "../../components/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import { color } from "../../styles/theme";
 import globalStyles from "../../styles/globalStyles";
 import * as ImagePicker from "expo-image-picker";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Logo from '../../../assets/Logo/my car buddy-02 yellow-01.png'
 
 export default function RegisterScreen() {
   const navigation = useNavigation();
 
   const [image, setImage] = useState(null);
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const showSub = Keyboard.addListener(
+      Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow",
+      () => setKeyboardVisible(true)
+    );
+    const hideSub = Keyboard.addListener(
+      Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide",
+      () => setKeyboardVisible(false)
+    );
+
+    return () => {
+      showSub.remove();
+      hideSub.remove();
+    };
+  }, []);
 
   const pickImage = async () => {
     const permissionResult =
@@ -44,6 +65,14 @@ export default function RegisterScreen() {
       style={styles.backgroundImage}
       resizeMode="cover"
     >
+      {!keyboardVisible && (
+        <View>
+          <Image
+            source={Logo}
+            style={styles.logo}
+          />
+        </View>
+      )}
       <View style={globalStyles.container}>
         <TextInput
           placeholder="First Name"
@@ -125,6 +154,12 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
+  },
+  logo: {
+    width: 200,
+    height: 100,
+    alignSelf: 'center',
+    marginTop: 140
   },
   textInput: {
     borderBottomWidth: 1,

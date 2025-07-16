@@ -1,4 +1,3 @@
-// screens/WelcomeScreen.tsx
 import React from "react";
 import { View, Text, ImageBackground, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -6,9 +5,11 @@ import BgImage from '../../../assets/images/WhatsApp Image 2025-07-16 at 12.35.5
 import Logo from '../../../assets/Logo/my car buddy-02 yellow-01.png'
 import globalStyles from "../../styles/globalStyles";
 import CustomText from "../../components/CustomText";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function WelcomeScreen() {
     const navigation = useNavigation();
+    const insets = useSafeAreaInsets();
 
     return (
         <ImageBackground
@@ -17,7 +18,7 @@ export default function WelcomeScreen() {
             imageStyle={{ opacity: 0.5 }}
         >
             <View style={styles.overlay} />
-            <View style={styles.content}>
+            <View style={[styles.content, { paddingBottom: insets.bottom + 20 }]}>
                 <View style={styles.logoWrapper}>
                     <Image
                         source={Logo}
@@ -40,13 +41,14 @@ export default function WelcomeScreen() {
                 </TouchableOpacity>
 
                 <View style={styles.row}>
-                    <TouchableOpacity
-                        style={styles.loginBtn}
-                        onPress={() => navigation.navigate("Login")}
-                    >
-                        <CustomText style={styles.loginText}>Login</CustomText>
-                    </TouchableOpacity>
-
+                    <View style={styles.seventy}>
+                        <TouchableOpacity
+                            style={styles.loginBtn}
+                            onPress={() => navigation.navigate("Login")}
+                        >
+                            <CustomText style={styles.loginText}>Login</CustomText>
+                        </TouchableOpacity>
+                    </View>
                     <TouchableOpacity
                         style={styles.skipBtn}
                         onPress={() => navigation.replace("CustomerTabs")}
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
     overlay: {
         ...StyleSheet.absoluteFillObject,
         backgroundColor: "#01584aff",
-        opacity: 0.5, // adjust for desired strength
+        opacity: 0.5,
     },
     content: {
         padding: 20,
@@ -102,6 +104,9 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
         justifyContent: "space-between",
+    },
+    seventy: {
+        width: "70%"
     },
     loginBtn: {
         flex: 1,

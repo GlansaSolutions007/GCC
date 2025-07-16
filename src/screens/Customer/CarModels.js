@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import carPic from "../../../assets/images/xuv-3xo-exterior-right-front-three-quarter-34.webp"
@@ -18,12 +18,39 @@ export default function CarModels() {
 
   const [selectedModel, setSelectedModel] = useState(null);
   const [alertVisible, setAlertVisible] = useState(false);
+  const [fuelTypes, setFuelTypes] = useState([]);
 
   const navigation = useNavigation();
 
   const handleModelPress = (model) => {
     setSelectedModel(model);
     setAlertVisible(true);
+  };
+
+  useEffect(() => {
+    const fetchFuelTypes = async () => {
+      try {
+        const response = await fetch("https://api.mycarsbuddy.com/api/FuelTypes/GetFuelTypes");
+        const json = await response.json();
+
+        if (json.status && Array.isArray(json.data)) {
+          const activeFuelTypes = json.data.filter(f => f.IsActive);
+          setFuelTypes(activeFuelTypes);
+        } else {
+          console.warn("Failed to load fuel types.");
+        }
+      } catch (error) {
+        console.error("Error fetching fuel types:", error);
+      }
+    };
+
+    fetchFuelTypes();
+  }, []);
+
+  const getFuelImageUrl = (path) => {
+    if (!path) return null;
+    const encodedPath = encodeURI(path.replace("/FuelImages", "/images/FuelImages"));
+    return `https://api.mycarsbuddy.com${encodedPath}`;
   };
 
 
@@ -64,21 +91,31 @@ export default function CarModels() {
         )}
 
         <View style={styles.fuelRow}>
-          {fuelOptions.map((fuel) => (
+          {fuelTypes.map((fuel) => (
             <TouchableOpacity
-              key={fuel.name}
+              key={fuel.FuelTypeID}
               style={styles.fuelIcon}
               onPress={() => {
-                console.log(`Selected ${fuel.name} for ${selectedModel?.name}`);
+                console.log(`Selected ${fuel.FuelTypeName} for ${selectedModel?.name}`);
                 navigation.navigate("MyCarDetails", {
                   model: selectedModel,
-                  fuelType: fuel.name
+                  fuelType: fuel.FuelTypeName
                 });
                 setAlertVisible(false);
               }}
+
             >
-              <Image source={fuel.icon} style={styles.fuelImage} />
-              <CustomText style={globalStyles.f10Bold}>{fuel.name}</CustomText>
+
+              <Image
+                source={
+                  fuel.FuelImage
+                    ? { uri: getFuelImageUrl(fuel.FuelImage) }
+                    : Petrol // fallback image
+                }
+                style={styles.fuelImage}
+              />
+              <CustomText style={globalStyles.f10Bold}>{fuel.FuelTypeName}</CustomText>
+
             </TouchableOpacity>
           ))}
         </View>
@@ -124,7 +161,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 50,
     resizeMode: "contain",
-    marginBottom: 4,
+    marginVertical: 6,
   },
   fuelText: {
     fontSize: 12,
