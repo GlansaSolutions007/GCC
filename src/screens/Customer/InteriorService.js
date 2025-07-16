@@ -159,6 +159,88 @@ const InteriorService = () => {
           ))}
         </View>
       </View>
+      <View style={styles.section}>
+        <CustomText style={[globalStyles.f32Bold, globalStyles.primary, { marginBottom: 4 }]}>
+          Choose a <CustomText style={{ color: '#000' }}>Perfect Package</CustomText> for
+          <CustomText style={globalStyles.primary}> Your Car</CustomText>
+        </CustomText>
+        <CustomText style={[globalStyles.f12, { marginBottom: 16, color: '#555' }]}>
+          Tailored combos to keep your car shining inside & out.
+        </CustomText>
+
+        {/* Package 1 */}
+        <View style={styles.rowCard}>
+          <ImageBackground
+            source={require('../../../assets/images/exteriorservice.png')} // Update with actual image
+            style={styles.sideImage}
+            imageStyle={{ borderRadius: 10 }}
+          >
+            <View style={styles.discountBadge}>
+              <CustomText style={styles.discountText}>10%</CustomText>
+            </View>
+          </ImageBackground>
+
+          <View style={styles.cardRight}>
+            <CustomText style={[globalStyles.f16Bold, { color: color.primary }]}>
+              Essential Interior Care
+            </CustomText>
+            <View>
+              <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
+              <CustomText style={styles.serviceText}>• Dashboard & Console Wipe</CustomText>
+              <CustomText style={styles.serviceText}>• Seat Surface Vacuuming</CustomText>
+              <CustomText style={styles.serviceText}>• Door Panel Dusting</CustomText>
+            </View>
+            <View style={styles.priceRow}>
+              <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                <CustomText style={styles.striked}>₹800</CustomText>
+                <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹600</CustomText>
+              </View>
+
+              <TouchableOpacity style={styles.addButton}>
+                <CustomText style={styles.addButtonText}>Add Service</CustomText>
+              </TouchableOpacity>
+            </View>
+
+          </View>
+        </View>
+
+        {/* Package 2 */}
+        <View style={styles.rowCard}>
+          <ImageBackground
+            source={require('../../../assets/images/exteriorservice.png')} // Update with actual image
+            style={styles.sideImage}
+            imageStyle={{ borderRadius: 10 }}
+          >
+            <View style={styles.discountBadge}>
+              <CustomText style={styles.discountText}>10%</CustomText>
+            </View>
+          </ImageBackground>
+
+          <View style={styles.cardRight}>
+            <CustomText style={[globalStyles.f16Bold, { color: color.primary, marginBottom: 6 }]}>
+              Deluxe Interior Detail
+            </CustomText>
+            <View>
+              <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
+              <CustomText style={styles.serviceText}>• Dashboard & Console Wipe</CustomText>
+              <CustomText style={styles.serviceText}>• Seat Surface Vacuuming</CustomText>
+              <CustomText style={styles.serviceText}>• Door Panel Dusting</CustomText>
+            </View>
+            <View style={styles.priceRow}>
+              <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                <CustomText style={styles.striked}>₹800</CustomText>
+                <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹600</CustomText>
+              </View>
+
+              <TouchableOpacity style={styles.addButton}>
+                <CustomText style={styles.addButtonText}>Add Service</CustomText>
+              </TouchableOpacity>
+            </View>
+
+          </View>
+        </View>
+      </View>
+
     </ScrollView>
   );
 };
@@ -319,6 +401,75 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#ccc',
     marginHorizontal: 4,
+  },
+  rowCard: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+
+  sideImage: {
+    width: 160,
+    height: 210,
+    marginRight: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+  },
+
+  discountBadge: {
+    backgroundColor: '#FFC107',
+    borderRadius: 50,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    margin: 6,
+  },
+
+  discountText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 12,
+  },
+
+  cardRight: {
+    flex: 1,
+    paddingLeft: 20,
+    justifyContent: 'space-around'
+  },
+
+  cardSubheading: {
+    ...globalStyles.f14Bold,
+    ...globalStyles.neutral500,
+    marginBottom: 2,
+  },
+
+  serviceText: {
+    ...globalStyles.f10Bold,
+    color: '#333',
+  },
+
+  priceRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  striked: {
+    textDecorationLine: 'line-through',
+    color: '#888',
+    fontSize: 14,
+  },
+
+  addButton: {
+    backgroundColor: color.primary,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  addButtonText: {
+    color: '#fff',
+    ...globalStyles.f10Bold
   },
 });
 

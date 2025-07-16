@@ -72,7 +72,7 @@ export default StyleSheet.create({
   },
   // Default styles .............. end
 
-  
+
 
   // Color styles ----------- start
   primary: {
@@ -81,8 +81,20 @@ export default StyleSheet.create({
   secondary: {
     color: color.secondary,
   },
-  textWhite:{
+  textWhite: {
     color: color.white,
+  },
+  neutral100: {
+    color: color.neutral[100],
+  },
+  neutral200: {
+    color: color.neutral[200],
+  },
+  neutral300: {
+    color: color.neutral[300],
+  },
+  neutral500: {
+    color: color.neutral[500],
   },
   // Color styles .............. end
 

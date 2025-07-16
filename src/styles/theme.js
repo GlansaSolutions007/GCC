@@ -12,7 +12,7 @@ export const color = {
 
   // Alerts status colors
   alertError: '#E34242',
-  alertSuccess: '#28A745',  
+  alertSuccess: '#28A745',
   alertInfo: '#17A2B8',
 
   // Text
@@ -21,10 +21,17 @@ export const color = {
   textLight: '#9D9D9D',
   textDark: '#242424',
   textWhite: '#FFFFFF',
-  textInputDark:'rgba(255, 255, 255, 0.42)',
+  textInputDark: 'rgba(255, 255, 255, 0.42)',
 
   // Utility
   muted: '#888888',
   white: '#FFFFFF',
   black: '#000000',
+
+  neutral: {
+    100: "#E8E8E8",
+    200: "#D9D9D9",
+    300: "#BFBFBF",
+    500: "#969696",
+  },
 };
