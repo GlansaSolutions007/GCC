@@ -7,6 +7,7 @@ import RootNavigator from "./src/navigation/RootNavigator";
 import { AuthProvider } from "./src/contexts/AuthContext";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Text, TextInput } from 'react-native';
+import { LocationProvider } from "./src/contexts/LocationContext";
 
 if (Text.defaultProps == null) Text.defaultProps = {};
 Text.defaultProps.allowFontScaling = false;
@@ -36,11 +37,13 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-    <View  style={{ flex: 1}} onLayout={onLayoutRootView}>
-      <AuthProvider>
-        <RootNavigator />
-      </AuthProvider>
-    </View>
+      <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <AuthProvider>
+          <LocationProvider>
+            <RootNavigator />
+          </LocationProvider>
+        </AuthProvider>
+      </View>
     </SafeAreaProvider>
   );
 }

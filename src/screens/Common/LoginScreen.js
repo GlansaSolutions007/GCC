@@ -138,22 +138,6 @@ export default function LoginScreen() {
     };
   }, []);
 
-
-  // const handleLogin = () => {
-  //   const matchedUser = demoUsers.find(
-  //     (user) => user.email.toLowerCase() === inputValue.trim().toLowerCase()
-  //   );
-
-  //   if (matchedUser) {
-  //     login(matchedUser);
-  //   } else {
-  //     setMessage("Invalid email or phone number. Please try again.");
-  //     setTitle("Login Failed");
-  //     setStatus("error");
-  //     setShowAlert(true);
-  //   }
-  // };
-
   return (
     <ImageBackground
       source={require("../../../assets/images/loginbg3.png")}

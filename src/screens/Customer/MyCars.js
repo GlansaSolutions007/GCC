@@ -8,6 +8,8 @@ import CustomText from "../../components/CustomText";
 import { color } from "../../styles/theme";
 import axios from "axios";
 import Loader from "../../components/Loader";
+import Logo from '../../../assets/Logo/logo.png'
+
 
 export default function MyCars() {
     const [brands, setBrands] = useState([]);
@@ -26,28 +28,33 @@ export default function MyCars() {
                 const brandModels = models
                     .filter(model => model.BrandID === brand.BrandID)
                     .map(model => {
-                        const imagePath = model.VehicleImage.includes("Images/VehicleModel")
-                            ? model.VehicleImage
-                            : `Images/VehicleModel/${model.VehicleImage}`;
-                        // console.log("Model Image URL:", `https://api.mycarsbuddy.com/${imagePath.replace(/^\/+/, '')}`);
+                        let imagePath = '';
+
+                        if (model.VehicleImage) {
+                            imagePath = model.VehicleImage.includes("Images/VehicleModel")
+                                ? model.VehicleImage
+                                : `Images/VehicleModel/${model.VehicleImage}`;
+                        }
 
                         return {
                             id: model.ModelID,
                             name: model.ModelName,
-                            image: `https://api.mycarsbuddy.com/${imagePath.replace(/^\/+/, '')}`,
+                            image: imagePath ? `https://api.mycarsbuddy.com/${imagePath.replace(/^\/+/, '')}` : null,
                             fuelType: model.FuelTypeID
                         };
-
                     });
 
                 return {
                     brand: brand.BrandName,
-                    logo: `https://api.mycarsbuddy.com/Images/BrandLogo/${brand.BrandLogo.split('/').pop()}`,
+                    logo: brand.BrandLogo
+                        ? { uri: `https://api.mycarsbuddy.com/Images/BrandLogo/${brand.BrandLogo.split('/').pop()}` }
+                        : Logo,
                     models: brandModels
                 };
             });
 
             setBrands(formattedBrands);
+
         } catch (error) {
             console.error('Failed to fetch car brands or models:', error);
         } finally {
@@ -69,7 +76,7 @@ export default function MyCars() {
             }}
         >
             <ImageBackground
-                source={{ uri: item.logo }}
+                source={item.logo }
                 style={styles.logo}
                 imageStyle={{ resizeMode: 'contain' }}
             >

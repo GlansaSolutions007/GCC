@@ -88,7 +88,7 @@ const InteriorService = () => {
 
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
-          <CustomText style={[globalStyles.f16Bold, globalStyles.primary]}>Our Popular Services</CustomText>
+          <CustomText style={[globalStyles.f16Bold, globalStyles.primary]}>Popular Services</CustomText>
           <Ionicons name="arrow-forward-circle" size={20} color={color.primary} style={styles.scrollHintIcon} />
         </View>
 

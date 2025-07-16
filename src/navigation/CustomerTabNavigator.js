@@ -25,12 +25,7 @@ export default function CustomerTabNavigator({ navigation }) {
         headerShown: true,
         header: () => (
           <CustomHeader/>
-        ),
-        // headerRight: () => (
-        //   <NotificationButton
-        //     onPress={() => console.log("Go to Notifications")}
-        //   />
-        // ),
+        ),       
         tabBarShowLabel: true,
         tabBarActiveTintColor: color.primary,
         tabBarInactiveTintColor: "#8e8e93",
@@ -106,9 +101,6 @@ export default function CustomerTabNavigator({ navigation }) {
     >
       <Tab.Screen
         name="My Car Buddy"
-        // options={{
-        //   header: () => <CustomHeader />,
-        // }}
         component={HomeScreen}
       />
       <Tab.Screen

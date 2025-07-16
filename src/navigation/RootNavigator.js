@@ -10,45 +10,24 @@ import TechnicianTabNavigator from "./TechnicianTabNavigator";
 import { useAuth } from "../contexts/AuthContext";
 import CustomerStackNavigator from "./CustomerStackNavigator";
 import CustomText from "../components/CustomText";
+import WelcomeScreen from "../screens/Common/WelcomeScreen";
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
 
-  const { user } = useAuth(); // Get user from auth context
-  // const user = { role: '' }; // Simulate auth state
 
-  // Prepare screen list ahead
   const renderScreens = () => {
-    if (!user?.role) {
-      return (
-        <>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Register" component={RegisterScreen} />
-          <Stack.Screen
-            name="CustomerTabs"
-            component={CustomerStackNavigator}
-          />
-        </>
-      );
-    }
-
-    // if (user.role === "customer") {
-    //   return (
-    //     <Stack.Screen
-    //       name="CustomerTabs"
-    //       component={CustomerStackNavigator}
-    //     />
-    //   );
-    // }
-
-    // if (user.role === "technician") {
-    //   return (
-    //     <Stack.Screen
-    //       name="TechnicianTabs"
-    //       component={TechnicianTabNavigator}
-    //     />
-    //   );
-    // }
+    return (
+      <>
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen
+          name="CustomerTabs"
+          component={CustomerStackNavigator}
+        />
+      </>
+    );
 
     return null;
   };

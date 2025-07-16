@@ -19,9 +19,13 @@ import CustomText from "../../components/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Device from "expo-device";
+import * as Location from 'expo-location';
+import { useContext, useEffect } from "react";
+import { LocationContext } from "../../contexts/LocationContext";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
+  const { setLocationText, setLocationStatus } = useContext(LocationContext);
 
   const goToCar = () => {
     navigation.navigate("CustomerTabs", {
@@ -35,6 +39,35 @@ export default function HomeScreen() {
 
   const DeviceId = Device.osInternalBuildId || Device.osBuildId || "unknown-device-id";
 
+  useEffect(() => {
+    (async () => {
+      setLocationStatus('loading');
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+
+        if (status !== 'granted') {
+          setLocationStatus('denied');
+          setLocationText('Select your location');
+          return;
+        }
+
+        const loc = await Location.getCurrentPositionAsync({});
+        const geo = await Location.reverseGeocodeAsync(loc.coords);
+
+        if (geo.length > 0) {
+          const { city, region } = geo[0];
+          setLocationText(`${city || 'City'}, ${region || 'Region'}`);
+          setLocationStatus('granted');
+        } else {
+          setLocationText('Select your location');
+          setLocationStatus('error');
+        }
+      } catch (err) {
+        setLocationStatus('error');
+        setLocationText('Select your location');
+      }
+    })();
+  }, []);
 
   return (
     <ScrollView
