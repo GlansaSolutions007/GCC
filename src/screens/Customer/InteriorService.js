@@ -25,14 +25,14 @@ import Garage from '../../../assets/icons/garageIcon.png'
 import CustomText from '../../components/CustomText';
 
 const popularServices = [
-  { id: '1', title: 'Dashboard & Co...', image: require('../../../assets/images/exteriorservice.png') },
-  { id: '2', title: 'Roof / Headliner...', image: require('../../../assets/images/exteriorservice.png') },
-  { id: '3', title: 'Door Pad & Panel...', image: require('../../../assets/images/exteriorservice.png') },
-  { id: '4', title: 'Seat Vacuuming...', image: require('../../../assets/images/exteriorservice.png') },
-  { id: '5', title: 'Dashboard & Co...', image: require('../../../assets/images/exteriorservice.png') },
-  { id: '6', title: 'Roof / Headliner...', image: require('../../../assets/images/exteriorservice.png') },
-  { id: '7', title: 'Door Pad & Panel...', image: require('../../../assets/images/exteriorservice.png') },
-  { id: '8', title: 'Seat Vacuuming...', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '1', title: 'Dashboard & CoVishalllll', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '2', title: 'Roof / HeadlinerVishalllll', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '3', title: 'Door Pad & PanelVishalllll', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '4', title: 'Seat VacuumingVishalllll', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '5', title: 'Dashboard & CoVishalllll', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '6', title: 'Roof / HeadlinerVishalllll', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '7', title: 'Door Pad & PanelVishalllll', image: require('../../../assets/images/exteriorservice.png') },
+  { id: '8', title: 'Seat VacuumingVishalllll', image: require('../../../assets/images/exteriorservice.png') },
 ];
 
 const allServices = [
@@ -47,6 +47,10 @@ const allServices = [
 const InteriorService = () => {
   const navigation = useNavigation();
   const [activeBannerIndex, setActiveBannerIndex] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(popularServices[0]?.id);
+  const [selectedServiceId, setSelectedServiceId] = useState(popularServices[0]?.id);
+
+
   return (
     <ScrollView style={styles.container}>
       <ImageBackground
@@ -98,19 +102,125 @@ const InteriorService = () => {
           data={popularServices}
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.flatListContainer}
-          renderItem={({ item }) => (
-            <View style={styles.popularItem}>
-              <Image source={item.image} style={styles.popularImage} />
-              <CustomText
-                style={[globalStyles.f10Bold, styles.popularText]}
-                numberOfLines={1}
-                ellipsizeMode="tail"
+          renderItem={({ item }) => {
+            const isSelected = selectedServiceId === item.id;
+            return (
+              <TouchableOpacity
+                style={styles.popularItem}
+                onPress={() => setSelectedServiceId(item.id)}
               >
-                {item.title}
-              </CustomText>
-            </View>
-          )}
+                <View style={[styles.imageWrapper, isSelected && styles.selectedImageWrapper]}>
+                  <Image
+                    source={item.image}
+                    style={styles.popularImage}
+                  />
+                </View>
+                <CustomText
+                  style={[
+                    globalStyles.f10Bold,
+                    styles.popularText,
+                    isSelected && styles.selectedText,
+                  ]}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                >
+                  {item.title}
+                </CustomText>
+              </TouchableOpacity>
+            );
+          }}
         />
+        <View style={styles.tabContent}>
+          {popularServices.map((item) =>
+            item.id === selectedServiceId ? (
+              <View key={item.id}>
+                {/* <CustomText style={globalStyles.f14Bold}>
+                  {item.title}
+                </CustomText> */}
+                <View style={styles.section}>
+                  <CustomText style={[globalStyles.f20Bold, globalStyles.primary, { marginBottom: 8 }]}>
+                    {item.title}
+                  </CustomText>
+                  {/* <CustomText style={[globalStyles.f12, { marginBottom: 16, color: '#555' }]}>
+                    Tailored combos to keep your car shining inside & out.
+                  </CustomText> */}
+
+                  {/* Package 1 */}
+                  <View style={styles.rowCard}>
+                    <ImageBackground
+                      source={require('../../../assets/images/exteriorservice.png')} // Update with actual image
+                      style={styles.sideImage}
+                      imageStyle={{ borderRadius: 10 }}
+                    >
+                      <View style={styles.discountBadge}>
+                        <CustomText style={styles.discountText}>10%</CustomText>
+                      </View>
+                    </ImageBackground>
+
+                    <View style={styles.cardRight}>
+                      <CustomText style={[globalStyles.f16Bold, { color: color.primary }]}>
+                        Essential Interior Care
+                      </CustomText>
+                      <View>
+                        <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
+                        <CustomText style={styles.serviceText}>• Dashboard & Console Wipe</CustomText>
+                        <CustomText style={styles.serviceText}>• Seat Surface Vacuuming</CustomText>
+                        <CustomText style={styles.serviceText}>• Door Panel Dusting</CustomText>
+                      </View>
+                      <View style={styles.priceRow}>
+                        <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                          <CustomText style={styles.striked}>₹800</CustomText>
+                          <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹600</CustomText>
+                        </View>
+
+                        <TouchableOpacity style={styles.addButton}>
+                          <CustomText style={styles.addButtonText}>Add Service</CustomText>
+                        </TouchableOpacity>
+                      </View>
+
+                    </View>
+                  </View>
+
+                  {/* Package 2 */}
+                  <View style={styles.rowCard}>
+                    <ImageBackground
+                      source={require('../../../assets/images/exteriorservice.png')} // Update with actual image
+                      style={styles.sideImage}
+                      imageStyle={{ borderRadius: 10 }}
+                    >
+                      <View style={styles.discountBadge}>
+                        <CustomText style={styles.discountText}>10%</CustomText>
+                      </View>
+                    </ImageBackground>
+
+                    <View style={styles.cardRight}>
+                      <CustomText style={[globalStyles.f16Bold, { color: color.primary, marginBottom: 6 }]}>
+                        Deluxe Interior Detail
+                      </CustomText>
+                      <View>
+                        <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
+                        <CustomText style={styles.serviceText}>• Dashboard & Console Wipe</CustomText>
+                        <CustomText style={styles.serviceText}>• Seat Surface Vacuuming</CustomText>
+                        <CustomText style={styles.serviceText}>• Door Panel Dusting</CustomText>
+                      </View>
+                      <View style={styles.priceRow}>
+                        <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                          <CustomText style={styles.striked}>₹800</CustomText>
+                          <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹600</CustomText>
+                        </View>
+
+                        <TouchableOpacity style={styles.addButton}>
+                          <CustomText style={styles.addButtonText}>Add Service</CustomText>
+                        </TouchableOpacity>
+                      </View>
+
+                    </View>
+                  </View>
+                </View>
+              </View>
+            ) : null
+          )}
+        </View>
       </View>
 
       <View style={styles.bannerContainer}>
@@ -134,7 +244,7 @@ const InteriorService = () => {
           ))}
         </View>
       </View>
-
+      {/* 
       <View style={styles.section}>
         <CustomText style={[globalStyles.mb3, globalStyles.f16Bold, globalStyles.primary]}>All Services</CustomText>
         <View style={styles.grid}>
@@ -158,100 +268,48 @@ const InteriorService = () => {
             </View>
           ))}
         </View>
-      </View>
-      <View style={styles.section}>
-        <CustomText style={[globalStyles.f32Bold, globalStyles.primary, { marginBottom: 4 }]}>
-          Choose a <CustomText style={{ color: '#000' }}>Perfect Package</CustomText> for
-          <CustomText style={globalStyles.primary}> Your Car</CustomText>
-        </CustomText>
-        <CustomText style={[globalStyles.f12, { marginBottom: 16, color: '#555' }]}>
-          Tailored combos to keep your car shining inside & out.
-        </CustomText>
+      </View> */}
 
-        {/* Package 1 */}
-        <View style={styles.rowCard}>
-          <ImageBackground
-            source={require('../../../assets/images/exteriorservice.png')} // Update with actual image
-            style={styles.sideImage}
-            imageStyle={{ borderRadius: 10 }}
-          >
-            <View style={styles.discountBadge}>
-              <CustomText style={styles.discountText}>10%</CustomText>
-            </View>
-          </ImageBackground>
-
-          <View style={styles.cardRight}>
-            <CustomText style={[globalStyles.f16Bold, { color: color.primary }]}>
-              Essential Interior Care
-            </CustomText>
-            <View>
-              <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
-              <CustomText style={styles.serviceText}>• Dashboard & Console Wipe</CustomText>
-              <CustomText style={styles.serviceText}>• Seat Surface Vacuuming</CustomText>
-              <CustomText style={styles.serviceText}>• Door Panel Dusting</CustomText>
-            </View>
-            <View style={styles.priceRow}>
-              <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                <CustomText style={styles.striked}>₹800</CustomText>
-                <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹600</CustomText>
-              </View>
-
-              <TouchableOpacity style={styles.addButton}>
-                <CustomText style={styles.addButtonText}>Add Service</CustomText>
-              </TouchableOpacity>
-            </View>
-
-          </View>
-        </View>
-
-        {/* Package 2 */}
-        <View style={styles.rowCard}>
-          <ImageBackground
-            source={require('../../../assets/images/exteriorservice.png')} // Update with actual image
-            style={styles.sideImage}
-            imageStyle={{ borderRadius: 10 }}
-          >
-            <View style={styles.discountBadge}>
-              <CustomText style={styles.discountText}>10%</CustomText>
-            </View>
-          </ImageBackground>
-
-          <View style={styles.cardRight}>
-            <CustomText style={[globalStyles.f16Bold, { color: color.primary, marginBottom: 6 }]}>
-              Deluxe Interior Detail
-            </CustomText>
-            <View>
-              <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
-              <CustomText style={styles.serviceText}>• Dashboard & Console Wipe</CustomText>
-              <CustomText style={styles.serviceText}>• Seat Surface Vacuuming</CustomText>
-              <CustomText style={styles.serviceText}>• Door Panel Dusting</CustomText>
-            </View>
-            <View style={styles.priceRow}>
-              <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                <CustomText style={styles.striked}>₹800</CustomText>
-                <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹600</CustomText>
-              </View>
-
-              <TouchableOpacity style={styles.addButton}>
-                <CustomText style={styles.addButtonText}>Add Service</CustomText>
-              </TouchableOpacity>
-            </View>
-
-          </View>
-        </View>
-      </View>
 
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  ctaContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    position: "relative",
-    minHeight: 90,
+  imageWrapper: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 3,
+    borderColor: 'transparent',
   },
+
+  selectedImageWrapper: {
+    borderColor: color.primary,
+  },
+
+  popularImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    resizeMode: 'cover',
+  },
+
+  selectedText: {
+    color: color.primary,
+  },
+
+  // tabContent: {
+  //   padding: 10,
+  //   backgroundColor: '#fff',
+  //   borderRadius: 10,
+  //   elevation: 1,
+  //   marginTop: 10
+  // },
+
   imageBackground: {
     height: 260,
     resizeMode: 'cover',
@@ -304,19 +362,6 @@ const styles = StyleSheet.create({
   searchContainer: {
     marginTop: 20,
   },
-  backBtn: {
-    position: 'absolute',
-    top: 50,
-    left: 20,
-    zIndex: 1,
-  },
-  searchBox: {
-    backgroundColor: color.white,
-    borderRadius: 10,
-    padding: 12,
-    paddingLeft: 40,
-    color: color.black
-  },
   sectionHeader: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -327,7 +372,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   section: {
-    padding: 20,
+    padding: 10,
     borderTopEndRadius: 30
   },
   flatListContainer: {
@@ -337,13 +382,6 @@ const styles = StyleSheet.create({
     width: 80,
     alignItems: 'center',
     marginRight: 26,
-  },
-  popularImage: {
-    width: 90,
-    height: 90,
-    borderRadius: 50,
-    resizeMode: 'cover',
-    marginBottom: 6,
   },
   popularText: {
     marginTop: 5,
