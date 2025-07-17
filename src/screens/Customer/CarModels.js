@@ -49,8 +49,11 @@ export default function CarModels() {
 
   const getFuelImageUrl = (path) => {
     if (!path) return null;
-    const encodedPath = encodeURI(path.replace("/FuelImages", "/images/FuelImages"));
-    return `https://api.mycarsbuddy.com${encodedPath}`;
+
+    const fileName = path.split("/").pop();
+    const encodedFileName = encodeURIComponent(fileName); 
+
+    return `https://api.mycarsbuddy.com/images/FuelImages/${encodedFileName}`;
   };
 
 

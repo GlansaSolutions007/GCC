@@ -17,6 +17,7 @@ const CITY_LIST = [
   'Mumbai, Maharashtra',
   'Chennai, Tamil Nadu',
   'Delhi, NCR',
+  'Bhubaneshwar, Odisha',
   'Kolkata, West Bengal',
   'Pune, Maharashtra',
   'Ahmedabad, Gujarat',
