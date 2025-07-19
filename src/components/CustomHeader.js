@@ -10,6 +10,7 @@ import CustomText from "./CustomText";
 import globalStyles from "../styles/globalStyles";
 import { Linking } from 'react-native';
 import { LocationContext } from "../contexts/LocationContext";
+import { useNavigation } from "@react-navigation/native";
 
 const CITY_LIST = [
   'Hyderabad, Telangana',
@@ -44,6 +45,7 @@ export default function CustomHeader({ navigation }) {
   const insets = useSafeAreaInsets();
   const [showModal, setShowModal] = useState(false);
   const { locationText, locationStatus, setLocationText, setLocationStatus } = useContext(LocationContext);
+  const navigationTo = useNavigation();
 
   const handleManualLocation = (selectedCity) => {
     setLocationText(selectedCity);
@@ -80,7 +82,7 @@ export default function CustomHeader({ navigation }) {
             </Pressable>
           </View>
 
-          <Pressable onPress={() => console.log("Notifications")}>
+          <Pressable onPress={() => navigationTo.navigate('NotificationScreen')}>
             <Ionicons name="notifications-outline" size={24} style={globalStyles.textWhite} />
           </Pressable>
         </View>

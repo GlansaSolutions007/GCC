@@ -23,6 +23,7 @@ import interior from '../../../assets/images/interiorservice.png'
 import { StatusBar } from 'react-native';
 import Garage from '../../../assets/icons/garageIcon.png'
 import CustomText from '../../components/CustomText';
+import { useCart } from '../../contexts/CartContext';
 
 const popularServices = [
   { id: '1', title: 'Dashboard & CoVishalllll', image: require('../../../assets/images/exteriorservice.png') },
@@ -44,11 +45,37 @@ const allServices = [
   { title: 'Interior Perfume Spray', image: require('../../../assets/images/exteriorservice.png') },
 ];
 
+const packages = [
+  {
+    id: 'essential',
+    title: 'Essential Interior Care',
+    price: 600,
+    originalPrice: 800,
+    services: [
+      'Dashboard & Console Wipe',
+      'Seat Surface Vacuuming',
+      'Door Panel Dusting',
+    ],
+  },
+  {
+    id: 'deluxe',
+    title: 'Deluxe Interior Detail',
+    price: 600,
+    originalPrice: 800,
+    services: [
+      'Dashboard & Console Wipe',
+      'Seat Surface Vacuuming',
+      'Door Panel Dusting',
+    ],
+  },
+];
+
 const InteriorService = () => {
   const navigation = useNavigation();
   const [activeBannerIndex, setActiveBannerIndex] = useState(0);
   const [selectedTab, setSelectedTab] = useState(popularServices[0]?.id);
   const [selectedServiceId, setSelectedServiceId] = useState(popularServices[0]?.id);
+  const { cartItems, addToCart } = useCart();
 
 
   return (
@@ -76,10 +103,14 @@ const InteriorService = () => {
             </TouchableOpacity>
 
             <View style={styles.iconWrapper}>
-              <Image source={Garage} style={styles.garageIcon} />
-              <View style={styles.badge}>
-                <CustomText style={styles.badgeText}>2</CustomText>
-              </View>
+              <TouchableOpacity onPress={() => navigation.navigate('Cart')} >
+                <Image source={Garage} style={styles.garageIcon} />
+                {cartItems.length > 0 && (
+                  <View style={styles.badge}>
+                    <CustomText style={styles.badgeText}>{cartItems.length}</CustomText>
+                  </View>
+                )}
+              </TouchableOpacity>
             </View>
           </View>
 
@@ -134,88 +165,64 @@ const InteriorService = () => {
           {popularServices.map((item) =>
             item.id === selectedServiceId ? (
               <View key={item.id}>
-                {/* <CustomText style={globalStyles.f14Bold}>
-                  {item.title}
-                </CustomText> */}
                 <View style={styles.section}>
                   <CustomText style={[globalStyles.f20Bold, globalStyles.primary, { marginBottom: 8 }]}>
                     {item.title}
                   </CustomText>
-                  {/* <CustomText style={[globalStyles.f12, { marginBottom: 16, color: '#555' }]}>
-                    Tailored combos to keep your car shining inside & out.
-                  </CustomText> */}
+                  {packages.map((item) => (
+                    <View key={item.id} style={styles.rowCard}>
+                      <ImageBackground
+                        source={require('../../../assets/images/exteriorservice.png')}
+                        style={styles.sideImage}
+                        imageStyle={{ borderRadius: 10 }}
+                      >
+                        <View style={styles.discountBadge}>
+                          <CustomText style={styles.discountText}>
+                            {Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100)}%
+                          </CustomText>
+                        </View>
+                      </ImageBackground>
 
-                  {/* Package 1 */}
-                  <View style={styles.rowCard}>
-                    <ImageBackground
-                      source={require('../../../assets/images/exteriorservice.png')} // Update with actual image
-                      style={styles.sideImage}
-                      imageStyle={{ borderRadius: 10 }}
-                    >
-                      <View style={styles.discountBadge}>
-                        <CustomText style={styles.discountText}>10%</CustomText>
-                      </View>
-                    </ImageBackground>
+                      <View style={styles.cardRight}>
+                        <CustomText style={[globalStyles.f16Bold, { color: color.primary, marginBottom: 6 }]}>
+                          {item.title}
+                        </CustomText>
 
-                    <View style={styles.cardRight}>
-                      <CustomText style={[globalStyles.f16Bold, { color: color.primary }]}>
-                        Essential Interior Care
-                      </CustomText>
-                      <View>
-                        <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
-                        <CustomText style={styles.serviceText}>• Dashboard & Console Wipe</CustomText>
-                        <CustomText style={styles.serviceText}>• Seat Surface Vacuuming</CustomText>
-                        <CustomText style={styles.serviceText}>• Door Panel Dusting</CustomText>
-                      </View>
-                      <View style={styles.priceRow}>
-                        <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                          <CustomText style={styles.striked}>₹800</CustomText>
-                          <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹600</CustomText>
+                        <View>
+                          <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
+                          {item.services.map((service, index) => (
+                            <CustomText key={index} style={styles.serviceText}>
+                              • {service}
+                            </CustomText>
+                          ))}
                         </View>
 
-                        <TouchableOpacity style={styles.addButton}>
-                          <CustomText style={styles.addButtonText}>Add Service</CustomText>
-                        </TouchableOpacity>
-                      </View>
+                        <View style={styles.priceRow}>
+                          <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                            <CustomText style={styles.striked}>₹{item.originalPrice}</CustomText>
+                            <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹{item.price}</CustomText>
+                          </View>
 
-                    </View>
-                  </View>
-
-                  {/* Package 2 */}
-                  <View style={styles.rowCard}>
-                    <ImageBackground
-                      source={require('../../../assets/images/exteriorservice.png')} // Update with actual image
-                      style={styles.sideImage}
-                      imageStyle={{ borderRadius: 10 }}
-                    >
-                      <View style={styles.discountBadge}>
-                        <CustomText style={styles.discountText}>10%</CustomText>
-                      </View>
-                    </ImageBackground>
-
-                    <View style={styles.cardRight}>
-                      <CustomText style={[globalStyles.f16Bold, { color: color.primary, marginBottom: 6 }]}>
-                        Deluxe Interior Detail
-                      </CustomText>
-                      <View>
-                        <CustomText style={styles.cardSubheading}>Services Included:</CustomText>
-                        <CustomText style={styles.serviceText}>• Dashboard & Console Wipe</CustomText>
-                        <CustomText style={styles.serviceText}>• Seat Surface Vacuuming</CustomText>
-                        <CustomText style={styles.serviceText}>• Door Panel Dusting</CustomText>
-                      </View>
-                      <View style={styles.priceRow}>
-                        <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                          <CustomText style={styles.striked}>₹800</CustomText>
-                          <CustomText style={[globalStyles.f14Bold, { marginLeft: 6 }]}>₹600</CustomText>
+                          {cartItems.find(ci => ci.id === item.id) ? (
+                            <TouchableOpacity
+                              style={[styles.addButton, { backgroundColor: '#444' }]}
+                              onPress={() => navigation.navigate('Cart')}
+                            >
+                              <CustomText style={styles.addButtonText}>View Cart</CustomText>
+                            </TouchableOpacity>
+                          ) : (
+                            <TouchableOpacity
+                              style={styles.addButton}
+                              onPress={() => addToCart(item)}
+                            >
+                              <CustomText style={styles.addButtonText}>Add Service</CustomText>
+                            </TouchableOpacity>
+                          )}
                         </View>
-
-                        <TouchableOpacity style={styles.addButton}>
-                          <CustomText style={styles.addButtonText}>Add Service</CustomText>
-                        </TouchableOpacity>
                       </View>
-
                     </View>
-                  </View>
+                  ))}
+
                 </View>
               </View>
             ) : null
@@ -244,32 +251,6 @@ const InteriorService = () => {
           ))}
         </View>
       </View>
-      {/* 
-      <View style={styles.section}>
-        <CustomText style={[globalStyles.mb3, globalStyles.f16Bold, globalStyles.primary]}>All Services</CustomText>
-        <View style={styles.grid}>
-          {allServices.map((service, index) => (
-            <View style={styles.gridItem} key={index}>
-              <ImageBackground
-                source={service.image}
-                style={[styles.gridImage, globalStyles.radius]}
-                imageStyle={{ borderRadius: 10 }}
-                resizeMode="cover"
-              >
-                <LinearGradient
-                  colors={['transparent', 'rgba(19, 109, 110, .6)']}
-                  style={styles.gradientOverlay}
-                >
-                  <CustomText style={[globalStyles.p2, globalStyles.textWhite, globalStyles.f12Bold]}>
-                    {service.title}
-                  </CustomText>
-                </LinearGradient>
-              </ImageBackground>
-            </View>
-          ))}
-        </View>
-      </View> */}
-
 
     </ScrollView>
   );

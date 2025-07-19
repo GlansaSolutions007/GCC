@@ -8,6 +8,7 @@ import { AuthProvider } from "./src/contexts/AuthContext";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Text, TextInput } from 'react-native';
 import { LocationProvider } from "./src/contexts/LocationContext";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 if (Text.defaultProps == null) Text.defaultProps = {};
 Text.defaultProps.allowFontScaling = false;
@@ -36,14 +37,17 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <SafeAreaProvider>
-      <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-        <AuthProvider>
-          <LocationProvider>
-            <RootNavigator />
-          </LocationProvider>
-        </AuthProvider>
-      </View>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+          <AuthProvider>
+            <LocationProvider>
+              <RootNavigator />
+            </LocationProvider>
+          </AuthProvider>
+        </View>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
+
   );
 }

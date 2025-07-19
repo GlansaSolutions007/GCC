@@ -4,6 +4,8 @@ export const color = {
   // Brand Colors
   primary: '#136D6E',
   secondary: '#25878F',
+  yellow: '#F7AE21',
+
 
   // Backgrounds
   background: '#F3F3F3',
